@@ -9,6 +9,7 @@ import {
   SmartLink,
   Text,
   Media,
+  Badge,
 } from "@once-ui-system/core";
 import styles from "./ProjectCard.module.scss";
 
@@ -23,6 +24,7 @@ interface ProjectCardProps {
   link: string;
   github?: string;
   live?: string;
+  badge?: string;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -35,6 +37,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   link,
   github,
   live,
+  badge,
 }) => {
   return (
     <Column
@@ -55,9 +58,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       />
       <Flex direction="column" fillWidth padding="m" gap="m">
         <Flex direction="column" gap="s">
-          <Heading as="h2" variant="heading-strong-m">
-            {title}
-          </Heading>
+          <Flex vertical="center" gap="8">
+            <Heading as="h2" variant="heading-strong-m">
+              {title}
+            </Heading>
+            {badge && (
+              <Badge
+                paddingX="8"
+                paddingY="4"
+                background="neutral-alpha-weak"
+                onBackground="neutral-strong"
+                textVariant="label-default-xs"
+              >
+                {badge}
+              </Badge>
+            )}
+          </Flex>
           {description?.trim() && (
             <Text
               wrap="balance"
@@ -76,7 +92,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </Flex>
 
         <Flex direction="column" gap="m">
-          {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="s" reverse />}
+          {avatars?.length > 0 && (
+            <AvatarGroup avatars={avatars} size="s" reverse />
+          )}
           <Flex gap="16" wrap>
             <SmartLink
               suffixIcon="arrowRight"

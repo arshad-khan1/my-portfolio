@@ -21,6 +21,7 @@ type Metadata = {
   link?: string;
   github?: string;
   live?: string;
+  badge?: string;
 };
 
 import { notFound } from "next/navigation";
@@ -41,7 +42,8 @@ function readMDXFile(filePath: string) {
   const rawContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(rawContent);
 
-  const githubUsername = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "arshad-khan1";
+  const githubUsername =
+    process.env.NEXT_PUBLIC_GITHUB_USERNAME || "arshad-khan1";
 
   const metadata: Metadata = {
     title: data.title || "",
@@ -55,6 +57,7 @@ function readMDXFile(filePath: string) {
     link: (data.link || "").replace("{{GITHUB_USERNAME}}", githubUsername),
     github: (data.github || "").replace("{{GITHUB_USERNAME}}", githubUsername),
     live: (data.live || "").replace("{{GITHUB_USERNAME}}", githubUsername),
+    badge: data.badge || "",
   };
 
   return {

@@ -97,7 +97,7 @@ Live: https://www.beanbagaffairs.com/
 
 10. Ramesys - A service based business website for digital services
 Tech Stack: NextJs
-Live: https://remesis-agency.vercel.app/
+Live: https://www.ramesys.co.uk/
 
 
 Office Projects

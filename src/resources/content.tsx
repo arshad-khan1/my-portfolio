@@ -1,14 +1,23 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import {
+  About,
+  Blog,
+  Gallery,
+  Home,
+  Newsletter,
+  Person,
+  Social,
+  Work,
+} from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Arshad",
   lastName: "Khan",
   name: `Arshad Khan`,
-  role: "Software Developer",
-  avatar: "/images/avatar.jpg",
+  role: "Full Stack Developer",
+  avatar: "/images/gallery/profile_image.jpg",
   email: "003arshad@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  location: "Asia/Kolkata", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Hindi"], // optional: Leave the array empty if you don't want to display languages
 };
 
@@ -65,7 +74,9 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building robust backends and automating workflows</>,
+  headline: (
+    <>Full stack developer building robust applications leveraging AI</>
+  ),
   featured: {
     display: false,
     title: (
@@ -81,8 +92,10 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Arshad, a software developer at Pinnacle Teleservices Pvt. Ltd., where I build reliable
-      backend systems. After hours, I explore new technologies and automate repetitive tasks.
+      Currently working as a software engineer who is passionate about building
+      products that impact millions of users. I specialize in bridging the gap
+      between back-end robustness and front-end excellence, all powered by
+      intelligent AI workflows.
     </>
   ),
 };
@@ -108,10 +121,11 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I am a software developer with 1 year of experience in backend development at Pinnacle
-        Teleservices Pvt. Ltd. I am passionate about coding implementations, discovering new
-        technologies, and automating repetitive tasks. Beyond development, I think from a business
-        perspective to add value to the company.
+        I am a full stack developer with experience in building robust backend
+        systems and dynamic front-end applications. I am passionate about
+        leveraging AI to automate complex workflows and build impactful
+        products. My approach combines technical excellence with a business
+        perspective to deliver maximum value.
       </>
     ),
   },
@@ -125,25 +139,29 @@ const about: About = {
         role: "Junior Software Developer",
         achievements: [
           <>
-            Worked on the <strong>HelpNest</strong> and <strong>StudyTool</strong> platforms as a{" "}
-            <strong>backend developer</strong>, building scalable APIs and backend systems for
-            customer support and learning applications.
+            Worked on the <strong>HelpNest</strong> and{" "}
+            <strong>StudyTool</strong> platforms as a{" "}
+            <strong>backend developer</strong>, building scalable APIs and
+            backend systems for customer support and learning applications.
           </>,
           <>
-            Designed and implemented the complete <strong>WhatsApp Messaging Pipeline</strong> with
-            inbound/outbound/template messaging, integrated connectors, and automated deployments on{" "}
-            <strong>AWS</strong>.
+            Designed and implemented the complete{" "}
+            <strong>WhatsApp Messaging Pipeline</strong> with
+            inbound/outbound/template messaging, integrated connectors, and
+            automated deployments on <strong>AWS</strong>.
           </>,
           <>
             Developed core modules including{" "}
             <strong>Role, Authentication, File Management (MinIO)</strong>, and{" "}
-            <strong>Contacts/Agents/Reports</strong>, ensuring secure and multi-tenant operations.
+            <strong>Contacts/Agents/Reports</strong>, ensuring secure and
+            multi-tenant operations.
           </>,
           <>
-            Currently working on the <strong>UGP platform</strong>, building standard APIs in{" "}
-            <strong>NestJS</strong> with complex business logic, and exploring{" "}
-            <strong>Python and Generative AI workflows</strong> for conversation analytics,
-            intelligent routing, and message summarization.
+            Currently working on the <strong>UGP platform</strong>, building
+            standard APIs in <strong>NestJS</strong> with complex business
+            logic, and exploring{" "}
+            <strong>Python and Generative AI workflows</strong> for conversation
+            analytics, intelligent routing, and message summarization.
           </>,
         ],
         images: [],
@@ -155,17 +173,19 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "Shri Ramdeobaba College of Engineering and Management, Nagpur",
-        description: <>Studied engineering.</>,
+        name: "B.Tech in Information Technology",
+        description: (
+          <>Shri Ramdeobaba College of Engineering and Management, Nagpur</>
+        ),
       },
-      {
-        name: "Maratrao Mude Junior College, Nagpur",
-        description: <>Completed 12th grade with 75%.</>,
-      },
-      {
-        name: "Bhavan's Wardha",
-        description: <>Completed 10th grade with 84%.</>,
-      },
+      // {
+      //   name: "Maratrao Mude Junior College, Nagpur",
+      //   description: <>Completed 12th grade with 75%.</>,
+      // },
+      // {
+      //   name: "Bhavan's Wardha",
+      //   description: <>Completed 10th grade with 84%.</>,
+      // },
     ],
   },
   technical: {
@@ -174,7 +194,12 @@ const about: About = {
     skills: [
       {
         title: "Backend Development",
-        description: <>Building robust APIs and services with Node.js, Nest.js, and Spring Boot.</>,
+        description: (
+          <>
+            Building robust APIs and services with Node.js, Nest.js, and Spring
+            Boot.
+          </>
+        ),
         tags: [
           {
             name: "Node.js",
@@ -193,7 +218,9 @@ const about: About = {
       },
       {
         title: "Frontend Development",
-        description: <>Creating dynamic user interfaces with React.js and Next.js.</>,
+        description: (
+          <>Creating dynamic user interfaces with React.js and Next.js.</>
+        ),
         tags: [
           {
             name: "React.js",
@@ -213,7 +240,10 @@ const about: About = {
       {
         title: "Databases & Cloud",
         description: (
-          <>Managing data with MySQL, PostgreSQL, MongoDB, and deploying on AWS with Docker.</>
+          <>
+            Managing data with MySQL, PostgreSQL, MongoDB, and deploying on AWS
+            with Docker.
+          </>
         ),
         tags: [
           {
@@ -241,7 +271,9 @@ const about: About = {
       },
       {
         title: "AI & Automation",
-        description: <>Implementing AI workflows, agents, and generative AI solutions.</>,
+        description: (
+          <>Implementing AI workflows, agents, and generative AI solutions.</>
+        ),
         tags: [
           {
             name: "Python",

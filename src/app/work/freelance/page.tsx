@@ -1,4 +1,12 @@
-import { Column, Heading, Meta, Schema, Button, RevealFx, Text } from "@once-ui-system/core";
+import {
+  Column,
+  Heading,
+  Meta,
+  Schema,
+  Button,
+  RevealFx,
+  Text,
+} from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 
@@ -33,8 +41,7 @@ export default function FreelanceWork() {
           href="/work"
           variant="tertiary"
           size="s"
-          prefixIcon="arrowRight"
-          style={{ transform: "rotate(180deg)", width: "fit-content" }}
+          prefixIcon="chevronLeft"
         >
           <Text variant="label-default-s">Back to Projects</Text>
         </Button>

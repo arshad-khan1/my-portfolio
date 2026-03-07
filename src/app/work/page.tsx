@@ -9,6 +9,7 @@ import {
   Icon,
   Flex,
   Row,
+  Badge,
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 
@@ -24,7 +25,14 @@ export async function generateMetadata() {
 
 export default function Work() {
   return (
-    <Column maxWidth="m" paddingTop="24" gap="xl">
+    <Column
+      maxWidth="m"
+      fillWidth
+      paddingTop="24"
+      gap="xl"
+      horizontal="center"
+      style={{ margin: "0 auto" }}
+    >
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -39,11 +47,33 @@ export default function Work() {
         }}
       />
 
-      <RevealFx speed="medium" translateY="0" fillWidth>
-        <Heading variant="display-strong-s" align="center">
-          {work.title}
-        </Heading>
-      </RevealFx>
+      <Column fillWidth horizontal="center" gap="16">
+        <RevealFx speed="medium" translateY="0" horizontal="center">
+          <Badge
+            background="brand-alpha-weak"
+            onBackground="brand-strong"
+            paddingX="12"
+            paddingY="4"
+          >
+            Portfolio
+          </Badge>
+        </RevealFx>
+        <RevealFx speed="medium" delay={0.2} horizontal="center">
+          <Heading variant="display-strong-xs" align="center">
+            {work.title}
+          </Heading>
+        </RevealFx>
+        <RevealFx speed="medium" delay={0.4} horizontal="center">
+          <Text
+            variant="body-default-l"
+            onBackground="neutral-weak"
+            align="center"
+            style={{ maxWidth: "600px" }}
+          >
+            {work.description}
+          </Text>
+        </RevealFx>
+      </Column>
 
       <Column fillWidth gap="32" paddingX="l">
         <RevealFx delay={0.2} speed="medium" fillWidth>
@@ -83,11 +113,18 @@ export default function Work() {
               </Flex>
               <Column gap="8" flex={1}>
                 <Row vertical="center" gap="8">
-                  <Heading variant="heading-strong-l">Personal Projects</Heading>
-                  <Icon name="arrowRight" size="s" onBackground="neutral-weak" />
+                  <Heading variant="heading-strong-l">
+                    Personal Projects
+                  </Heading>
+                  <Icon
+                    name="arrowRight"
+                    size="s"
+                    onBackground="neutral-weak"
+                  />
                 </Row>
                 <Text variant="body-default-m" onBackground="neutral-weak">
-                  Explore my personal experiments, passion projects, and open-source contributions.
+                  Explore my personal experiments, passion projects, and
+                  open-source contributions.
                 </Text>
               </Column>
             </Flex>
@@ -131,12 +168,18 @@ export default function Work() {
               </Flex>
               <Column gap="8" flex={1}>
                 <Row vertical="center" gap="8">
-                  <Heading variant="heading-strong-l">Freelance Projects</Heading>
-                  <Icon name="arrowRight" size="s" onBackground="neutral-weak" />
+                  <Heading variant="heading-strong-l">
+                    Freelance Projects
+                  </Heading>
+                  <Icon
+                    name="arrowRight"
+                    size="s"
+                    onBackground="neutral-weak"
+                  />
                 </Row>
                 <Text variant="body-default-m" onBackground="neutral-weak">
-                  Professional work delivered for various clients and agencies across different
-                  industries.
+                  Professional work delivered for various clients and agencies
+                  across different industries.
                 </Text>
               </Column>
             </Flex>
