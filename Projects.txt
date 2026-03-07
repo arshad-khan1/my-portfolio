@@ -1,0 +1,105 @@
+Projects
+For github links use environment variable for the username so that If I change username in the future then I don't have to change it everywhere
+
+Personal Projects
+1. Basic HTML CSS Websites (Include these project under single project, In the description give these links with a very small description. 
+-Simple Nike Website: https://github.com/arshad-khan1/Simple-website-nike, Live Website: https://arshad-khan1.github.io/Simple-website-nike/
+-Dribble Clone: https://github.com/arshad-khan1/Dribble_Clone, Live Website: https://arshad-khan1.github.io/Dribble_Clone/
+-Obys Agency Clone: https://github.com/arshad-khan1/Obys_Clone, Live Website: https://arshad-khan1.github.io/Obys_Clone/
+-Refokus Clone: https://github.com/arshad-khan1/Refokus_Clone, Live Website: https://arshad-khan1.github.io/Refokus_Clone/
+
+2. Social Media App - Thread
+Tech Stack
+-React
+-Node
+-MongoDB
+
+-Github: https://github.com/arshad-khan1/thread_clone
+
+3. Movie Hub - An Application where latest movies are shown using TMDB api
+Tech Stack
+-React
+-Tailwind CSS
+-TMDB API
+
+- Github: https://github.com/arshad-khan1/moviehub-react-project
+- Live: https://moviehub-zeta-seven.vercel.app/
+
+4. Algorithm Visualizer - A webapp where you can see how different sorting and path finding alogrithm works
+Tech Stack
+-Javascript 
+-Custom CSS
+
+- Github: https://github.com/arshad-khan1/Algorithm_Visualizer
+- Live: https://algorithm-visualizer-rho-five.vercel.app/
+
+5. Expense Tracker - A backend application built in NestJs (Postman collection file included)
+Tech Stack
+NestJS — framework & DI
+Prisma → PostgreSQL (relational data)
+Redis → live balances & category cache
+Kafka → event bus for bank-sync & downstream services 
+- Github: https://github.com/arshad-khan1/Expense-Tracker
+
+Team Projects
+6. Study Tool - A modern flashcard application using spaced repetition algorithms (SM-2 and SM-15) to optimize learning and retention.
+Tech Stack
+Backend
+-NestJS with TypeScript
+-PostgreSQL database with Prisma ORM
+-JWT authentication
+-Docker for containerization
+-OpenRouter API for AI integration (optional)
+Frontend
+-Next.js with TypeScript
+-React Context for state management
+-fetch for API communication
+-Tailwind CSS with shadcn for styling
+
+My Contribution: 
+- Implemented User dashboard and dark/light theme in frontend
+- Authentication system implemented in both frontend and backend
+- SM-15 Algorithm Implementation to card repetition and learning curve of the user
+
+- Github: https://github.com/arshad-khan1/poc-study-tool/tree/develop
+
+7. Bus Ride Booking - A web application built in NextJs to search for buses and book ticket online
+Tech Stack
+-NextJs
+-PostgreSQL
+-Prisma (ORM)
+
+My Contribution:
+- Designing and proposing Database to mentor
+- Implementation of database in prisma with proper relations
+- Implmentation of some APIs required for building the application
+
+-Github: https://github.com/arshad-khan1/bus-ride-booking/tree/develop
+
+8. Gym Management Application - A mobile application build in React native and Node.js for gym owners to make their management easy
+Tech Stack:
+-React Native Expo
+-Node.js
+-MongoDB
+
+My Conrtibution:
+-Setting up both backend and frontend for development with the decided folder structure
+-Designing of database and implementing it in the backend
+-Implementation of role based Authentication system both in frontend and backend using jwt tokens and protected route 
+-Implementation of backend api's needed for the application
+
+- Github: https://github.com/orgs/GymManagerApp/repositories
+
+Freelance
+9. BeanBagAffairs - A service based business website for Ad Films and Wedding Photography
+Tech Stack: NextJS, Cloudinary CDS
+Live: https://www.beanbagaffairs.com/
+
+10. Ramesys - A service based business website for digital services
+Tech Stack: NextJs
+Live: https://remesis-agency.vercel.app/
+
+
+Office Projects
+
+11. Helpnest - A customer support CRM 
