@@ -76,9 +76,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         </Flex>
 
         <Flex direction="column" gap="m">
-          {avatars?.length > 0 && (
-            <AvatarGroup avatars={avatars} size="s" reverse />
-          )}
+          {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="s" reverse />}
           <Flex gap="16" wrap>
             <SmartLink
               suffixIcon="arrowRight"

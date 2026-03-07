@@ -83,18 +83,11 @@ export default function Work() {
               </Flex>
               <Column gap="8" flex={1}>
                 <Row vertical="center" gap="8">
-                  <Heading variant="heading-strong-l">
-                    Personal Projects
-                  </Heading>
-                  <Icon
-                    name="arrowRight"
-                    size="s"
-                    onBackground="neutral-weak"
-                  />
+                  <Heading variant="heading-strong-l">Personal Projects</Heading>
+                  <Icon name="arrowRight" size="s" onBackground="neutral-weak" />
                 </Row>
                 <Text variant="body-default-m" onBackground="neutral-weak">
-                  Explore my personal experiments, passion projects, and
-                  open-source contributions.
+                  Explore my personal experiments, passion projects, and open-source contributions.
                 </Text>
               </Column>
             </Flex>
@@ -138,18 +131,12 @@ export default function Work() {
               </Flex>
               <Column gap="8" flex={1}>
                 <Row vertical="center" gap="8">
-                  <Heading variant="heading-strong-l">
-                    Freelance Projects
-                  </Heading>
-                  <Icon
-                    name="arrowRight"
-                    size="s"
-                    onBackground="neutral-weak"
-                  />
+                  <Heading variant="heading-strong-l">Freelance Projects</Heading>
+                  <Icon name="arrowRight" size="s" onBackground="neutral-weak" />
                 </Row>
                 <Text variant="body-default-m" onBackground="neutral-weak">
-                  Professional work delivered for various clients and agencies
-                  across different industries.
+                  Professional work delivered for various clients and agencies across different
+                  industries.
                 </Text>
               </Column>
             </Flex>

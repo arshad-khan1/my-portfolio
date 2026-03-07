@@ -1,12 +1,4 @@
-import {
-  Column,
-  Heading,
-  Meta,
-  Schema,
-  Button,
-  RevealFx,
-  Text,
-} from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Button, RevealFx, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 
@@ -29,9 +21,7 @@ export default function FreelanceWork() {
         path={`${work.path}/freelance`}
         title={`Freelance Projects - ${person.name}`}
         description="A collection of my professional freelance projects."
-        image={`/api/og/generate?title=${encodeURIComponent(
-          "Freelance Projects",
-        )}`}
+        image={`/api/og/generate?title=${encodeURIComponent("Freelance Projects")}`}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,

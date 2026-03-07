@@ -43,7 +43,7 @@ const social: Social = [
   {
     name: "Threads",
     icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "",
     essential: true,
   },
   {
@@ -67,17 +67,17 @@ const home: Home = {
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Building robust backends and automating workflows</>,
   featured: {
-    display: true,
+    display: false,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Featured</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/",
   },
   subline: (
     <>
@@ -135,7 +135,9 @@ const about: About = {
             <strong>AWS</strong>.
           </>,
           <>
-            Developed core modules including <strong>Role, Authentication, File Management (MinIO)</strong>, and <strong>Contacts/Agents/Reports</strong>, ensuring secure and multi-tenant operations.
+            Developed core modules including{" "}
+            <strong>Role, Authentication, File Management (MinIO)</strong>, and{" "}
+            <strong>Contacts/Agents/Reports</strong>, ensuring secure and multi-tenant operations.
           </>,
           <>
             Currently working on the <strong>UGP platform</strong>, building standard APIs in{" "}
@@ -279,8 +281,7 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  // Placeholder images
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",

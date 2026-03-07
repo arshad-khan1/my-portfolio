@@ -41,8 +41,7 @@ function readMDXFile(filePath: string) {
   const rawContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(rawContent);
 
-  const githubUsername =
-    process.env.NEXT_PUBLIC_GITHUB_USERNAME || "arshad-khan1";
+  const githubUsername = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "arshad-khan1";
 
   const metadata: Metadata = {
     title: data.title || "",

@@ -18,18 +18,13 @@ export const Contact: React.FC<React.ComponentProps<typeof Column>> = ({ ...flex
       {...flex}
     >
       <Column maxWidth="xs" horizontal="center" gap="m">
-        <Heading variant="display-strong-xs">
-          Let's work together
-        </Heading>
+        <Heading variant="display-strong-xs">Let's work together</Heading>
         <Text wrap="balance" marginBottom="l" variant="body-default-l" onBackground="neutral-weak">
-          I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+          I'm always open to discussing new projects, creative ideas or opportunities to be part of
+          your visions.
         </Text>
         <Row gap="8">
-          <Button
-            href={`mailto:${person.email}`}
-            variant="primary"
-            size="m"
-          >
+          <Button href={`mailto:${person.email}`} variant="primary" size="m">
             Contact Me
           </Button>
         </Row>

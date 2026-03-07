@@ -34,6 +34,11 @@ import {
   SiMongodb,
   SiAmazon,
   SiDocker,
+  SiNodedotjs,
+  SiSpringboot,
+  SiReact,
+  SiTypescript,
+  SiNestjs,
 } from "react-icons/si";
 
 import {
@@ -85,6 +90,11 @@ export const iconLibrary: Record<string, IconType> = {
   mongodb: SiMongodb,
   aws: SiAmazon,
   docker: SiDocker,
+  node: SiNodedotjs,
+  springboot: SiSpringboot,
+  react: SiReact,
+  typescript: SiTypescript,
+  nestjs: SiNestjs,
   facebook: FaFacebook,
   pinterest: FaPinterest,
   whatsapp: FaWhatsapp,
