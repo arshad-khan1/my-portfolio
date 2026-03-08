@@ -139,8 +139,7 @@ const about: About = {
         role: "Junior Software Developer",
         achievements: [
           <>
-            Worked on the <strong>HelpNest</strong> and{" "}
-            <strong>StudyTool</strong> platforms as a{" "}
+            Worked on the <strong>HelpNest</strong> and platforms as a{" "}
             <strong>backend developer</strong>, building scalable APIs and
             backend systems for customer support and learning applications.
           </>,
@@ -196,8 +195,8 @@ const about: About = {
         title: "Backend Development",
         description: (
           <>
-            Building robust APIs and services with Node.js, Nest.js, and Spring
-            Boot.
+            Building robust APIs and services with Node.js, Nest.js, and
+            FastAPI.
           </>
         ),
         tags: [
@@ -210,8 +209,12 @@ const about: About = {
             icon: "nextjs",
           },
           {
-            name: "Spring Boot",
-            icon: "javascript",
+            name: "Python",
+            icon: "python",
+          },
+          {
+            name: "FastAPI",
+            icon: "fastapi",
           },
         ],
         images: [],
@@ -266,6 +269,14 @@ const about: About = {
             name: "Docker",
             icon: "docker",
           },
+          {
+            name: "Redis",
+            icon: "redis",
+          },
+          {
+            name: "Kafka",
+            icon: "kafka",
+          },
         ],
         images: [],
       },
@@ -280,8 +291,12 @@ const about: About = {
             icon: "python",
           },
           {
-            name: "AI",
-            icon: "javascript",
+            name: "N8N",
+            icon: "n8n",
+          },
+          {
+            name: "Open Code",
+            icon: "vscode",
           },
         ],
         images: [],

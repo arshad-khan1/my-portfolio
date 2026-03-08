@@ -61,22 +61,25 @@
   }
 }
 
-// Positioning logic for each icon to look scattered
-.floatingIcon:nth-child(1) { top: 10%; left: 10%; }
-.floatingIcon:nth-child(2) { top: 25%; left: 30%; }
-.floatingIcon:nth-child(3) { top: 15%; left: 50%; }
-.floatingIcon:nth-child(4) { top: 10%; left: 75%; }
-.floatingIcon:nth-child(5) { top: 20%; left: 90%; }
-.floatingIcon:nth-child(6) { top: 45%; left: 5%; }
-.floatingIcon:nth-child(7) { top: 50%; left: 25%; }
-.floatingIcon:nth-child(8) { top: 40%; left: 45%; }
-.floatingIcon:nth-child(9) { top: 55%; left: 70%; }
-.floatingIcon:nth-child(10) { top: 45%; left: 85%; }
-.floatingIcon:nth-child(11) { top: 80%; left: 15%; }
-.floatingIcon:nth-child(12) { top: 85%; left: 40%; }
-.floatingIcon:nth-child(13) { top: 75%; left: 60%; }
-.floatingIcon:nth-child(14) { top: 80%; left: 80%; }
-.floatingIcon:nth-child(15) { top: 30%; left: 65%; }
+// Positioning logic for each icon to look scattered and avoid overlapping
+.floatingIcon:nth-child(1) { top: 10%; left: 5%; }
+.floatingIcon:nth-child(2) { top: 25%; left: 18%; }
+.floatingIcon:nth-child(3) { top: 15%; left: 32%; }
+.floatingIcon:nth-child(4) { top: 10%; left: 48%; }
+.floatingIcon:nth-child(5) { top: 25%; left: 62%; }
+.floatingIcon:nth-child(6) { top: 15%; left: 76%; }
+.floatingIcon:nth-child(7) { top: 20%; left: 88%; }
+.floatingIcon:nth-child(8) { top: 45%; left: 8%; }
+.floatingIcon:nth-child(9) { top: 55%; left: 22%; }
+.floatingIcon:nth-child(10) { top: 40%; left: 38%; }
+.floatingIcon:nth-child(11) { top: 50%; left: 52%; }
+.floatingIcon:nth-child(12) { top: 45%; left: 68%; }
+.floatingIcon:nth-child(13) { top: 55%; left: 82%; }
+.floatingIcon:nth-child(14) { top: 80%; left: 10%; }
+.floatingIcon:nth-child(15) { top: 85%; left: 25%; }
+.floatingIcon:nth-child(16) { top: 75%; left: 42%; }
+.floatingIcon:nth-child(17) { top: 85%; left: 58%; }
+.floatingIcon:nth-child(18) { top: 80%; left: 78%; }
 
 @keyframes float {
   0% {

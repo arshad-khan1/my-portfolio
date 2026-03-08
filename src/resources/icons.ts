@@ -40,7 +40,10 @@ import {
   SiReact,
   SiTypescript,
   SiNestjs,
+  SiRedis,
+  SiApachekafka,
 } from "react-icons/si";
+import { VscCode } from "react-icons/vsc";
 
 import {
   FaDiscord,
@@ -103,6 +106,9 @@ export const iconLibrary: Record<string, IconType> = {
   telegram: FaTelegram,
   instagram: FaInstagram,
   chevronLeft: HiChevronLeft,
+  redis: SiRedis,
+  kafka: SiApachekafka,
+  vscode: VscCode,
 };
 
 export type IconLibrary = typeof iconLibrary;
