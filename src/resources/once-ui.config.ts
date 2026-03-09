@@ -11,7 +11,7 @@ import {
   SocialSharingConfig,
   StyleConfig,
 } from "@/types";
-import { home, person } from "./index";
+import { home, person } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
 const baseURL: string = "https://demo.magic-portfolio.com";

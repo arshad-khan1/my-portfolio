@@ -13,8 +13,18 @@ import {
   RevealFx,
   SpacingToken,
 } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from "@/components";
-import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { RouteGuard } from "@/components/RouteGuard";
+import { Providers } from "@/components/Providers";
+import {
+  baseURL,
+  effects,
+  fonts,
+  style,
+  dataStyle,
+} from "@/resources/once-ui.config";
+import { home } from "@/resources/content";
 
 export async function generateMetadata() {
   return Meta.generate({

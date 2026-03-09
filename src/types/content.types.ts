@@ -1,4 +1,4 @@
-import { IconName } from "@/resources/icons";
+import type { IconName } from "@/resources/icons";
 import { zones } from "tzdata";
 
 /**
