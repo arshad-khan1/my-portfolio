@@ -34,11 +34,15 @@ import {
   SiPython,
   // @ts-ignore
   SiMysql,
+  // @ts-ignore
   SiPostgresql,
   // @ts-ignore
   SiMongodb,
+  // @ts-ignore
   SiAmazonwebservices,
+  // @ts-ignore
   SiDocker,
+  // @ts-ignore
   SiNodedotjs,
   // @ts-ignore
   SiSpringboot,
@@ -48,6 +52,8 @@ import {
   SiRedis,
   // @ts-ignore
   SiApachekafka,
+  SiFastapi,
+  SiN8N,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 
@@ -115,6 +121,8 @@ export const iconLibrary: Record<string, IconType> = {
   redis: SiRedis,
   kafka: SiApachekafka,
   vscode: VscCode,
+  fastapi: SiFastapi,
+  n8n: SiN8N,
 };
 
 export type IconLibrary = typeof iconLibrary;

@@ -202,11 +202,11 @@ const about: About = {
         tags: [
           {
             name: "Node.js",
-            icon: "javascript",
+            icon: "node",
           },
           {
             name: "Nest.js",
-            icon: "nextjs",
+            icon: "nestjs",
           },
           {
             name: "Python",
@@ -227,7 +227,7 @@ const about: About = {
         tags: [
           {
             name: "React.js",
-            icon: "javascript",
+            icon: "react",
           },
           {
             name: "Next.js",
@@ -235,7 +235,7 @@ const about: About = {
           },
           {
             name: "TypeScript",
-            icon: "javascript",
+            icon: "typescript",
           },
         ],
         images: [],
