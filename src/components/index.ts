@@ -10,5 +10,4 @@ export { ScrollToHash } from "@/components/ScrollToHash";
 export { ThemeToggle } from "@/components/ThemeToggle";
 export { CustomMDX } from "@/components/mdx";
 export { TechLogos } from "@/components/TechLogos";
-export { BentoGrid } from "@/components/work/BentoGrid";
-
+// export { BentoGrid } from "@/components/work/BentoGrid";
