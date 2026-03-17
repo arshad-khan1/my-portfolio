@@ -46,20 +46,24 @@ import {
   FaDocker,
   FaNode,
   FaReact,
+  FaPython,
 } from "react-icons/fa6";
-import { DiJavascript, DiMongodb } from "react-icons/di";
+import { DiJavascript, DiMongodb, DiMysql, DiRedis } from "react-icons/di";
 import { RiNextjsFill, RiSupabaseFill } from "react-icons/ri";
 import {
-  SiApacheKafka,
+  SiApachekafka,
   SiFastapi,
-  SiMySQL,
   SiN8N,
   SiNestjs,
   SiPython,
   SiRedis,
   SiTypescript,
 } from "react-icons/si";
-import { BiLogoPostgresql, BiLogoSpringBoot } from "react-icons/bi";
+import {
+  BiLogoPostgresql,
+  BiLogoSpringBoot,
+  BiLogoTypescript,
+} from "react-icons/bi";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -89,8 +93,8 @@ export const iconLibrary: Record<string, IconType> = {
   nextjs: RiNextjsFill,
   supabase: RiSupabaseFill,
   figma: FaFigma,
-  python: SiPython,
-  mysql: SiMySQL,
+  python: FaPython,
+  mysql: DiMysql,
   postgresql: BiLogoPostgresql,
   mongodb: DiMongodb,
   aws: FaAmazon,
@@ -98,7 +102,7 @@ export const iconLibrary: Record<string, IconType> = {
   node: FaNode,
   springboot: BiLogoSpringBoot,
   react: FaReact,
-  typescript: SiTypescript,
+  typescript: BiLogoTypescript,
   nestjs: SiNestjs,
   facebook: FaFacebook,
   pinterest: FaPinterest,
@@ -107,8 +111,8 @@ export const iconLibrary: Record<string, IconType> = {
   telegram: FaTelegram,
   instagram: FaInstagram,
   chevronLeft: HiChevronLeft,
-  redis: SiRedis,
-  kafka: SiApacheKafka,
+  redis: DiRedis,
+  kafka: SiApachekafka,
   vscode: VscCode,
   fastapi: SiFastapi,
   n8n: SiN8N,
