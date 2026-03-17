@@ -15,7 +15,7 @@ const person: Person = {
   lastName: "Khan",
   name: `Arshad Khan`,
   role: "Full Stack Developer",
-  avatar: "/images/gallery/profile_image.jpg",
+  avatar: "/images/gallery/image.png",
   email: "003arshad@gmail.com",
   location: "Asia/Kolkata", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Hindi"], // optional: Leave the array empty if you don't want to display languages

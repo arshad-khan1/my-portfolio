@@ -32,17 +32,21 @@ import {
   SiFigma,
   SiSupabase,
   SiPython,
+  // @ts-ignore
   SiMysql,
   SiPostgresql,
+  // @ts-ignore
   SiMongodb,
-  SiAmazonaws,
+  SiAmazonwebservices,
   SiDocker,
   SiNodedotjs,
+  // @ts-ignore
   SiSpringboot,
   SiReact,
   SiTypescript,
   SiNestjs,
   SiRedis,
+  // @ts-ignore
   SiApachekafka,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
@@ -94,7 +98,7 @@ export const iconLibrary: Record<string, IconType> = {
   mysql: SiMysql,
   postgresql: SiPostgresql,
   mongodb: SiMongodb,
-  aws: SiAmazonaws,
+  aws: SiAmazonwebservices,
   docker: SiDocker,
   node: SiNodedotjs,
   springboot: SiSpringboot,
