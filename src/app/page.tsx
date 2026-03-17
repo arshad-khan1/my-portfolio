@@ -12,7 +12,8 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes } from "@/resources";
-import { Mailchimp, Contact, TechLogos } from "@/components";
+import { Mailchimp, Contact, TechLogos, BentoGrid } from "@/components";
+
 import { Posts } from "@/components/blog/Posts";
 
 export async function generateMetadata() {
@@ -119,7 +120,7 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-
+      <BentoGrid />
       <TechLogos />
 
       {routes["/blog"] && (

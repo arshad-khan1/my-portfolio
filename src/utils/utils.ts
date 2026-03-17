@@ -28,7 +28,7 @@ import { notFound } from "next/navigation";
 
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {
-    notFound();
+    return [];
   }
 
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
@@ -36,7 +36,7 @@ function getMDXFiles(dir: string) {
 
 function readMDXFile(filePath: string) {
   if (!fs.existsSync(filePath)) {
-    notFound();
+    return null;
   }
 
   const rawContent = fs.readFileSync(filePath, "utf-8");
@@ -68,16 +68,21 @@ function readMDXFile(filePath: string) {
 
 function getMDXData(dir: string) {
   const mdxFiles = getMDXFiles(dir);
-  return mdxFiles.map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file));
-    const slug = path.basename(file, path.extname(file));
+  return mdxFiles
+    .map((file) => {
+      const data = readMDXFile(path.join(dir, file));
+      if (!data) return null;
 
-    return {
-      metadata,
-      slug,
-      content,
-    };
-  });
+      const { metadata, content } = data;
+      const slug = path.basename(file, path.extname(file));
+
+      return {
+        metadata,
+        slug,
+        content,
+      };
+    })
+    .filter((post) => post !== null);
 }
 
 export function getPosts(customPath = ["", "", "", ""]) {
