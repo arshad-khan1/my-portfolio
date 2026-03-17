@@ -26,35 +26,6 @@ import {
   PiImageDuotone,
 } from "react-icons/pi";
 
-import {
-  SiJavascript,
-  SiNextdotjs,
-  SiFigma,
-  SiSupabase,
-  SiPython,
-  // @ts-ignore
-  SiMysql,
-  // @ts-ignore
-  SiPostgresql,
-  // @ts-ignore
-  SiMongodb,
-  // @ts-ignore
-  SiAmazonwebservices,
-  // @ts-ignore
-  SiDocker,
-  // @ts-ignore
-  SiNodedotjs,
-  // @ts-ignore
-  SiSpringboot,
-  SiReact,
-  SiTypescript,
-  SiNestjs,
-  SiRedis,
-  // @ts-ignore
-  SiApachekafka,
-  SiFastapi,
-  SiN8N,
-} from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 
 import {
@@ -70,7 +41,25 @@ import {
   FaWhatsapp,
   FaReddit,
   FaTelegram,
+  FaFigma,
+  FaAmazon,
+  FaDocker,
+  FaNode,
+  FaReact,
 } from "react-icons/fa6";
+import { DiJavascript, DiMongodb } from "react-icons/di";
+import { RiNextjsFill, RiSupabaseFill } from "react-icons/ri";
+import {
+  SiApacheKafka,
+  SiFastapi,
+  SiMySQL,
+  SiN8N,
+  SiNestjs,
+  SiPython,
+  SiRedis,
+  SiTypescript,
+} from "react-icons/si";
+import { BiLogoPostgresql, BiLogoSpringBoot } from "react-icons/bi";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -96,19 +85,19 @@ export const iconLibrary: Record<string, IconType> = {
   document: HiOutlineDocument,
   rocket: HiOutlineRocketLaunch,
   phone: HiOutlineDevicePhoneMobile,
-  javascript: SiJavascript,
-  nextjs: SiNextdotjs,
-  supabase: SiSupabase,
-  figma: SiFigma,
+  javascript: DiJavascript,
+  nextjs: RiNextjsFill,
+  supabase: RiSupabaseFill,
+  figma: FaFigma,
   python: SiPython,
-  mysql: SiMysql,
-  postgresql: SiPostgresql,
-  mongodb: SiMongodb,
-  aws: SiAmazonwebservices,
-  docker: SiDocker,
-  node: SiNodedotjs,
-  springboot: SiSpringboot,
-  react: SiReact,
+  mysql: SiMySQL,
+  postgresql: BiLogoPostgresql,
+  mongodb: DiMongodb,
+  aws: FaAmazon,
+  docker: FaDocker,
+  node: FaNode,
+  springboot: BiLogoSpringBoot,
+  react: FaReact,
   typescript: SiTypescript,
   nestjs: SiNestjs,
   facebook: FaFacebook,
@@ -119,7 +108,7 @@ export const iconLibrary: Record<string, IconType> = {
   instagram: FaInstagram,
   chevronLeft: HiChevronLeft,
   redis: SiRedis,
-  kafka: SiApachekafka,
+  kafka: SiApacheKafka,
   vscode: VscCode,
   fastapi: SiFastapi,
   n8n: SiN8N,
