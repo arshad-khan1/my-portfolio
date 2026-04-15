@@ -12,7 +12,7 @@ import {
   Line,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes } from "@/resources";
-import { Contact, TechLogos } from "@/components";
+import { Contact, TechLogos, BentoGrid } from "@/components";
 
 import { Posts } from "@/components/blog/Posts";
 
@@ -120,6 +120,11 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
+
+      {/* Bento Grid */}
+      <BentoGrid />
+
+      {/* Tech Logos */}
       <TechLogos />
 
       {routes["/blog"] && (

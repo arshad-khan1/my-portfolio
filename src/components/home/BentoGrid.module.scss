@@ -1,0 +1,281 @@
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: dense;
+  grid-auto-rows: minmax(180px, auto);
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+@media (max-width: 1024px) {
+  .bentoGrid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(200px, auto);
+  }
+}
+
+.card {
+  background: var(--solid-page-background, rgba(128, 128, 128, 0.05));
+  border: 1px solid var(--neutral-alpha-weak, rgba(128, 128, 128, 0.2));
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  backdrop-filter: blur(12px);
+  color: inherit; /* Will take standard text color based on dark/light theme */
+
+  &:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+    border-color: var(--brand-alpha-strong, rgba(128, 128, 128, 0.4));
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.2;
+    z-index: 10;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.7; /* Ensures secondary text works in both themes */
+    line-height: 1.5;
+    z-index: 10;
+  }
+
+  .bgIcon {
+    position: absolute;
+    right: -10%;
+    bottom: -10%;
+    width: 200px;
+    height: 200px;
+    opacity: 0.035;
+    z-index: 0;
+    pointer-events: none;
+    stroke-width: 1px;
+    color: inherit;
+  }
+}
+
+/* Card 1: Redis Integration */
+.item1 {
+  grid-column: span 3;
+  grid-row: span 2;
+  
+  .visual {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    border-radius: 50%;
+    border: 8px solid var(--neutral-alpha-weak, rgba(128, 128, 128, 0.1));
+    border-top-color: var(--brand-solid-strong, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transform: rotate(45deg);
+
+    .inner {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+/* Card 2: Agent Routing */
+.item2 {
+  grid-column: span 3;
+  grid-row: span 2;
+
+  .visual {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    border-radius: 50%;
+    border: 8px solid var(--neutral-alpha-weak, rgba(128, 128, 128, 0.1));
+    border-bottom-color: var(--brand-solid-strong, #8b5cf6);
+    border-right-color: var(--brand-solid-strong, #8b5cf6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transform: rotate(-15deg);
+
+    .inner {
+      transform: rotate(15deg);
+    }
+  }
+}
+
+/* Card 3: Nexr AI SaaS */
+.item3 {
+  grid-column: span 6;
+  grid-row: span 1;
+  text-align: center;
+
+  h3 {
+    font-size: 2rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+}
+
+/* Card 4: Ecommerce Mobile App */
+.item4 {
+  grid-column: span 6;
+  grid-row: span 1;
+  text-align: left;
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Card 5: Minio Storage */
+.item5 {
+  grid-column: span 6;
+  grid-row: span 2;
+  
+  .driveWireframe {
+    display: flex;
+    margin-top: 24px;
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid var(--neutral-alpha-weak, rgba(128, 128, 128, 0.2));
+    background: var(--neutral-alpha-medium, rgba(128, 128, 128, 0.05));
+    overflow: hidden;
+
+    .sidebar {
+      width: 30%;
+      border-right: 1px solid var(--neutral-alpha-weak, rgba(128, 128, 128, 0.2));
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .navItem {
+        height: 6px;
+        border-radius: 4px;
+        background: var(--neutral-alpha-weak, rgba(128, 128, 128, 0.2));
+        width: 100%;
+        &:first-child { width: 80%; background: var(--brand-alpha-strong, rgba(128, 128, 128, 0.4)); }
+        &:last-child { width: 60%; }
+      }
+    }
+
+    .main {
+      flex: 1;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .searchBar {
+        height: 24px;
+        border-radius: 4px;
+        background: var(--neutral-alpha-weak, rgba(128, 128, 128, 0.1));
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+        opacity: 0.6;
+      }
+
+      .filesGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+
+        .folder, .file {
+          border-radius: 4px;
+          border: 1px solid var(--neutral-alpha-weak, rgba(128, 128, 128, 0.2));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0.6;
+          height: 36px;
+        }
+
+        .folder {
+          background: var(--neutral-alpha-weak, rgba(128, 128, 128, 0.05));
+        }
+      }
+    }
+  }
+}
+
+/* Card 6: Whatsapp Pipeline */
+.item6 {
+  grid-column: span 3;
+  grid-row: span 2;
+  
+  .iconWrap {
+    margin-bottom: 16px;
+    svg {
+      width: 48px;
+      height: 48px;
+      stroke-width: 1.5;
+    }
+  }
+}
+
+/* Card 7: Razorpay Gateway */
+.item7 {
+  grid-column: span 3;
+  grid-row: span 2;
+  
+  .iconWrap {
+    margin-bottom: 16px;
+    svg {
+      width: 48px;
+      height: 48px;
+      stroke-width: 1.5;
+    }
+  }
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .item1, .item2, .item6, .item7 {
+    grid-column: span 4;
+  }
+  .item3, .item4, .item5 {
+    grid-column: span 8;
+  }
+}
+
+@media (max-width: 768px) {
+  .item1, .item2, .item3, .item4, .item5, .item6, .item7 {
+    grid-column: span 1;
+    grid-row: span 1;
+    padding: 24px;
+    min-height: 200px;
+  }
+  .item5 .chart {
+    height: 120px;
+    flex: none;
+  }
+  .item3 h3 {
+    font-size: 1.5rem;
+  }
+}
