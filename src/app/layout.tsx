@@ -25,6 +25,8 @@ import {
   dataStyle,
 } from "@/resources/once-ui.config";
 import { home } from "@/resources/content";
+import { Analytics } from "@vercel/analytics/react";
+
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -174,7 +176,9 @@ export default async function RootLayout({
           </Flex>
           <Footer />
         </Column>
+        <Analytics />
       </Providers>
     </Flex>
   );
 }
+
