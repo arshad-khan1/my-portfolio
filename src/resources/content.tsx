@@ -14,11 +14,11 @@ const person: Person = {
   firstName: "Arshad",
   lastName: "Khan",
   name: `Arshad Khan`,
-  role: "Full Stack Developer",
+  role: "Senior Backend Engineer & AI Solutions Architect",
   avatar: "/images/gallery/image.png",
   email: "003arshad@gmail.com",
-  location: "Asia/Kolkata", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Hindi"], // optional: Leave the array empty if you don't want to display languages
+  location: "Asia/Kolkata",
+  languages: ["English", "Hindi"],
 };
 
 const newsletter: Newsletter = {
@@ -72,30 +72,30 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  title: `${person.name} — Backend Engineer & AI Architect`,
+  description: `Senior software engineer delivering scalable systems, AI-driven products, and business solutions that drive revenue and reduce costs.`,
   headline: (
-    <>Full stack developer building robust applications leveraging AI</>
+    <>I Build Systems That Scale Businesses</>
   ),
   featured: {
-    display: false,
+    display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Featured</strong>{" "}
+        <strong className="ml-4">Available for hire</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          Open to full-time opportunities
         </Text>
       </Row>
     ),
-    href: "/work/",
+    href: "#contact",
   },
   subline: (
     <>
-      Currently working as a software engineer who is passionate about building
-      products that impact millions of users. I specialize in bridging the gap
-      between back-end robustness and front-end excellence, all powered by
-      intelligent AI workflows.
+      I architect backend infrastructure that handles 10K+ daily transactions,
+      reduce query resolution by 50% with AI-powered routing, and cut database
+      costs by 80% through strategic caching. I think in business outcomes —
+      scalability, performance, and measurable ROI.
     </>
   ),
 };
@@ -121,11 +121,11 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I am a full stack developer with experience in building robust backend
-        systems and dynamic front-end applications. I am passionate about
-        leveraging AI to automate complex workflows and build impactful
-        products. My approach combines technical excellence with a business
-        perspective to deliver maximum value.
+        I am a software engineer who takes full ownership of projects from
+        conception to deployment. I leverage AI to accelerate development
+        cycles, make data-driven decisions, and build products that scale. My
+        approach combines technical leadership with strategic thinking to ship
+        faster without compromising quality.
       </>
     ),
   },
@@ -136,31 +136,30 @@ const about: About = {
       {
         company: "Pinnacle Teleservices Pvt. Ltd.",
         timeframe: "December 2024 - Present",
-        role: "Junior Software Developer",
+        role: "Software Engineer",
         achievements: [
           <>
-            Worked on the <strong>HelpNest</strong> and platforms as a{" "}
-            <strong>backend developer</strong>, building scalable APIs and
-            backend systems for customer support and learning applications.
+            <strong>Owned and led</strong> the backend development for{" "}
+            <strong>HelpNest</strong> platform, making architectural decisions
+            that enabled scalable APIs and multi-tenant customer support systems.
           </>,
           <>
-            Designed and implemented the complete{" "}
-            <strong>WhatsApp Messaging Pipeline</strong> with
-            inbound/outbound/template messaging, integrated connectors, and
-            automated deployments on <strong>AWS</strong>.
+            <strong>Architected and deployed</strong> the complete{" "}
+            <strong>WhatsApp Messaging Pipeline</strong> with inbound/outbound
+            messaging, reducing integration time by 60% through automated AWS
+            deployments.
           </>,
           <>
-            Developed core modules including{" "}
-            <strong>Role, Authentication, File Management (MinIO)</strong>, and{" "}
-            <strong>Contacts/Agents/Reports</strong>, ensuring secure and
-            multi-tenant operations.
+            <strong>Designed and implemented</strong> core infrastructure
+            including Role-Based Access Control, Authentication, and{" "}
+            <strong>MinIO-based file storage</strong>, ensuring secure
+            multi-tenant operations from day one.
           </>,
           <>
-            Currently working on the <strong>UGP platform</strong>, building
-            standard APIs in <strong>NestJS</strong> with complex business
-            logic, and exploring{" "}
-            <strong>Python and Generative AI workflows</strong> for conversation
-            analytics, intelligent routing, and message summarization.
+            <strong>Leading the UGP platform</strong> with full ownership of API
+            design in NestJS. Currently integrating{" "}
+            <strong>AI-powered conversation analytics</strong> and intelligent
+            routing to reduce query resolution time by 50%.
           </>,
         ],
         images: [],

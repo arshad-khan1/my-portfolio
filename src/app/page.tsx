@@ -1,6 +1,5 @@
 import {
   Heading,
-  Text,
   Button,
   Avatar,
   RevealFx,
@@ -13,7 +12,12 @@ import {
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes } from "@/resources";
 import { Contact, TechLogos, BentoGrid } from "@/components";
-
+import { HeroSection } from "@/components/home/HeroSection";
+import { FeaturedProjects } from "@/components/home/FeaturedProjects";
+import { ImpactMetrics } from "@/components/home/ImpactMetrics";
+import { BusinessValue } from "@/components/home/BusinessValue";
+import { MarqueeBanner } from "@/components/home/MarqueeBanner";
+import { ScrollProgressBar } from "@/components/home/ScrollProgressBar";
 import { Posts } from "@/components/blog/Posts";
 
 export async function generateMetadata() {
@@ -29,6 +33,7 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+      <ScrollProgressBar />
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -42,86 +47,26 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth horizontal="center" gap="m">
-        <Column maxWidth="s" horizontal="center" align="center">
-          {home.featured.display && (
-            <RevealFx
-              fillWidth
-              horizontal="center"
-              paddingTop="16"
-              paddingBottom="32"
-              paddingLeft="12"
-            >
-              <Badge
-                background="brand-alpha-weak"
-                paddingX="12"
-                paddingY="4"
-                onBackground="neutral-strong"
-                textVariant="label-default-s"
-                arrow={false}
-                href={home.featured.href}
-              >
-                <Row paddingY="2">{home.featured.title}</Row>
-              </Badge>
-            </RevealFx>
-          )}
-          <RevealFx
-            translateY="4"
-            fillWidth
-            horizontal="center"
-            paddingBottom="16"
-          >
-            <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
-            </Heading>
-          </RevealFx>
-          <RevealFx
-            translateY="8"
-            delay={0.2}
-            fillWidth
-            horizontal="center"
-            paddingBottom="32"
-          >
-            <Text
-              wrap="balance"
-              onBackground="neutral-weak"
-              variant="heading-default-m"
-            >
-              {home.subline}
-            </Text>
-          </RevealFx>
-          <RevealFx
-            paddingTop="12"
-            delay={0.4}
-            horizontal="center"
-            paddingLeft="12"
-          >
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Row gap="8" vertical="center" paddingRight="4">
-                {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {about.title}
-              </Row>
-            </Button>
-          </RevealFx>
-        </Column>
-      </Column>
 
-      {/* Bento Grid */}
+      {/* Hero Section */}
+      <HeroSection headline={home.headline} subline={home.subline} />
+
+      {/* Marquee ticker */}
+      <MarqueeBanner />
+
+      {/* Impact Metrics */}
+      <ImpactMetrics />
+
+      {/* Marquee ticker reversed */}
+      <MarqueeBanner reverse />
+
+      {/* Featured Projects - Best Work */}
+      <FeaturedProjects />
+
+      {/* Business Value Proposition */}
+      <BusinessValue />
+
+      {/* Bento Grid - Engineering Deep Dives */}
       <BentoGrid />
 
       {/* Tech Logos */}
@@ -148,7 +93,9 @@ export default function Home() {
         </Column>
       )}
 
-      <Contact />
+      <div id="contact">
+        <Contact />
+      </div>
     </Column>
   );
 }

@@ -11,3 +11,4 @@ export { ThemeToggle } from "@/components/ThemeToggle";
 export { CustomMDX } from "@/components/mdx";
 export { TechLogos } from "@/components/TechLogos";
 export { BentoGrid } from "@/components/home/BentoGrid";
+export { SmoothScrollProvider } from "@/components/SmoothScroll";

@@ -17,6 +17,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RouteGuard } from "@/components/RouteGuard";
 import { Providers } from "@/components/Providers";
+import { LenisProvider } from "@/components/LenisProvider";
 import {
   baseURL,
   effects,
@@ -125,6 +126,7 @@ export default async function RootLayout({
           padding="0"
           horizontal="center"
         >
+          <LenisProvider>
           <RevealFx fill position="absolute">
             <Background
               mask={{
@@ -175,6 +177,7 @@ export default async function RootLayout({
             </Flex>
           </Flex>
           <Footer />
+          </LenisProvider>
         </Column>
         <Analytics />
       </Providers>

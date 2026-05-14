@@ -1,3 +1,9 @@
+/* Prevent horizontal overflow site-wide without breaking position:fixed */
+html,
+body {
+  overflow-x: clip;
+}
+
 /* Custom colors */
 /*
   --scheme-brand-100: #08002f;
