@@ -1,0 +1,323 @@
+/* ─────────────────────────────────────────────
+   ClosingSection — Education + Quick Facts + CTA
+   ───────────────────────────────────────────── */
+
+.section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 16px 7rem;
+  overflow-x: clip;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ── Top row: education left + facts right ── */
+.topRow {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ── Education block ── */
+.eduBlock {
+  background: linear-gradient(135deg, rgba(4, 158, 226, 0.06) 0%, transparent 100%);
+  border: 1px solid rgba(4, 158, 226, 0.18);
+  border-radius: 24px;
+  padding: 2rem 2rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #049EE2 0%, transparent 100%);
+  }
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  color: #049EE2;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+
+.degreeRow {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.degreeIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(4, 158, 226, 0.12);
+  border: 1px solid rgba(4, 158, 226, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #049EE2;
+  flex-shrink: 0;
+}
+
+.degreeName {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 0 0 6px;
+  color: var(--neutral-on-background-strong, #f0f0f0);
+}
+
+.degreeInst {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.55));
+  margin: 0;
+}
+
+/* Timeline */
+.eduTimeline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.eduTimelineDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #049EE2;
+  flex-shrink: 0;
+}
+
+.eduTimelineBar {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #049EE2, rgba(4, 158, 226, 0.3));
+  transform-origin: left;
+  border-radius: 2px;
+}
+
+.eduTimelineLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.4));
+  letter-spacing: 0.05em;
+}
+
+/* ── Quick facts grid ── */
+.factsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.factCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--neutral-alpha-medium, rgba(255, 255, 255, 0.08));
+  border-radius: 14px;
+  cursor: default;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: rgba(4, 158, 226, 0.3);
+  }
+}
+
+.factIcon {
+  color: #049EE2;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.factLabel {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.4));
+  margin: 0 0 3px;
+}
+
+.factValue {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--neutral-on-background-strong, #f0f0f0);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ── Bottom row: quote + CTA ── */
+.bottomRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.5rem 2.5rem;
+  background: linear-gradient(135deg, rgba(4, 158, 226, 0.04) 0%, rgba(139, 92, 246, 0.04) 100%);
+  border: 1px solid var(--neutral-alpha-weak, rgba(255, 255, 255, 0.08));
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #049EE2 0%, #8b5cf6 50%, transparent 100%);
+  }
+}
+
+.quoteBlock {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.quoteGlyph {
+  font-size: 5rem;
+  line-height: 1;
+  font-weight: 900;
+  color: #049EE2;
+  opacity: 0.25;
+  flex-shrink: 0;
+  margin-top: -0.5rem;
+  font-family: Georgia, serif;
+}
+
+.quoteText {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--neutral-on-background-medium, rgba(240, 240, 240, 0.75));
+  margin: 0;
+  font-style: italic;
+}
+
+.ctaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.ctaLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.4));
+  margin: 0;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  background: linear-gradient(135deg, #17c0fd 0%, #049ee2 100%);
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(4, 158, 226, 0.35);
+  transition: box-shadow 0.3s;
+}
+
+.socialRow {
+  display: flex;
+  gap: 8px;
+}
+
+.socialBtn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--neutral-alpha-medium, rgba(255, 255, 255, 0.1));
+  border-radius: 10px;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.55));
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .topRow {
+    grid-template-columns: 1fr;
+  }
+
+  .factsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .bottomRow {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 1rem 16px 5rem;
+    gap: 2rem;
+  }
+
+  .factsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bottomRow {
+    padding: 1.6rem;
+    border-radius: 18px;
+  }
+
+  .quoteText {
+    font-size: 0.92rem;
+  }
+
+  .quoteGlyph {
+    font-size: 3.5rem;
+  }
+
+  .ctaRow {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .ctaPrimary {
+    width: 100%;
+    justify-content: center;
+  }
+}

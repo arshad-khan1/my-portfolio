@@ -32,7 +32,7 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column maxWidth="m" gap="xl" paddingY="0" horizontal="center">
       <ScrollProgressBar />
       <Schema
         as="webPage"

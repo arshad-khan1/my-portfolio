@@ -159,7 +159,7 @@ export function HeroSection({
         style={{
           maxWidth: "1200px",
           width: "100%",
-          padding: "3.5rem 2rem 2rem",
+          padding: "2.5rem 2rem",
           display: "grid",
           gridTemplateColumns: "1fr auto",
           gap: "4rem",

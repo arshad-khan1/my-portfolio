@@ -5,27 +5,29 @@ summary: "A robust backend application for tracking expenses, featuring bank syn
 images:
   - "https://res.cloudinary.com/dvjqrh2gh/image/upload/v1766567344/MyPortfolio/Amazing_s8uki9.png"
 github: "https://github.com/{{GITHUB_USERNAME}}/Expense-Tracker"
+overview:
+  - "High-performance backend for personal finance management"
+  - "Event-driven microservices-ready architecture"
+  - "Real-time balance updates with Redis and Kafka"
+features:
+  - "Live balance tracking with Redis caching"
+  - "Automated bank sync via Kafka event streams"
+  - "Intelligent expense categorization"
+  - "Decoupled services via event-driven design"
+  - "RESTful API for all financial operations"
+techStack:
+  - "NestJS"
+  - "PostgreSQL"
+  - "Prisma ORM"
+  - "Redis"
+  - "Kafka"
+challenges:
+  - "Data consistency across async event streams"
+  - "Handling bank sync failures gracefully"
+  - "Real-time accuracy with concurrent writes"
+learnings:
+  - "Kafka consumer group and offset patterns"
+  - "Redis caching strategies for live data"
+  - "Event-driven architecture design principles"
 ---
 
-## Overview
-
-Expense Tracker is a high-performance backend system designed to manage personal finances. It leverages a modern microservices-ready architecture to handle real-time data and event-driven processes.
-
-## Key Features
-
-- **Live Balances**: Real-time balance tracking using Redis caching.
-- **Bank Sync**: Automated synchronization with bank accounts (simulated via Kafka).
-- **Category Management**: Intelligent categorization of expenses with caching for performance.
-- **Event-Driven Architecture**: Uses Kafka for decoupling services and handling asynchronous tasks.
-
-## Tech Stack
-
-- **NestJS**: Framework for building efficient and scalable server-side applications.
-- **Prisma**: Type-safe ORM for PostgreSQL.
-- **PostgreSQL**: Relational database for persistent storage.
-- **Redis**: In-memory data store for live balances and caching.
-- **Kafka**: Distributed event streaming platform for bank-sync and downstream services.
-
-## Links
-
-- [GitHub Repository](https://github.com/{{GITHUB_USERNAME}}/Expense-Tracker)

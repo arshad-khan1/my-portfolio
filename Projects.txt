@@ -99,7 +99,11 @@ Live: https://www.beanbagaffairs.com/
 Tech Stack: NextJs
 Live: https://www.ramesys.co.uk/
 
+11. MasoMind - A psychology training platform built for a UK-based business, showcasing high-velocity development with a 2-day delivery cycle.
+Tech Stack: Next.js
+Live: https://www.masominds.com
+
 
 Office Projects
 
-11. Helpnest - A customer support CRM 
+12. Helpnest - A customer support CRM 

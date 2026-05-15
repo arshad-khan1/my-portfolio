@@ -22,6 +22,13 @@ type Metadata = {
   github?: string;
   live?: string;
   badge?: string;
+  overview?: string[];
+  features?: string[];
+  techStack?: string[];
+  challenges?: string[];
+  learnings?: string[];
+  impact?: string[];
+  role?: string[];
 };
 
 import { notFound } from "next/navigation";
@@ -58,6 +65,13 @@ function readMDXFile(filePath: string) {
     github: (data.github || "").replace("{{GITHUB_USERNAME}}", githubUsername),
     live: (data.live || "").replace("{{GITHUB_USERNAME}}", githubUsername),
     badge: data.badge || "",
+    overview: data.overview || [],
+    features: data.features || [],
+    techStack: data.techStack || [],
+    challenges: data.challenges || [],
+    learnings: data.learnings || [],
+    impact: data.impact || [],
+    role: data.role || [],
   };
 
   return {

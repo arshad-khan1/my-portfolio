@@ -73,7 +73,7 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name} — Backend Engineer & AI Architect`,
-  description: `Senior software engineer delivering scalable systems, AI-driven products, and business solutions that drive revenue and reduce costs.`,
+  description: `Software Engineer & AI Architect specializing in high-performance systems, AI-driven SaaS solutions, and intelligent workflow automation.`,
   headline: (
     <>I Build Systems That Scale Businesses</>
   ),
@@ -292,6 +292,10 @@ const about: About = {
           {
             name: "N8N",
             icon: "n8n",
+          },
+          {
+            name: "Claude Code",
+            icon: "anthropic",
           },
           {
             name: "Open Code",

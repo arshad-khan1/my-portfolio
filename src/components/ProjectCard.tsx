@@ -105,6 +105,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </SmartLink>
             {github && (
               <SmartLink
+                target="_blank"
                 suffixIcon="arrowUpRightFromSquare"
                 style={{ margin: "0", width: "fit-content" }}
                 href={github}
@@ -114,6 +115,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             )}
             {live && (
               <SmartLink
+                target="_blank"
                 suffixIcon="arrowUpRightFromSquare"
                 style={{ margin: "0", width: "fit-content" }}
                 href={live}

@@ -1,0 +1,739 @@
+/* ─────────────────────────────────────────────
+   PinnacleGrid — Pinnacle work implementations
+   ───────────────────────────────────────────── */
+
+.section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px 80px;
+  overflow-x: clip;
+}
+
+/* ── Section Header ── */
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  padding-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.headerLeft { flex: 1; min-width: 0; }
+
+.eyebrow {
+  font-size: 0.72rem;
+  color: #049EE2;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.heading {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 12px;
+  color: var(--neutral-on-background-strong, #f0f0f0);
+}
+
+.subheading {
+  font-size: 0.875rem;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.55));
+  max-width: 480px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.counterPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--neutral-alpha-medium, rgba(255, 255, 255, 0.12));
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.55));
+  flex-shrink: 0;
+  white-space: nowrap;
+  background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.04));
+
+  strong {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #049EE2;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+}
+
+.headerRule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #049EE2 0%, rgba(4, 158, 226, 0.3) 50%, transparent 100%);
+  transform-origin: left center;
+}
+
+/* ── Bento Grid ── */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 14px;
+  grid-auto-rows: minmax(200px, auto);
+  margin-top: 2.5rem;
+  overflow-x: clip;
+}
+
+/* ── Card Base ── */
+.card {
+  background: linear-gradient(135deg, var(--cFaint) 0%, transparent 100%);
+  border: 1px solid var(--cBorder);
+  border-radius: 20px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+  cursor: default;
+
+  &:hover {
+    box-shadow: 0 24px 60px -20px var(--cMid);
+    border-color: var(--cMid);
+  }
+}
+
+.cardAccent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--c) 0%, transparent 100%);
+  z-index: 3;
+  border-radius: 20px 20px 0 0;
+}
+
+.cardGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--cMid) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgIcon {
+  position: absolute;
+  right: -8%;
+  bottom: -8%;
+  width: 190px;
+  height: 190px;
+  opacity: 0.04;
+  z-index: 0;
+  pointer-events: none;
+  color: var(--c);
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 10px;
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--neutral-on-background-strong, #f0f0f0);
+  }
+
+  p {
+    font-size: 0.82rem;
+    opacity: 0.65;
+    line-height: 1.55;
+    margin: 0;
+  }
+}
+
+.cardTag {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 9px;
+  border-radius: 5px;
+  background: var(--cFaint);
+  border: 1px solid var(--cBorder);
+  color: var(--c);
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
+/* ── Metric Row ── */
+.metricRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.metricBig {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--c);
+  line-height: 1;
+}
+
+.metricSub {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.55;
+}
+
+/* ── Tech Chips ── */
+.techChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.chip {
+  font-size: 0.65rem;
+  background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--neutral-alpha-medium, rgba(255, 255, 255, 0.1));
+  padding: 3px 9px;
+  border-radius: 5px;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.55));
+  white-space: nowrap;
+}
+
+/* ── Wide card inner ── */
+.wideCardInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex: 1;
+}
+
+/* ── Drive/Storage Wireframe (Garage card) ── */
+.storageWireframe {
+  display: flex;
+  margin-top: 14px;
+  flex: 1;
+  border-radius: 10px;
+  border: 1px solid var(--neutral-alpha-medium, rgba(255, 255, 255, 0.1));
+  background: rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  min-height: 120px;
+}
+
+.storageSidebar {
+  width: 30%;
+  border-right: 1px solid var(--neutral-alpha-weak, rgba(255, 255, 255, 0.07));
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.storageNavItem {
+  height: 5px;
+  border-radius: 4px;
+  background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.07));
+
+  &:first-child {
+    width: 70%;
+    background: rgba(4, 158, 226, 0.5);
+  }
+  &:nth-child(2) { width: 85%; }
+  &:last-child { width: 55%; }
+}
+
+.storageBuckets {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.storageBucket {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: 5px;
+  font-size: 0.62rem;
+  opacity: 0.7;
+  background: rgba(4, 158, 226, 0.07);
+  border: 1px solid rgba(4, 158, 226, 0.15);
+  color: rgba(4, 158, 226, 0.85);
+
+  &.secondary {
+    background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.04));
+    border-color: var(--neutral-alpha-weak);
+    color: var(--neutral-on-background-weak);
+  }
+}
+
+.storageBadge {
+  margin-left: auto;
+  font-size: 0.55rem;
+  opacity: 0.5;
+}
+
+/* ── Terminal / Log (Logging card) ── */
+.terminal {
+  margin-top: 12px;
+  flex: 1;
+  border-radius: 10px;
+  border: 1px solid var(--neutral-alpha-medium, rgba(255, 255, 255, 0.1));
+  background: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminalHeader {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--neutral-alpha-weak, rgba(255, 255, 255, 0.07));
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+
+    &:nth-child(1) { background: #ff5f57; }
+    &:nth-child(2) { background: #febc2e; }
+    &:nth-child(3) { background: #28c840; }
+  }
+}
+
+.terminalBody {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.logLine {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 0.62rem;
+  font-family: monospace;
+  opacity: 0.85;
+}
+
+.logLevel {
+  font-weight: 700;
+  font-size: 0.58rem;
+  padding: 1px 4px;
+  border-radius: 3px;
+  flex-shrink: 0;
+
+  &.info  { background: rgba(4, 158, 226, 0.2); color: #49b9fd; }
+  &.warn  { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+  &.error { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+}
+
+.logMsg {
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.55));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Pipeline (Deployment card) ── */
+.pipeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: auto;
+  padding-top: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.pipelineStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.stepCircle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  border: 1px solid var(--cBorder);
+  background: var(--cFaint);
+  color: var(--c);
+}
+
+.stepLabel {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+.pipelineArrow {
+  width: 24px;
+  height: 1px;
+  background: var(--cBorder);
+  position: relative;
+  flex-shrink: 0;
+  margin-bottom: 20px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid var(--cBorder);
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+}
+
+/* ── Flowchart (Conversation card) ── */
+.flowchart {
+  margin-top: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.flowNode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+}
+
+.flowBox {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--cBorder);
+  background: var(--cFaint);
+  color: var(--c);
+  font-size: 0.65rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.flowBoxNeutral {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--neutral-alpha-medium, rgba(255, 255, 255, 0.12));
+  background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.04));
+  font-size: 0.65rem;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.flowArrowDown {
+  width: 1px;
+  height: 14px;
+  background: var(--cBorder);
+  margin-left: 18px;
+}
+
+.flowBranch {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.62rem;
+  margin-left: 10px;
+}
+
+.flowLabel {
+  font-size: 0.58rem;
+  opacity: 0.5;
+  font-style: italic;
+  flex-shrink: 0;
+}
+
+/* ── Auth Flow (Login card) ── */
+.authFlow {
+  margin-top: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.authStep {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+}
+
+.authIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cFaint);
+  border: 1px solid var(--cBorder);
+  color: var(--c);
+  flex-shrink: 0;
+}
+
+.authLabel {
+  font-size: 0.68rem;
+  opacity: 0.75;
+}
+
+.authArrow {
+  width: 1px;
+  height: 12px;
+  background: var(--cBorder);
+  margin-left: 14px;
+}
+
+.authResult {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--cFaint);
+  border: 1px solid var(--cBorder);
+  margin-top: 4px;
+}
+
+.authResultLabel {
+  font-size: 0.68rem;
+  color: var(--c);
+  font-weight: 600;
+}
+
+/* ── Wallet (Spend Policy card) ── */
+.walletCard {
+  margin-top: 12px;
+  border: 1px solid var(--cBorder);
+  border-radius: 12px;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.walletBalance {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--c);
+  letter-spacing: -0.02em;
+}
+
+.walletBalanceSub {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.45;
+  margin-top: 2px;
+}
+
+.spendBar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spendBarLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.62rem;
+  opacity: 0.55;
+}
+
+.spendBarTrack {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.spendBarFill {
+  height: 100%;
+  border-radius: 100px;
+  background: var(--c);
+}
+
+/* ── Broadcast (WhatsApp broadcast card) ── */
+.broadcastWrap {
+  margin-top: 12px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.broadcastSvg {
+  width: 100%;
+  max-width: 200px;
+}
+
+/* ── Chat (WhatsApp pipeline card) ── */
+.chatWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.bubble {
+  font-size: 0.7rem;
+  padding: 6px 11px;
+  border-radius: 10px;
+  border: 1px solid var(--neutral-alpha-medium, rgba(255, 255, 255, 0.1));
+  line-height: 1.4;
+}
+
+.bubbleIn {
+  align-self: flex-start;
+  background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.05));
+  border-radius: 10px 10px 10px 2px;
+}
+
+.bubbleSys {
+  align-self: center;
+  font-size: 0.62rem;
+  opacity: 0.4;
+  background: transparent;
+  border-color: transparent;
+  text-align: center;
+}
+
+.bubbleOut {
+  align-self: flex-end;
+  background: var(--cFaint);
+  border-color: var(--cBorder);
+  color: var(--c);
+  border-radius: 10px 10px 2px 10px;
+}
+
+/* ─────────────────────────────────────
+   Grid positions
+   ───────────────────────────────────── */
+
+/* Row 1–2: three tall cards */
+.item1 { grid-column: span 4; grid-row: span 2; }
+.item2 { grid-column: span 4; grid-row: span 2; }
+.item3 { grid-column: span 4; grid-row: span 2; }
+
+/* Row 3: two medium-wide cards */
+.item4 { grid-column: span 7; grid-row: span 1; }
+.item5 { grid-column: span 5; grid-row: span 1; }
+
+/* Row 4: three narrow cards */
+.item6 { grid-column: span 4; grid-row: span 1; }
+.item7 { grid-column: span 4; grid-row: span 1; }
+.item8 { grid-column: span 4; grid-row: span 1; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .item1, .item2, .item3 { grid-column: span 4; }
+  .item4 { grid-column: span 8; }
+  .item5 { grid-column: span 4; }
+  .item6, .item7, .item8 { grid-column: span 4; }
+}
+
+@media (max-width: 768px) {
+  .sectionHeader { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  .bentoGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    grid-auto-rows: minmax(150px, auto);
+  }
+
+  .item1, .item2, .item3 { grid-column: span 2; grid-row: span 1; padding: 18px; }
+  .item4, .item5 { grid-column: span 4; grid-row: span 1; padding: 20px; }
+  .item6, .item7, .item8 { grid-column: span 2; padding: 18px; }
+
+  .pipeline { gap: 4px; }
+  .pipelineArrow { width: 14px; }
+  .wideCardInner { flex-direction: column; gap: 10px; }
+}
+
+@media (max-width: 480px) {
+  .bentoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    grid-auto-rows: minmax(140px, auto);
+  }
+
+  .item1, .item2, .item3,
+  .item6, .item7, .item8 {
+    grid-column: span 1;
+    padding: 14px;
+    border-radius: 15px;
+  }
+
+  .item4, .item5 {
+    grid-column: span 2;
+    padding: 16px;
+    border-radius: 15px;
+  }
+
+  .card { border-radius: 15px; }
+  .heading { font-size: 1.5rem; }
+  .metricBig { font-size: 1.5rem; }
+  .cardTag { font-size: 0.55rem; padding: 2px 7px; }
+  .cardContent h3 { font-size: 0.9rem; }
+  .cardContent p {
+    font-size: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
