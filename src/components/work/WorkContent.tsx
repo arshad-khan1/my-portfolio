@@ -1,7 +1,18 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { motion, useInView } from "framer-motion";
+
+function useCardNav(slug: string) {
+  const router = useRouter();
+  return {
+    onClick: (e: React.MouseEvent) => {
+      if ((e.target as HTMLElement).closest("a, button")) return;
+      router.push(`/work/${slug}`);
+    },
+  };
+}
 import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
 
 /* ─────────────────────────────────────────────
@@ -69,8 +80,17 @@ function FloatingOrb({
         filter: `blur(${size * 0.6}px)`,
         pointerEvents: "none",
       }}
-      animate={{ x: [0, 25, -18, 0], y: [0, -35, 15, 0], scale: [1, 1.15, 0.92, 1] }}
-      transition={{ duration: 9 + delay, repeat: Infinity, ease: "easeInOut", delay }}
+      animate={{
+        x: [0, 25, -18, 0],
+        y: [0, -35, 15, 0],
+        scale: [1, 1.15, 0.92, 1],
+      }}
+      transition={{
+        duration: 9 + delay,
+        repeat: Infinity,
+        ease: "easeInOut",
+        delay,
+      }}
     />
   );
 }
@@ -96,8 +116,19 @@ function SectionHeader({
   const num = String(count).padStart(2, "0");
 
   return (
-    <div ref={ref} style={{ position: "relative", paddingBottom: 28, marginBottom: 36 }}>
-      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
+    <div
+      ref={ref}
+      style={{ position: "relative", paddingBottom: 28, marginBottom: 36 }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: 20,
+        }}
+      >
         <div style={{ flex: 1, minWidth: 0 }}>
           <motion.span
             style={{
@@ -134,7 +165,8 @@ function SectionHeader({
             <motion.p
               style={{
                 fontSize: "0.875rem",
-                color: "var(--neutral-on-background-weak, rgba(240,240,240,0.55))",
+                color:
+                  "var(--neutral-on-background-weak, rgba(240,240,240,0.55))",
                 maxWidth: 460,
                 lineHeight: 1.55,
                 margin: 0,
@@ -153,7 +185,8 @@ function SectionHeader({
             display: "inline-flex",
             alignItems: "center",
             gap: 6,
-            border: "1px solid var(--neutral-alpha-medium, rgba(255,255,255,0.12))",
+            border:
+              "1px solid var(--neutral-alpha-medium, rgba(255,255,255,0.12))",
             borderRadius: 100,
             padding: "8px 18px",
             fontSize: "0.72rem",
@@ -168,7 +201,15 @@ function SectionHeader({
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.45, delay: 0.25 }}
         >
-          <strong style={{ fontSize: "1.15rem", fontWeight: 800, color: "#049EE2", letterSpacing: "-0.02em", lineHeight: 1 }}>
+          <strong
+            style={{
+              fontSize: "1.15rem",
+              fontWeight: 800,
+              color: "#049EE2",
+              letterSpacing: "-0.02em",
+              lineHeight: 1,
+            }}
+          >
             {num}
           </strong>
           {countLabel}
@@ -183,7 +224,8 @@ function SectionHeader({
           left: 0,
           right: 0,
           height: 1,
-          background: "linear-gradient(90deg, #049EE2 0%, rgba(4,158,226,0.3) 50%, transparent 100%)",
+          background:
+            "linear-gradient(90deg, #049EE2 0%, rgba(4,158,226,0.3) 50%, transparent 100%)",
           transformOrigin: "left center",
         }}
         initial={{ scaleX: 0 }}
@@ -197,7 +239,13 @@ function SectionHeader({
 /* ─────────────────────────────────────────────
    Browser chrome mockup wrapper
    ───────────────────────────────────────────── */
-function BrowserChrome({ children, url }: { children: React.ReactNode; url?: string }) {
+function BrowserChrome({
+  children,
+  url,
+}: {
+  children: React.ReactNode;
+  url?: string;
+}) {
   return (
     <div
       style={{
@@ -219,9 +267,33 @@ function BrowserChrome({ children, url }: { children: React.ReactNode; url?: str
           borderBottom: "1px solid rgba(255,255,255,0.07)",
         }}
       >
-        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#ff5f57", flexShrink: 0 }} />
-        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#febc2e", flexShrink: 0 }} />
-        <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#28c840", flexShrink: 0 }} />
+        <div
+          style={{
+            width: 10,
+            height: 10,
+            borderRadius: "50%",
+            background: "#ff5f57",
+            flexShrink: 0,
+          }}
+        />
+        <div
+          style={{
+            width: 10,
+            height: 10,
+            borderRadius: "50%",
+            background: "#febc2e",
+            flexShrink: 0,
+          }}
+        />
+        <div
+          style={{
+            width: 10,
+            height: 10,
+            borderRadius: "50%",
+            background: "#28c840",
+            flexShrink: 0,
+          }}
+        />
         {url && (
           <div
             style={{
@@ -268,7 +340,13 @@ function ProjectImage({
       <img
         src={src}
         alt={alt}
-        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", ...style }}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+          ...style,
+        }}
         loading="lazy"
       />
     );
@@ -304,7 +382,10 @@ function WorkHero({
 }) {
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    },
   };
 
   return (
@@ -324,9 +405,27 @@ function WorkHero({
     >
       {/* Background orbs */}
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        <FloatingOrb x="5%" y="10%" size={380} color="rgba(4,158,226,0.09)" delay={0} />
-        <FloatingOrb x="70%" y="60%" size={450} color="rgba(23,192,253,0.06)" delay={2} />
-        <FloatingOrb x="80%" y="5%" size={280} color="rgba(4,158,226,0.07)" delay={4} />
+        <FloatingOrb
+          x="5%"
+          y="10%"
+          size={380}
+          color="rgba(4,158,226,0.09)"
+          delay={0}
+        />
+        <FloatingOrb
+          x="70%"
+          y="60%"
+          size={450}
+          color="rgba(23,192,253,0.06)"
+          delay={2}
+        />
+        <FloatingOrb
+          x="80%"
+          y="5%"
+          size={280}
+          color="rgba(4,158,226,0.07)"
+          delay={4}
+        />
       </div>
 
       {/* Grid lines */}
@@ -347,10 +446,21 @@ function WorkHero({
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        style={{ position: "relative", zIndex: 10, textAlign: "center", padding: "0 1.5rem", maxWidth: 800, margin: "0 auto" }}
+        style={{
+          position: "relative",
+          zIndex: 10,
+          textAlign: "center",
+          padding: "0 1.5rem",
+          maxWidth: 800,
+          margin: "0 auto",
+        }}
       >
         {/* Badge */}
-        <motion.div variants={fadeUp} custom={0} style={{ marginBottom: "1.4rem" }}>
+        <motion.div
+          variants={fadeUp}
+          custom={0}
+          style={{ marginBottom: "1.4rem" }}
+        >
           <span
             style={{
               display: "inline-flex",
@@ -367,7 +477,16 @@ function WorkHero({
               textTransform: "uppercase",
             }}
           >
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#049EE2", boxShadow: "0 0 8px #049EE2", flexShrink: 0 }} />
+            <span
+              style={{
+                width: 7,
+                height: 7,
+                borderRadius: "50%",
+                background: "#049EE2",
+                boxShadow: "0 0 8px #049EE2",
+                flexShrink: 0,
+              }}
+            />
             My Work
           </span>
         </motion.div>
@@ -403,14 +522,21 @@ function WorkHero({
             maxWidth: 560,
           }}
         >
-          From SaaS products to client delivery &mdash; everything I&apos;ve shipped.
+          From SaaS products to client delivery &mdash; everything I&apos;ve
+          shipped.
         </motion.p>
 
         {/* Stat chips */}
         <motion.div
           variants={fadeUp}
           custom={3}
-          style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap", marginBottom: "1.6rem" }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 12,
+            flexWrap: "wrap",
+            marginBottom: "1.6rem",
+          }}
         >
           {[
             { val: totalCount, label: "Total Projects" },
@@ -428,10 +554,26 @@ function WorkHero({
                 minWidth: 100,
               }}
             >
-              <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "#17C0FD", letterSpacing: "-0.03em", lineHeight: 1 }}>
+              <div
+                style={{
+                  fontSize: "1.5rem",
+                  fontWeight: 800,
+                  color: "#17C0FD",
+                  letterSpacing: "-0.03em",
+                  lineHeight: 1,
+                }}
+              >
                 {s.val}
               </div>
-              <div style={{ fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: "0.07em", color: "rgba(240,240,240,0.45)", marginTop: 4 }}>
+              <div
+                style={{
+                  fontSize: "0.68rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.07em",
+                  color: "rgba(240,240,240,0.45)",
+                  marginTop: 4,
+                }}
+              >
                 {s.label}
               </div>
             </div>
@@ -442,7 +584,12 @@ function WorkHero({
         <motion.div
           variants={fadeUp}
           custom={4}
-          style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap" }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 10,
+            flexWrap: "wrap",
+          }}
         >
           {[
             { label: "Products & SaaS", href: "#saas" },
@@ -466,7 +613,11 @@ function WorkHero({
                 textDecoration: "none",
                 transition: "all 0.2s",
               }}
-              whileHover={{ background: "rgba(4,158,226,0.12)", borderColor: "rgba(4,158,226,0.4)", y: -2 }}
+              whileHover={{
+                background: "rgba(4,158,226,0.12)",
+                borderColor: "rgba(4,158,226,0.4)",
+                y: -2,
+              }}
               whileTap={{ scale: 0.97 }}
             >
               {link.label}
@@ -486,6 +637,7 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
   const img = project.metadata.images?.[0];
+  const { onClick } = useCardNav(project.slug);
 
   return (
     <motion.div
@@ -494,6 +646,7 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, delay: index * 0.1, ease: EASE }}
       whileHover={{ y: -4, transition: { duration: 0.25, ease: "easeOut" } }}
+      onClick={onClick}
       style={{
         display: "flex",
         gap: 32,
@@ -504,7 +657,7 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
         position: "relative",
         overflow: "hidden",
         minHeight: 220,
-        cursor: "default",
+        cursor: "pointer",
       }}
       className="saas-card"
     >
@@ -516,13 +669,22 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
           left: 0,
           right: 0,
           height: 2,
-          background: "linear-gradient(90deg, #049EE2 0%, #17C0FD 60%, transparent 100%)",
+          background:
+            "linear-gradient(90deg, #049EE2 0%, #17C0FD 60%, transparent 100%)",
           borderRadius: "24px 24px 0 0",
         }}
       />
 
       {/* Left: content */}
-      <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 12 }}>
+      <div
+        style={{
+          flex: 1,
+          minWidth: 0,
+          display: "flex",
+          flexDirection: "column",
+          gap: 12,
+        }}
+      >
         {/* Badge */}
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span
@@ -544,10 +706,7 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
         </div>
 
         {/* Title */}
-        <a
-          href={`/work/${project.slug}`}
-          style={{ textDecoration: "none" }}
-        >
+        <a href={`/work/${project.slug}`} style={{ textDecoration: "none" }}>
           <h3
             style={{
               fontSize: "1.6rem",
@@ -579,7 +738,14 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
         </p>
 
         {/* CTA buttons */}
-        <div style={{ display: "flex", gap: 10, marginTop: "auto", flexWrap: "wrap" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 10,
+            marginTop: "auto",
+            flexWrap: "wrap",
+          }}
+        >
           {project.metadata.live && (
             <motion.a
               href={project.metadata.live}
@@ -598,7 +764,10 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
                 textDecoration: "none",
                 boxShadow: "0 0 20px rgba(4,158,226,0.3)",
               }}
-              whileHover={{ scale: 1.04, boxShadow: "0 0 30px rgba(4,158,226,0.5)" }}
+              whileHover={{
+                scale: 1.04,
+                boxShadow: "0 0 30px rgba(4,158,226,0.5)",
+              }}
               whileTap={{ scale: 0.97 }}
             >
               <FiExternalLink size={13} />
@@ -623,7 +792,10 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
                 fontWeight: 600,
                 textDecoration: "none",
               }}
-              whileHover={{ background: "rgba(255,255,255,0.1)", borderColor: "rgba(255,255,255,0.3)" }}
+              whileHover={{
+                background: "rgba(255,255,255,0.1)",
+                borderColor: "rgba(255,255,255,0.3)",
+              }}
               whileTap={{ scale: 0.97 }}
             >
               <FiGithub size={13} />
@@ -645,7 +817,10 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
               fontWeight: 600,
               textDecoration: "none",
             }}
-            whileHover={{ borderColor: "rgba(4,158,226,0.4)", color: "#17C0FD" }}
+            whileHover={{
+              borderColor: "rgba(4,158,226,0.4)",
+              color: "#17C0FD",
+            }}
             whileTap={{ scale: 0.97 }}
           >
             Details
@@ -655,15 +830,26 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
       </div>
 
       {/* Right: screenshot in browser chrome */}
-      <div style={{ width: 300, flexShrink: 0, alignSelf: "center" }} className="saas-screenshot">
+      <div
+        style={{ width: 300, flexShrink: 0, alignSelf: "center" }}
+        className="saas-screenshot"
+      >
         <BrowserChrome url={project.metadata.live}>
-          <div style={{ height: 160, overflow: "hidden", position: "relative" }}>
-            <ProjectImage src={img} alt={project.metadata.title} accentColor="#049EE2" style={{ height: 160, objectFit: "cover" }} />
+          <div
+            style={{ height: 160, overflow: "hidden", position: "relative" }}
+          >
+            <ProjectImage
+              src={img}
+              alt={project.metadata.title}
+              accentColor="#049EE2"
+              style={{ height: 160, objectFit: "cover" }}
+            />
             <div
               style={{
                 position: "absolute",
                 inset: 0,
-                background: "linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%)",
+                background:
+                  "linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%)",
                 pointerEvents: "none",
               }}
             />
@@ -673,8 +859,12 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
 
       <style jsx global>{`
         @media (max-width: 768px) {
-          .saas-card { flex-direction: column !important; }
-          .saas-screenshot { width: 100% !important; }
+          .saas-card {
+            flex-direction: column !important;
+          }
+          .saas-screenshot {
+            width: 100% !important;
+          }
         }
       `}</style>
     </motion.div>
@@ -683,7 +873,15 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
 
 function SaaSSection({ projects }: { projects: ProjectData[] }) {
   return (
-    <section id="saas" style={{ width: "100%", maxWidth: 1200, margin: "0 auto", padding: "0 16px 80px" }}>
+    <section
+      id="saas"
+      style={{
+        width: "100%",
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "0 16px 80px",
+      }}
+    >
       <SectionHeader
         eyebrow="Products"
         heading="SaaS & Shipped Products"
@@ -705,13 +903,20 @@ function SaaSSection({ projects }: { projects: ProjectData[] }) {
    ───────────────────────────────────────────── */
 const CLIENT_ACCENT_COLORS = ["#3b82f6", "#8b5cf6", "#10b981", "#f59e0b"];
 
-function EngagementCard({ project, index }: { project: ProjectData; index: number }) {
+function EngagementCard({
+  project,
+  index,
+}: {
+  project: ProjectData;
+  index: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
   const accent = CLIENT_ACCENT_COLORS[index % CLIENT_ACCENT_COLORS.length];
   const img = project.metadata.images?.[0];
   const cFaint = accent + "12";
   const cBorder = accent + "35";
+  const { onClick } = useCardNav(project.slug);
 
   return (
     <motion.div
@@ -725,11 +930,13 @@ function EngagementCard({ project, index }: { project: ProjectData; index: numbe
         borderColor: `${accent}50`,
         transition: { duration: 0.25, ease: "easeOut" },
       }}
+      onClick={onClick}
       style={{
         background: "rgba(128,128,128,0.05)",
         border: `1px solid rgba(128,128,128,0.15)`,
         borderRadius: 24,
         overflow: "hidden",
+        cursor: "pointer",
         display: "flex",
         flexDirection: "column",
         position: "relative",
@@ -750,8 +957,19 @@ function EngagementCard({ project, index }: { project: ProjectData; index: numbe
 
       {/* Image area with browser chrome */}
       <BrowserChrome url={project.metadata.live}>
-        <div style={{ aspectRatio: "16/10", overflow: "hidden", position: "relative" }}>
-          <ProjectImage src={img} alt={project.metadata.title} accentColor={accent} style={{ height: "100%" }} />
+        <div
+          style={{
+            aspectRatio: "16/10",
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
+          <ProjectImage
+            src={img}
+            alt={project.metadata.title}
+            accentColor={accent}
+            style={{ height: "100%" }}
+          />
           <div
             style={{
               position: "absolute",
@@ -764,7 +982,15 @@ function EngagementCard({ project, index }: { project: ProjectData; index: numbe
       </BrowserChrome>
 
       {/* Body */}
-      <div style={{ padding: "20px 24px 24px", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+      <div
+        style={{
+          padding: "20px 24px 24px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+          flex: 1,
+        }}
+      >
         {/* Category tag */}
         <span
           style={{
@@ -817,7 +1043,9 @@ function EngagementCard({ project, index }: { project: ProjectData; index: numbe
         </p>
 
         {/* Links */}
-        <div style={{ marginTop: "auto", display: "flex", gap: 10, paddingTop: 8 }}>
+        <div
+          style={{ marginTop: "auto", display: "flex", gap: 10, paddingTop: 8 }}
+        >
           {project.metadata.live && (
             <motion.a
               href={project.metadata.live}
@@ -858,7 +1086,10 @@ function EngagementCard({ project, index }: { project: ProjectData; index: numbe
               borderRadius: 8,
               border: "1px solid rgba(128,128,128,0.2)",
             }}
-            whileHover={{ color: "rgba(240,240,240,0.8)", borderColor: "rgba(128,128,128,0.4)" }}
+            whileHover={{
+              color: "rgba(240,240,240,0.8)",
+              borderColor: "rgba(128,128,128,0.4)",
+            }}
             whileTap={{ scale: 0.97 }}
           >
             Case Study
@@ -871,9 +1102,17 @@ function EngagementCard({ project, index }: { project: ProjectData; index: numbe
 
 function EngagementsSection({ projects }: { projects: ProjectData[] }) {
   return (
-    <section id="engagements" style={{ width: "100%", maxWidth: 1200, margin: "0 auto", padding: "0 16px 80px" }}>
+    <section
+      id="engagements"
+      style={{
+        width: "100%",
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "0 16px 80px",
+      }}
+    >
       <SectionHeader
-        eyebrow="Consulting"
+        eyebrow="Projects"
         heading="Client Engagements"
         subtext="Websites and platforms delivered for real businesses."
         count={projects.length}
@@ -893,7 +1132,9 @@ function EngagementsSection({ projects }: { projects: ProjectData[] }) {
       </div>
       <style jsx global>{`
         @media (max-width: 700px) {
-          .engagements-grid { grid-template-columns: 1fr !important; }
+          .engagements-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </section>
@@ -914,13 +1155,20 @@ const PERSONAL_ACCENT_COLORS = [
   "#8b5cf6",
 ];
 
-function PersonalCard({ project, index }: { project: ProjectData; index: number }) {
+function PersonalCard({
+  project,
+  index,
+}: {
+  project: ProjectData;
+  index: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.1 });
   const accent = PERSONAL_ACCENT_COLORS[index % PERSONAL_ACCENT_COLORS.length];
   const img = project.metadata.images?.[0];
   const cFaint = accent + "12";
   const cBorder = accent + "35";
+  const { onClick } = useCardNav(project.slug);
 
   return (
     <motion.div
@@ -934,6 +1182,7 @@ function PersonalCard({ project, index }: { project: ProjectData; index: number 
         borderColor: `${accent}45`,
         transition: { duration: 0.22, ease: "easeOut" },
       }}
+      onClick={onClick}
       style={{
         background: "rgba(128,128,128,0.05)",
         border: "1px solid rgba(128,128,128,0.15)",
@@ -942,6 +1191,7 @@ function PersonalCard({ project, index }: { project: ProjectData; index: number 
         display: "flex",
         flexDirection: "column",
         position: "relative",
+        cursor: "pointer",
       }}
     >
       {/* Top accent bar */}
@@ -960,7 +1210,12 @@ function PersonalCard({ project, index }: { project: ProjectData; index: number 
       {/* Image/header area */}
       <div style={{ height: 80, overflow: "hidden", position: "relative" }}>
         {img ? (
-          <ProjectImage src={img} alt={project.metadata.title} accentColor={accent} style={{ height: 80, objectFit: "cover" }} />
+          <ProjectImage
+            src={img}
+            alt={project.metadata.title}
+            accentColor={accent}
+            style={{ height: 80, objectFit: "cover" }}
+          />
         ) : (
           <div
             style={{
@@ -971,7 +1226,18 @@ function PersonalCard({ project, index }: { project: ProjectData; index: number 
               justifyContent: "center",
             }}
           >
-            <div style={{ width: 36, height: 36, borderRadius: 10, background: cFaint, border: `1px solid ${cBorder}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div
+              style={{
+                width: 36,
+                height: 36,
+                borderRadius: 10,
+                background: cFaint,
+                border: `1px solid ${cBorder}`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <span style={{ color: accent, fontSize: "1rem" }}>&#x2728;</span>
             </div>
           </div>
@@ -980,14 +1246,23 @@ function PersonalCard({ project, index }: { project: ProjectData; index: number 
           style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 100%)",
+            background:
+              "linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 100%)",
             pointerEvents: "none",
           }}
         />
       </div>
 
       {/* Body */}
-      <div style={{ padding: "16px 20px 20px", display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+      <div
+        style={{
+          padding: "16px 20px 20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+          flex: 1,
+        }}
+      >
         {/* Title */}
         <a href={`/work/${project.slug}`} style={{ textDecoration: "none" }}>
           <h3
@@ -1022,7 +1297,15 @@ function PersonalCard({ project, index }: { project: ProjectData; index: number 
         </p>
 
         {/* Links row */}
-        <div style={{ display: "flex", gap: 8, marginTop: "auto", paddingTop: 8, borderTop: "1px solid rgba(128,128,128,0.1)" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            marginTop: "auto",
+            paddingTop: 8,
+            borderTop: "1px solid rgba(128,128,128,0.1)",
+          }}
+        >
           {project.metadata.github && (
             <motion.a
               href={project.metadata.github}
@@ -1042,7 +1325,11 @@ function PersonalCard({ project, index }: { project: ProjectData; index: number 
                 border: "1px solid rgba(128,128,128,0.15)",
                 background: "transparent",
               }}
-              whileHover={{ color: accent, borderColor: cBorder, background: cFaint }}
+              whileHover={{
+                color: accent,
+                borderColor: cBorder,
+                background: cFaint,
+              }}
               whileTap={{ scale: 0.97 }}
             >
               <FiGithub size={12} />
@@ -1068,7 +1355,11 @@ function PersonalCard({ project, index }: { project: ProjectData; index: number 
                 border: "1px solid rgba(128,128,128,0.15)",
                 background: "transparent",
               }}
-              whileHover={{ color: accent, borderColor: cBorder, background: cFaint }}
+              whileHover={{
+                color: accent,
+                borderColor: cBorder,
+                background: cFaint,
+              }}
               whileTap={{ scale: 0.97 }}
             >
               <FiExternalLink size={12} />
@@ -1105,7 +1396,15 @@ function PersonalCard({ project, index }: { project: ProjectData; index: number 
 
 function PersonalSection({ projects }: { projects: ProjectData[] }) {
   return (
-    <section id="personal" style={{ width: "100%", maxWidth: 1200, margin: "0 auto", padding: "0 16px 100px" }}>
+    <section
+      id="personal"
+      style={{
+        width: "100%",
+        maxWidth: 1200,
+        margin: "0 auto",
+        padding: "0 16px 100px",
+      }}
+    >
       <SectionHeader
         eyebrow="Open Source"
         heading="Personal Projects"
@@ -1127,10 +1426,14 @@ function PersonalSection({ projects }: { projects: ProjectData[] }) {
       </div>
       <style jsx global>{`
         @media (max-width: 900px) {
-          .personal-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .personal-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
         }
         @media (max-width: 560px) {
-          .personal-grid { grid-template-columns: 1fr !important; }
+          .personal-grid {
+            grid-template-columns: 1fr !important;
+          }
         }
       `}</style>
     </section>
@@ -1145,7 +1448,11 @@ export function WorkContent({ saas, clients, personal }: WorkContentProps) {
 
   return (
     <div style={{ width: "100%", minHeight: "100vh" }}>
-      <WorkHero totalCount={total} clientCount={clients.length} saasCount={saas.length} />
+      <WorkHero
+        totalCount={total}
+        clientCount={clients.length}
+        saasCount={saas.length}
+      />
       {saas.length > 0 && <SaaSSection projects={saas} />}
       {clients.length > 0 && <EngagementsSection projects={clients} />}
       {personal.length > 0 && <PersonalSection projects={personal} />}

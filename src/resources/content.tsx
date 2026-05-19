@@ -14,7 +14,7 @@ const person: Person = {
   firstName: "Arshad",
   lastName: "Khan",
   name: `Arshad Khan`,
-  role: "Senior Backend Engineer & AI Solutions Architect",
+  role: "Software Engineer & AI Solution Architect",
   avatar: "/images/gallery/image.png",
   email: "003arshad@gmail.com",
   location: "Asia/Kolkata",
@@ -72,7 +72,7 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name} — Backend Engineer & AI Architect`,
+  title: `${person.name} — Software Engineer & AI Solution Architect`,
   description: `Software Engineer & AI Architect specializing in high-performance systems, AI-driven SaaS solutions, and intelligent workflow automation.`,
   headline: (
     <>I Build Systems That Scale Businesses</>

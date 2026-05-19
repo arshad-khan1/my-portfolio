@@ -193,9 +193,9 @@ export function HeroSection({
           {/* Role with gradient */}
           <motion.div variants={up} style={{ marginBottom: "1rem" }}>
             <div className="hero-role-line">
-              <span className="hero-role-gradient">Senior Backend Engineer</span>
+              <span className="hero-role-gradient">Software Engineer</span>
               <span className="hero-role-sep">&nbsp;×&nbsp;</span>
-              <span className="hero-role-gradient2">AI Solutions Architect</span>
+              <span className="hero-role-gradient2">AI Solution Architect</span>
             </div>
           </motion.div>
 
@@ -257,7 +257,7 @@ export function HeroSection({
               { val: "10K+", label: "Daily Transactions" },
               { val: "80%", label: "DB Cost Reduction" },
               { val: "50%", label: "Faster Resolution" },
-              { val: "5+", label: "Years Shipping" },
+              { val: "1.5+", label: "Years Shipping" },
             ].map((s, i) => (
               <div key={i} className="hero-stat">
                 <span className="hero-stat-val">{s.val}</span>

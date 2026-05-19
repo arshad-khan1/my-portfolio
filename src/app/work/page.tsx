@@ -15,7 +15,7 @@ export async function generateMetadata() {
 }
 
 const SAAS_BADGES = ["SaaS"];
-const CLIENT_SLUGS = ["ramesys", "beanbagaffairs", "vydhra", "soho"];
+const CLIENT_SLUGS = ["ramesys", "beanbagaffairs", "vydhra", "soho", "amico-engineering", "masominds"];
 
 export default function Work() {
   const raw = getPosts(["src", "app", "work", "projects"]);

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import type { SubProject } from "@/utils/utils";
 
 export interface WorkDetailContentProps {
   overview?: string[];
@@ -11,6 +12,7 @@ export interface WorkDetailContentProps {
   learnings?: string[];
   impact?: string[];
   role?: string[];
+  subProjects?: SubProject[];
 }
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -362,6 +364,94 @@ function RoleSection({ items }: { items: string[] }) {
   );
 }
 
+/* ─── Sub-projects (e.g. a collection with individual live links) ─── */
+function SubProjectsSection({ items }: { items: SubProject[] }) {
+  const { ref, inView } = useReveal();
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 18 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.55, delay: 0.04, ease: EASE }}
+    >
+      <Label>Included Projects</Label>
+      <div className="wd-features-grid">
+        {items.map((sp, i) => (
+          <div
+            key={i}
+            style={{
+              background: "rgba(255,255,255,0.03)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: 12,
+              padding: "14px 16px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+            }}
+          >
+            <span
+              style={{
+                fontSize: "0.85rem",
+                fontWeight: 600,
+                color: "rgba(240,240,240,0.85)",
+                lineHeight: 1.3,
+              }}
+            >
+              {sp.name}
+            </span>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              {sp.live && (
+                <a
+                  href={sp.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 5,
+                    padding: "5px 11px",
+                    background: "rgba(4,158,226,0.1)",
+                    border: "1px solid rgba(4,158,226,0.28)",
+                    borderRadius: 7,
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "#17C0FD",
+                    textDecoration: "none",
+                  }}
+                >
+                  ↗ Live
+                </a>
+              )}
+              {sp.github && (
+                <a
+                  href={sp.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 5,
+                    padding: "5px 11px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    borderRadius: 7,
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "rgba(240,240,240,0.5)",
+                    textDecoration: "none",
+                  }}
+                >
+                  GitHub
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
 /* ─── Root export ─── */
 export function WorkDetailContent({
   overview,
@@ -371,20 +461,22 @@ export function WorkDetailContent({
   learnings,
   impact,
   role,
+  subProjects,
 }: WorkDetailContentProps) {
   const hasChallenges = !!(challenges?.length);
   const hasLearnings = !!(learnings?.length);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1.6rem" }}>
-      {overview?.length   ? <OverviewSection items={overview} />             : null}
-      {features?.length   ? <FeaturesSection items={features} />             : null}
-      {techStack?.length  ? <TechStackSection items={techStack} />           : null}
+      {overview?.length     ? <OverviewSection items={overview} />                 : null}
+      {subProjects?.length  ? <SubProjectsSection items={subProjects} />           : null}
+      {features?.length     ? <FeaturesSection items={features} />                 : null}
+      {techStack?.length    ? <TechStackSection items={techStack} />               : null}
       {(hasChallenges || hasLearnings) && (
         <ChallengesLearnings challenges={challenges} learnings={learnings} />
       )}
-      {impact?.length     ? <ImpactSection items={impact} />                 : null}
-      {role?.length       ? <RoleSection items={role} />                     : null}
+      {impact?.length       ? <ImpactSection items={impact} />                     : null}
+      {role?.length         ? <RoleSection items={role} />                         : null}
     </div>
   );
 }

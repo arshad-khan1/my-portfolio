@@ -17,7 +17,7 @@ export function Projects({
 }: ProjectsProps) {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
 
-  const freelanceSlugs = ["ramesys", "beanbagaffairs", "vydhra", "soho"];
+  const freelanceSlugs = ["ramesys", "beanbagaffairs", "vydhra", "soho", "amico-engineering", "masominds"];
 
   if (type === "freelance") {
     allProjects = allProjects.filter((post) =>

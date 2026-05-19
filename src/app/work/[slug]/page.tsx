@@ -209,6 +209,7 @@ export default async function Project({
             learnings={post.metadata.learnings}
             impact={post.metadata.impact}
             role={post.metadata.role}
+            subProjects={post.metadata.subProjects}
           />
         </div>
 

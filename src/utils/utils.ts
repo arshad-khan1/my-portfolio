@@ -9,6 +9,12 @@ type Team = {
   linkedIn: string;
 };
 
+export type SubProject = {
+  name: string;
+  github?: string;
+  live?: string;
+};
+
 type Metadata = {
   title: string;
   subtitle?: string;
@@ -29,6 +35,7 @@ type Metadata = {
   learnings?: string[];
   impact?: string[];
   role?: string[];
+  subProjects?: SubProject[];
 };
 
 import { notFound } from "next/navigation";
@@ -72,6 +79,11 @@ function readMDXFile(filePath: string) {
     learnings: data.learnings || [],
     impact: data.impact || [],
     role: data.role || [],
+    subProjects: (data.subProjects || []).map((sp: SubProject) => ({
+      name: sp.name,
+      github: (sp.github || "").replace("{{GITHUB_USERNAME}}", githubUsername),
+      live: (sp.live || "").replace("{{GITHUB_USERNAME}}", githubUsername),
+    })),
   };
 
   return {
