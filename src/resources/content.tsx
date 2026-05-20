@@ -1,5 +1,5 @@
 import React from "react";
-import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work, ContactPageConfig } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -79,7 +79,7 @@ const home: Home = {
         </Text>
       </Row>
     ),
-    href: "#contact",
+    href: "/contact",
   },
   subline: (
     <>
@@ -104,7 +104,7 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.id/arshad-khan",
   },
   intro: {
     display: true,
@@ -348,4 +348,11 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const contact: ContactPageConfig = {
+  path: "/contact",
+  label: "Contact",
+  title: `Contact – ${person.name}`,
+  description: `Get in touch with ${person.name} for software engineering, AI workflow automation, and custom web applications.`,
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, contact };

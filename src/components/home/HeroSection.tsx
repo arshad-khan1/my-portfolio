@@ -280,7 +280,7 @@ export function HeroSection({
               </motion.a>
 
               <motion.a
-                href="#contact"
+                href="/contact"
                 className="btn-outline"
                 whileHover={{
                   scale: 1.04,

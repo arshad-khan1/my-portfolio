@@ -153,7 +153,7 @@ export function ClosingSection() {
           <p className={styles.ctaLabel}>Let&apos;s build something great</p>
           <div className={styles.ctaRow}>
             <motion.a
-              href="#contact"
+              href="/contact"
               className={styles.ctaPrimary}
               whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(4,158,226,0.55)" }}
               whileTap={{ scale: 0.97 }}
