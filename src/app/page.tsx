@@ -18,6 +18,7 @@ import { ImpactMetrics } from "@/components/home/ImpactMetrics";
 import { BusinessValue } from "@/components/home/BusinessValue";
 import { MarqueeBanner } from "@/components/home/MarqueeBanner";
 import { ScrollProgressBar } from "@/components/home/ScrollProgressBar";
+import { FounderSection } from "@/components/home/FounderSection";
 import { Posts } from "@/components/blog/Posts";
 
 export async function generateMetadata() {
@@ -50,6 +51,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <HeroSection headline={home.headline} subline={home.subline} />
+
+      {/* Founder showcase — ReviewsNext */}
+      <FounderSection />
 
       {/* Marquee ticker */}
       <MarqueeBanner />

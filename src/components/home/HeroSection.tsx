@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useScroll,
+} from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
@@ -27,9 +33,11 @@ function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
           .map((char, i) => {
             if (char === " ") return " ";
             if (frame / total > i / text.length) return char;
-            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+            return SCRAMBLE_CHARS[
+              Math.floor(Math.random() * SCRAMBLE_CHARS.length)
+            ];
           })
-          .join("")
+          .join(""),
       );
       if (frame >= total) clearInterval(id);
     }, 40);
@@ -39,7 +47,19 @@ function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
   return <>{display}</>;
 }
 
-function FloatingOrb({ x, y, size, color, delay }: { x: string; y: string; size: number; color: string; delay: number }) {
+function FloatingOrb({
+  x,
+  y,
+  size,
+  color,
+  delay,
+}: {
+  x: string;
+  y: string;
+  size: number;
+  color: string;
+  delay: number;
+}) {
   return (
     <motion.div
       style={{
@@ -60,7 +80,7 @@ function FloatingOrb({ x, y, size, color, delay }: { x: string; y: string; size:
       }}
       transition={{
         duration: 8 + delay,
-        repeat: Infinity,
+        repeat: Number.POSITIVE_INFINITY,
         ease: "easeInOut",
         delay,
       }}
@@ -79,17 +99,25 @@ export function HeroSection({
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const rotateX = useSpring(useTransform(mouseY, [-300, 300], [8, -8]), { stiffness: 120, damping: 20 });
-  const rotateY = useSpring(useTransform(mouseX, [-300, 300], [-8, 8]), { stiffness: 120, damping: 20 });
+  const rotateX = useSpring(useTransform(mouseY, [-300, 300], [8, -8]), {
+    stiffness: 120,
+    damping: 20,
+  });
+  const rotateY = useSpring(useTransform(mouseX, [-300, 300], [-8, 8]), {
+    stiffness: 120,
+    damping: 20,
+  });
 
   // Scroll-driven parallax
   const { scrollY } = useScroll();
   const bgSlowY = useTransform(scrollY, [0, 800], [0, -140]);
-  const bgFastY  = useTransform(scrollY, [0, 800], [0, -240]);
+  const bgFastY = useTransform(scrollY, [0, 800], [0, -240]);
   const contentY = useTransform(scrollY, [0, 600], [0, -70]);
   const contentOpacity = useTransform(scrollY, [0, 450], [1, 0]);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function handleMouseMove(e: React.MouseEvent) {
     const rect = cardRef.current?.getBoundingClientRect();
@@ -104,11 +132,18 @@ export function HeroSection({
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    },
   };
   const up = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
+    },
   };
 
   return (
@@ -125,15 +160,53 @@ export function HeroSection({
       }}
     >
       {/* Background orbs — slow parallax layer */}
-      <motion.div style={{ position: "absolute", inset: 0, y: bgSlowY, pointerEvents: "none" }}>
-        <FloatingOrb x="5%" y="10%" size={400} color="rgba(4,158,226,0.10)" delay={0} />
-        <FloatingOrb x="20%" y="70%" size={350} color="rgba(4,158,226,0.06)" delay={1} />
+      <motion.div
+        style={{
+          position: "absolute",
+          inset: 0,
+          y: bgSlowY,
+          pointerEvents: "none",
+        }}
+      >
+        <FloatingOrb
+          x="5%"
+          y="10%"
+          size={400}
+          color="rgba(4,158,226,0.10)"
+          delay={0}
+        />
+        <FloatingOrb
+          x="20%"
+          y="70%"
+          size={350}
+          color="rgba(4,158,226,0.06)"
+          delay={1}
+        />
       </motion.div>
 
       {/* Background orbs — fast parallax layer */}
-      <motion.div style={{ position: "absolute", inset: 0, y: bgFastY, pointerEvents: "none" }}>
-        <FloatingOrb x="60%" y="60%" size={500} color="rgba(23,192,253,0.07)" delay={2} />
-        <FloatingOrb x="80%" y="5%" size={300} color="rgba(4,158,226,0.07)" delay={4} />
+      <motion.div
+        style={{
+          position: "absolute",
+          inset: 0,
+          y: bgFastY,
+          pointerEvents: "none",
+        }}
+      >
+        <FloatingOrb
+          x="60%"
+          y="60%"
+          size={500}
+          color="rgba(23,192,253,0.07)"
+          delay={2}
+        />
+        <FloatingOrb
+          x="80%"
+          y="5%"
+          size={300}
+          color="rgba(4,158,226,0.07)"
+          delay={4}
+        />
       </motion.div>
 
       {/* Grid lines */}
@@ -151,193 +224,218 @@ export function HeroSection({
       />
 
       {/* Hero content with scroll-out effect */}
-      <motion.div style={{ y: contentY, opacity: contentOpacity, position: "relative", zIndex: 10, width: "100%" }}>
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
         style={{
-          maxWidth: "1200px",
+          y: contentY,
+          opacity: contentOpacity,
+          position: "relative",
+          zIndex: 10,
           width: "100%",
-          padding: "2.5rem 2rem",
-          display: "grid",
-          gridTemplateColumns: "1fr auto",
-          gap: "4rem",
-          alignItems: "center",
-          margin: "0 auto",
         }}
-        className="hero-grid"
       >
-        {/* LEFT — Text */}
-        <div>
-          {/* Status badge */}
-          <motion.div variants={up} style={{ marginBottom: "1.2rem" }}>
-            <div className="hero-badge">
-              <motion.div
-                className="badge-dot"
-                animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
-                transition={{ duration: 1.8, repeat: Infinity }}
-              />
-              <span>Available for hire &mdash; Open to full-time</span>
-            </div>
-          </motion.div>
-
-          {/* Big name */}
-          <motion.div variants={up} style={{ marginBottom: "0.5rem" }}>
-            <p className="hero-name-label">Hi, I&apos;m</p>
-            <h1 className="hero-name">
-              {mounted ? <ScrambleText text="ARSHAD KHAN" delay={400} /> : "ARSHAD KHAN"}
-            </h1>
-          </motion.div>
-
-          {/* Role with gradient */}
-          <motion.div variants={up} style={{ marginBottom: "1rem" }}>
-            <div className="hero-role-line">
-              <span className="hero-role-gradient">Software Engineer</span>
-              <span className="hero-role-sep">&nbsp;×&nbsp;</span>
-              <span className="hero-role-gradient2">AI Solution Architect</span>
-            </div>
-          </motion.div>
-
-          {/* Subline */}
-          <motion.div variants={up} style={{ marginBottom: "1.4rem", maxWidth: "580px" }}>
-            <p className="hero-subline">{subline}</p>
-          </motion.div>
-
-          {/* CTAs */}
-          <motion.div variants={up} className="hero-ctas">
-            <motion.a
-              href="/work"
-              className="btn-primary"
-              whileHover={{ scale: 1.04, boxShadow: "0 0 40px rgba(4,158,226,0.55), 0 0 80px rgba(4,158,226,0.25)" }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <span>View My Work</span>
-              <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.3, repeat: Infinity }}>
-                <FiArrowRight size={18} />
-              </motion.span>
-            </motion.a>
-
-            <motion.a
-              href="#contact"
-              className="btn-outline"
-              whileHover={{ scale: 1.04, borderColor: "rgba(255,255,255,0.5)" }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Get In Touch
-            </motion.a>
-          </motion.div>
-
-          {/* Socials */}
-          <motion.div variants={up} className="hero-socials">
-            {[
-              { href: "https://github.com/arshad-khan1", icon: <FiGithub size={20} />, label: "GitHub" },
-              { href: "https://www.linkedin.com/in/arshad-khan-linkdin/", icon: <FiLinkedin size={20} />, label: "LinkedIn" },
-              { href: "mailto:003arshad@gmail.com", icon: <FiMail size={20} />, label: "Email" },
-            ].map((s) => (
-              <motion.a
-                key={s.label}
-                href={s.href}
-                target={s.label !== "Email" ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className="social-pill"
-                whileHover={{ scale: 1.1, backgroundColor: "rgba(4,158,226,0.12)", borderColor: "rgba(4,158,226,0.4)" }}
-                whileTap={{ scale: 0.95 }}
-                title={s.label}
-              >
-                {s.icon}
-                <span>{s.label}</span>
-              </motion.a>
-            ))}
-          </motion.div>
-
-          {/* Stats row */}
-          <motion.div variants={up} className="hero-stats">
-            {[
-              { val: "10K+", label: "Daily Transactions" },
-              { val: "80%", label: "DB Cost Reduction" },
-              { val: "50%", label: "Faster Resolution" },
-              { val: "1.5+", label: "Years Shipping" },
-            ].map((s, i) => (
-              <div key={i} className="hero-stat">
-                <span className="hero-stat-val">{s.val}</span>
-                <span className="hero-stat-label">{s.label}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* RIGHT — Portrait card */}
         <motion.div
-          variants={up}
-          ref={cardRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 800 }}
-          className="portrait-wrap"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          style={{
+            maxWidth: "1200px",
+            width: "100%",
+            padding: "2.5rem 2rem",
+            display: "grid",
+            gridTemplateColumns: "1fr auto",
+            gap: "4rem",
+            alignItems: "center",
+            margin: "0 auto",
+          }}
+          className="hero-grid"
         >
-          <div className="portrait-card">
-            {/* Glowing ring */}
-            <motion.div
-              className="portrait-ring"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            />
-            <motion.div
-              className="portrait-ring portrait-ring2"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-            />
-
-            {/* Avatar */}
-            <div className="portrait-img-wrap">
-              <img
-                src="/images/gallery/image.png"
-                alt="Arshad Khan"
-                className="portrait-img"
-              />
-              <div className="portrait-overlay" />
-            </div>
-
-            {/* Floating badges */}
-            <motion.div
-              className="float-badge float-badge-tl"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <span className="badge-icon">⚡</span>
-              <div>
-                <div className="badge-title">NestJS</div>
-                <div className="badge-sub">Backend</div>
+          {/* LEFT — Text */}
+          <div>
+            {/* Status badge */}
+            <motion.div variants={up} style={{ marginBottom: "1.2rem" }}>
+              <div className="hero-badge">
+                <motion.div
+                  className="badge-dot"
+                  animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
+                  transition={{
+                    duration: 1.8,
+                    repeat: Number.POSITIVE_INFINITY,
+                  }}
+                />
+                <span>Available for hire &mdash; Open to full-time</span>
               </div>
             </motion.div>
 
-            <motion.div
-              className="float-badge float-badge-br"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            >
-              <span className="badge-icon">🤖</span>
-              <div>
-                <div className="badge-title">AI Architect</div>
-                <div className="badge-sub">LLM + Agents</div>
+            {/* Big name */}
+            <motion.div variants={up} style={{ marginBottom: "0.5rem" }}>
+              <p className="hero-name-label">Hi, I&apos;m</p>
+              <h1 className="hero-name">
+                {mounted ? (
+                  <ScrambleText text="ARSHAD KHAN" delay={400} />
+                ) : (
+                  "ARSHAD KHAN"
+                )}
+              </h1>
+            </motion.div>
+
+            {/* Role with gradient */}
+            <motion.div variants={up} style={{ marginBottom: "1rem" }}>
+              <div className="hero-role-line">
+                <span className="hero-role-gradient">Software Engineer</span>
+                <span className="hero-role-sep">&nbsp;×&nbsp;</span>
+                <span className="hero-role-gradient2">
+                  AI Solution Architect
+                </span>
               </div>
             </motion.div>
 
+            {/* Subline */}
             <motion.div
-              className="float-badge float-badge-tr"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              variants={up}
+              style={{ marginBottom: "1.4rem", maxWidth: "580px" }}
             >
-              <span className="badge-icon">☁️</span>
-              <div>
-                <div className="badge-title">AWS</div>
-                <div className="badge-sub">Cloud</div>
-              </div>
+              <p className="hero-subline">{subline}</p>
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div variants={up} className="hero-ctas">
+              <motion.a
+                href="/work"
+                className="btn-primary"
+                whileHover={{
+                  scale: 1.04,
+                  boxShadow:
+                    "0 0 40px rgba(4,158,226,0.55), 0 0 80px rgba(4,158,226,0.25)",
+                }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <span>View My Work</span>
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{
+                    duration: 1.3,
+                    repeat: Number.POSITIVE_INFINITY,
+                  }}
+                >
+                  <FiArrowRight size={18} />
+                </motion.span>
+              </motion.a>
+
+              <motion.a
+                href="#contact"
+                className="btn-outline"
+                whileHover={{
+                  scale: 1.04,
+                  borderColor: "rgba(255,255,255,0.5)",
+                }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Get In Touch
+              </motion.a>
+            </motion.div>
+
+            {/* Socials */}
+            <motion.div variants={up} className="hero-socials">
+              {[
+                {
+                  href: "https://github.com/arshad-khan1",
+                  icon: <FiGithub size={20} />,
+                  label: "GitHub",
+                },
+                {
+                  href: "https://www.linkedin.com/in/arshad-khan-linkdin/",
+                  icon: <FiLinkedin size={20} />,
+                  label: "LinkedIn",
+                },
+                {
+                  href: "mailto:003arshad@gmail.com",
+                  icon: <FiMail size={20} />,
+                  label: "Email",
+                },
+              ].map((s) => (
+                <motion.a
+                  key={s.label}
+                  href={s.href}
+                  target={s.label !== "Email" ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="social-pill"
+                  whileHover={{
+                    scale: 1.1,
+                    backgroundColor: "rgba(4,158,226,0.12)",
+                    borderColor: "rgba(4,158,226,0.4)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  title={s.label}
+                >
+                  {s.icon}
+                  <span>{s.label}</span>
+                </motion.a>
+              ))}
+            </motion.div>
+
+            {/* Stats row */}
+            <motion.div variants={up} className="hero-stats">
+              {[
+                { val: "6", label: "Projects Delivered" },
+                { val: "1", label: "SaaS Product" },
+                { val: "100%", label: "Project Ownership" },
+                { val: "1.5+", label: "Years Shipping" },
+              ].map((s) => (
+                <div key={s.label} className="hero-stat">
+                  <span className="hero-stat-val">{s.val}</span>
+                  <span className="hero-stat-label">{s.label}</span>
+                </div>
+              ))}
             </motion.div>
           </div>
+
+          {/* RIGHT — Portrait card */}
+          <motion.div
+            variants={up}
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+              rotateX,
+              rotateY,
+              transformStyle: "preserve-3d",
+              perspective: 800,
+            }}
+            className="portrait-wrap"
+          >
+            <div className="portrait-card">
+              {/* Glowing ring */}
+              <motion.div
+                className="portrait-ring"
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 12,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
+              />
+              <motion.div
+                className="portrait-ring portrait-ring2"
+                animate={{ rotate: -360 }}
+                transition={{
+                  duration: 18,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "linear",
+                }}
+              />
+
+              {/* Avatar */}
+              <div className="portrait-img-wrap">
+                <img
+                  src="/images/gallery/image.png"
+                  alt="Arshad Khan"
+                  className="portrait-img"
+                />
+                <div className="portrait-overlay" />
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
       </motion.div>
 
       {/* Scroll hint */}
@@ -346,9 +444,15 @@ export function HeroSection({
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
         className="scroll-hint"
-        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+        onClick={() =>
+          window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+        }
       >
-        <motion.div className="scroll-line" animate={{ scaleY: [1, 0.4, 1] }} transition={{ duration: 1.6, repeat: Infinity }} />
+        <motion.div
+          className="scroll-line"
+          animate={{ scaleY: [1, 0.4, 1] }}
+          transition={{ duration: 1.6, repeat: Number.POSITIVE_INFINITY }}
+        />
       </motion.div>
 
       <style jsx global>{`
@@ -358,16 +462,17 @@ export function HeroSection({
           align-items: center;
           gap: 10px;
           padding: 8px 18px;
-          background: rgba(4,158,226,0.08);
-          border: 1px solid rgba(4,158,226,0.25);
+          background: rgba(4, 158, 226, 0.08);
+          border: 1px solid rgba(4, 158, 226, 0.25);
           border-radius: 100px;
           font-size: 0.8rem;
           font-weight: 500;
-          color: rgba(255,255,255,0.75);
+          color: rgba(255, 255, 255, 0.75);
           letter-spacing: 0.04em;
         }
         .badge-dot {
-          width: 8px; height: 8px;
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
           background: #22c55e;
           box-shadow: 0 0 8px #22c55e;
@@ -377,7 +482,7 @@ export function HeroSection({
         /* ── Name ─────────────────────────── */
         .hero-name-label {
           font-size: 1.1rem;
-          color: rgba(255,255,255,0.45);
+          color: rgba(255, 255, 255, 0.45);
           letter-spacing: 0.05em;
           margin: 0 0 4px;
           font-weight: 400;
@@ -390,7 +495,7 @@ export function HeroSection({
           color: #fff;
           margin: 0 0 0;
           font-family: inherit;
-          text-shadow: 0 0 60px rgba(4,158,226,0.2);
+          text-shadow: 0 0 60px rgba(4, 158, 226, 0.2);
         }
 
         /* ── Role ─────────────────────────── */
@@ -401,14 +506,14 @@ export function HeroSection({
           line-height: 1.4;
         }
         .hero-role-gradient {
-          background: linear-gradient(135deg, #60E4FC, #17C0FD);
+          background: linear-gradient(135deg, #60e4fc, #17c0fd);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
         .hero-role-sep {
-          color: rgba(255,255,255,0.25);
-          -webkit-text-fill-color: rgba(255,255,255,0.25);
+          color: rgba(255, 255, 255, 0.25);
+          -webkit-text-fill-color: rgba(255, 255, 255, 0.25);
         }
         .hero-role-gradient2 {
           background: linear-gradient(135deg, #a78bfa, #8b5cf6);
@@ -437,13 +542,13 @@ export function HeroSection({
           align-items: center;
           gap: 10px;
           padding: 14px 30px;
-          background: linear-gradient(135deg, #17C0FD 0%, #049EE2 100%);
+          background: linear-gradient(135deg, #17c0fd 0%, #049ee2 100%);
           color: #fff;
           border-radius: 12px;
           font-weight: 700;
           font-size: 1rem;
           text-decoration: none;
-          box-shadow: 0 0 25px rgba(4,158,226,0.35);
+          box-shadow: 0 0 25px rgba(4, 158, 226, 0.35);
           transition: box-shadow 0.3s;
         }
         .btn-outline {
@@ -457,7 +562,10 @@ export function HeroSection({
           font-weight: 600;
           font-size: 1rem;
           text-decoration: none;
-          transition: border-color 0.3s, background 0.3s, color 0.3s;
+          transition:
+            border-color 0.3s,
+            background 0.3s,
+            color 0.3s;
         }
         .btn-outline:hover {
           background: var(--neutral-alpha-weak);
@@ -484,7 +592,10 @@ export function HeroSection({
           font-size: 0.85rem;
           font-weight: 500;
           text-decoration: none;
-          transition: background 0.2s, border-color 0.2s, color 0.2s;
+          transition:
+            background 0.2s,
+            border-color 0.2s,
+            color 0.2s;
         }
         .social-pill:hover {
           color: var(--neutral-on-background-strong);
@@ -508,14 +619,16 @@ export function HeroSection({
           border-right: 1px solid var(--neutral-alpha-weak);
           position: relative;
         }
-        .hero-stat:last-child { border-right: none; }
+        .hero-stat:last-child {
+          border-right: none;
+        }
         .hero-stat-val {
           display: block;
           font-size: 1.7rem;
           font-weight: 800;
           line-height: 1;
           margin-bottom: 5px;
-          background: linear-gradient(135deg, #fff 0%, #82F1FC 100%);
+          background: linear-gradient(135deg, #fff 0%, #82f1fc 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -547,8 +660,17 @@ export function HeroSection({
           inset: -14px;
           border-radius: 30px;
           border: 2px solid transparent;
-          background: linear-gradient(135deg, rgba(4,158,226,0.5), rgba(23,192,253,0.4), rgba(4,158,226,0.2), transparent) border-box;
-          -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+          background: linear-gradient(
+              135deg,
+              rgba(4, 158, 226, 0.5),
+              rgba(23, 192, 253, 0.4),
+              rgba(4, 158, 226, 0.2),
+              transparent
+            )
+            border-box;
+          -webkit-mask:
+            linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(#fff 0 0);
           -webkit-mask-composite: destination-out;
           mask-composite: exclude;
           pointer-events: none;
@@ -579,7 +701,7 @@ export function HeroSection({
           background: linear-gradient(
             to bottom,
             transparent 40%,
-            rgba(0,0,0,0.6) 100%
+            rgba(0, 0, 0, 0.6) 100%
           );
         }
 
@@ -596,12 +718,23 @@ export function HeroSection({
           backdrop-filter: blur(16px);
           z-index: 20;
           white-space: nowrap;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
         }
-        .float-badge-tl { top: -22px; left: -62px; }
-        .float-badge-tr { top: 36px; right: -72px; }
-        .float-badge-br { bottom: 40px; right: -72px; }
-        .badge-icon { font-size: 1.2rem; }
+        .float-badge-tl {
+          top: -22px;
+          left: -62px;
+        }
+        .float-badge-tr {
+          top: 36px;
+          right: -72px;
+        }
+        .float-badge-br {
+          bottom: 40px;
+          right: -72px;
+        }
+        .badge-icon {
+          font-size: 1.2rem;
+        }
         .badge-title {
           font-size: 0.78rem;
           font-weight: 700;
@@ -628,7 +761,11 @@ export function HeroSection({
         .scroll-line {
           width: 1px;
           height: 56px;
-          background: linear-gradient(to bottom, rgba(23,192,253,0.7), transparent);
+          background: linear-gradient(
+            to bottom,
+            rgba(23, 192, 253, 0.7),
+            transparent
+          );
           transform-origin: top;
         }
 
@@ -643,22 +780,41 @@ export function HeroSection({
             padding: 2rem 1.5rem !important;
             gap: 2rem !important;
           }
-          .hero-badge, .hero-ctas, .hero-socials { justify-content: center; }
-          .hero-stats { margin: 0 auto; }
-          .hero-subline { max-width: 100%; }
-          .portrait-wrap { display: none; }
-          .hero-name { font-size: clamp(2.4rem, 10vw, 5rem); }
+          .hero-badge,
+          .hero-ctas,
+          .hero-socials {
+            justify-content: center;
+          }
+          .hero-stats {
+            margin: 0 auto;
+          }
+          .hero-subline {
+            max-width: 100%;
+          }
+          .portrait-wrap {
+            display: none;
+          }
+          .hero-name {
+            font-size: clamp(2.4rem, 10vw, 5rem);
+          }
         }
         @media (max-width: 500px) {
-          .hero-stats { flex-wrap: wrap; max-width: 100%; }
+          .hero-stats {
+            flex-wrap: wrap;
+            max-width: 100%;
+          }
           .hero-stat {
             flex: 0 0 50%;
             border-right: none;
             border-bottom: 1px solid var(--neutral-alpha-weak);
           }
-          .hero-stat:nth-child(odd)  { border-right: 1px solid var(--neutral-alpha-weak); }
+          .hero-stat:nth-child(odd) {
+            border-right: 1px solid var(--neutral-alpha-weak);
+          }
           .hero-stat:nth-child(3),
-          .hero-stat:nth-child(4)    { border-bottom: none; }
+          .hero-stat:nth-child(4) {
+            border-bottom: none;
+          }
         }
         @media (max-width: 480px) {
           .hero-grid {
@@ -679,7 +835,8 @@ export function HeroSection({
             flex-direction: column;
             align-items: center;
           }
-          .btn-primary, .btn-outline {
+          .btn-primary,
+          .btn-outline {
             width: 100%;
             justify-content: center;
             padding: 13px 20px;

@@ -39,15 +39,19 @@ function Card({ children, className, index, color }: CardProps) {
       style={
         {
           "--c": color,
-          "--cFaint": color + "12",
-          "--cMid": color + "28",
-          "--cBorder": color + "40",
+          "--cFaint": `${color}12`,
+          "--cMid": `${color}28`,
+          "--cBorder": `${color}40`,
         } as React.CSSProperties
       }
       initial={{ opacity: 0, y: 28, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.55, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.55,
+        delay: index * 0.07,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       whileHover={{ y: -5, transition: { duration: 0.25, ease: "easeOut" } }}
     >
       <div className={styles.cardAccent} />
@@ -89,8 +93,8 @@ function SectionHeader() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          A breakdown of the systems, pipelines, and infrastructure I
-          designed and shipped at Pinnacle.
+          A breakdown of the systems, pipelines, and infrastructure I designed
+          and shipped at Pinnacle.
         </motion.p>
       </div>
 
@@ -161,9 +165,14 @@ function GarageCard() {
           </div>
         </div>
 
-        <div className={styles.techChips} style={{ marginTop: "auto", paddingTop: "10px" }}>
+        <div
+          className={styles.techChips}
+          style={{ marginTop: "auto", paddingTop: "10px" }}
+        >
           {["Garage", "S3 API", "MinIO-compat", "Multi-tenant"].map((t) => (
-            <span key={t} className={styles.chip}>{t}</span>
+            <span key={t} className={styles.chip}>
+              {t}
+            </span>
           ))}
         </div>
       </div>
@@ -179,10 +188,30 @@ function WhatsAppPipelineCard() {
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
   const flows = [
-    { label: "Outbound", desc: "App → WhatsApp", variant: "out" as const, delay: 0.1 },
-    { label: "Routing…", desc: "Webhook handler", variant: "sys" as const, delay: 0.35 },
-    { label: "Inbound ✓", desc: "WhatsApp → App", variant: "in" as const, delay: 0.6 },
-    { label: "📢 Broadcast", desc: "Template blast", variant: "out" as const, delay: 0.85 },
+    {
+      label: "Outbound",
+      desc: "App → WhatsApp",
+      variant: "out" as const,
+      delay: 0.1,
+    },
+    {
+      label: "Routing…",
+      desc: "Webhook handler",
+      variant: "sys" as const,
+      delay: 0.35,
+    },
+    {
+      label: "Inbound ✓",
+      desc: "WhatsApp → App",
+      variant: "in" as const,
+      delay: 0.6,
+    },
+    {
+      label: "📢 Broadcast",
+      desc: "Template blast",
+      variant: "out" as const,
+      delay: 0.85,
+    },
   ];
 
   const variantClass = {
@@ -198,8 +227,8 @@ function WhatsAppPipelineCard() {
         <span className={styles.cardTag}>Messaging</span>
         <h3>WhatsApp Messaging Pipeline</h3>
         <p>
-          End-to-end pipeline for outbound messages, inbound webhook
-          handling, and template broadcasting — both direct and bulk.
+          End-to-end pipeline for outbound messages, inbound webhook handling,
+          and template broadcasting — both direct and bulk.
         </p>
 
         <div className={styles.chatWrap}>
@@ -212,7 +241,9 @@ function WhatsAppPipelineCard() {
               transition={{ duration: 0.4, delay: f.delay }}
             >
               <strong>{f.label}</strong>&ensp;
-              <span style={{ opacity: 0.6, fontSize: "0.62rem" }}>{f.desc}</span>
+              <span style={{ opacity: 0.6, fontSize: "0.62rem" }}>
+                {f.desc}
+              </span>
             </motion.div>
           ))}
         </div>
@@ -228,12 +259,16 @@ function LoggingCard() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
-  const logs: { level: "info" | "warn" | "error"; msg: string; delay: number }[] = [
-    { level: "info",  msg: "Server started on :3000",       delay: 0.1 },
-    { level: "info",  msg: "DB connection established",      delay: 0.28 },
-    { level: "warn",  msg: "Rate limit 85% — /api/messages", delay: 0.46 },
-    { level: "error", msg: "Webhook signature mismatch",     delay: 0.64 },
-    { level: "info",  msg: "Retrying… success ✓",            delay: 0.82 },
+  const logs: {
+    level: "info" | "warn" | "error";
+    msg: string;
+    delay: number;
+  }[] = [
+    { level: "info", msg: "Server started on :3000", delay: 0.1 },
+    { level: "info", msg: "DB connection established", delay: 0.28 },
+    { level: "warn", msg: "Rate limit 85% — /api/messages", delay: 0.46 },
+    { level: "error", msg: "Webhook signature mismatch", delay: 0.64 },
+    { level: "info", msg: "Retrying… success ✓", delay: 0.82 },
   ];
 
   return (
@@ -243,9 +278,8 @@ function LoggingCard() {
         <span className={styles.cardTag}>Observability</span>
         <h3>Centralized Logging — Winston</h3>
         <p>
-          Unified logging pipeline using Winston with structured JSON
-          output, log levels, and transport routing for production
-          observability.
+          Unified logging pipeline using Winston with structured JSON output,
+          log levels, and transport routing for production observability.
         </p>
 
         <div className={styles.terminal}>
@@ -307,7 +341,9 @@ function DeploymentCard() {
             </p>
             <div className={styles.techChips}>
               {["NestJS", "Next.js", "PM2", "Nginx", "Docker"].map((t) => (
-                <span key={t} className={styles.chip}>{t}</span>
+                <span key={t} className={styles.chip}>
+                  {t}
+                </span>
               ))}
             </div>
           </div>
@@ -315,12 +351,20 @@ function DeploymentCard() {
 
         <div className={styles.pipeline}>
           {steps.map((step, i) => (
-            <div key={step.label} style={{ display: "flex", alignItems: "center" }}>
+            <div
+              key={step.label}
+              style={{ display: "flex", alignItems: "center" }}
+            >
               <motion.div
                 className={styles.pipelineStep}
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.4, delay: 0.15 + i * 0.1, type: "spring", stiffness: 200 }}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.15 + i * 0.1,
+                  type: "spring",
+                  stiffness: 200,
+                }}
               >
                 <div className={styles.stepCircle}>{step.icon}</div>
                 <span className={styles.stepLabel}>{step.label}</span>
@@ -350,12 +394,12 @@ function ConversationCard() {
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
   const nodes = [
-    { id: "msg",    label: "Incoming Msg",   cx: 90, cy: 22 },
-    { id: "avail",  label: "Agent Free?",    cx: 90, cy: 72 },
-    { id: "hours",  label: "Work Hours?",    cx: 40, cy: 122 },
-    { id: "assign", label: "Assign Agent",   cx: 140, cy: 122 },
-    { id: "queue",  label: "Queue",          cx: 40, cy: 168 },
-    { id: "auto",   label: "Auto-Reply",     cx: 90, cy: 168 },
+    { id: "msg", label: "Incoming Msg", cx: 90, cy: 22 },
+    { id: "avail", label: "Agent Free?", cx: 90, cy: 72 },
+    { id: "hours", label: "Work Hours?", cx: 40, cy: 122 },
+    { id: "assign", label: "Assign Agent", cx: 140, cy: 122 },
+    { id: "queue", label: "Queue", cx: 40, cy: 168 },
+    { id: "auto", label: "Auto-Reply", cx: 90, cy: 168 },
   ];
 
   const edges = [
@@ -382,39 +426,80 @@ function ConversationCard() {
         <span className={styles.cardTag}>Logic</span>
         <h3>Conversation Handling</h3>
         <p>
-          Routing engine based on agent availability, working hours, and
-          contact rules — auto-assigns or queues conversations intelligently.
+          Routing engine based on agent availability, working hours, and contact
+          rules — auto-assigns or queues conversations intelligently.
         </p>
 
-        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", paddingTop: "8px" }}>
-          <svg viewBox="0 0 180 192" style={{ width: "100%", maxWidth: "180px" }} aria-hidden="true">
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: "8px",
+          }}
+        >
+          <svg
+            viewBox="0 0 180 192"
+            style={{ width: "100%", maxWidth: "180px" }}
+            aria-hidden="true"
+          >
             {edges.map((e, i) => (
-              <motion.g key={i}
+              <motion.g
+                key={i}
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.35, delay: 0.1 + i * 0.08 }}
               >
-                <line x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2}
-                  stroke="#8b5cf660" strokeWidth={1.5} strokeDasharray="3 2" />
+                <line
+                  x1={e.x1}
+                  y1={e.y1}
+                  x2={e.x2}
+                  y2={e.y2}
+                  stroke="#8b5cf660"
+                  strokeWidth={1.5}
+                  strokeDasharray="3 2"
+                />
                 {e.label && (
-                  <text x={e.lx ?? (e.x1 + e.x2) / 2} y={e.ly ?? (e.y1 + e.y2) / 2}
-                    fontSize="6" fill="#8b5cf6" textAnchor="middle" fontWeight="600">
+                  <text
+                    x={e.lx ?? (e.x1 + e.x2) / 2}
+                    y={e.ly ?? (e.y1 + e.y2) / 2}
+                    fontSize="6"
+                    fill="#8b5cf6"
+                    textAnchor="middle"
+                    fontWeight="600"
+                  >
                     {e.label}
                   </text>
                 )}
               </motion.g>
             ))}
             {nodes.map((n, i) => (
-              <motion.g key={n.id}
+              <motion.g
+                key={n.id}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 style={{ transformOrigin: `${n.cx}px ${n.cy}px` }}
                 transition={{ duration: 0.3, delay: 0.3 + i * 0.08 }}
               >
-                <rect x={n.cx - 28} y={n.cy - 9} width={56} height={18}
-                  rx={5} fill={nodeColors[n.id] + "20"} stroke={nodeColors[n.id] + "60"} strokeWidth={1} />
-                <text x={n.cx} y={n.cy + 4} textAnchor="middle"
-                  fill={nodeColors[n.id]} fontSize="6.5" fontWeight="700">
+                <rect
+                  x={n.cx - 28}
+                  y={n.cy - 9}
+                  width={56}
+                  height={18}
+                  rx={5}
+                  fill={`${nodeColors[n.id]}20`}
+                  stroke={`${nodeColors[n.id]}60`}
+                  strokeWidth={1}
+                />
+                <text
+                  x={n.cx}
+                  y={n.cy + 4}
+                  textAnchor="middle"
+                  fill={nodeColors[n.id]}
+                  fontSize="6.5"
+                  fontWeight="700"
+                >
                   {n.label}
                 </text>
               </motion.g>
@@ -446,13 +531,14 @@ function AuthCard() {
         <span className={styles.cardTag}>Auth</span>
         <h3>Login + Protected Routes</h3>
         <p>
-          Next.js authentication with JWT, middleware-based route
-          protection, and role-gated access for multi-tenant dashboards.
+          Next.js authentication with JWT, middleware-based route protection,
+          and role-gated access for multi-tenant dashboards.
         </p>
 
         <div className={styles.authFlow}>
           {steps.map((s, i) => (
-            <motion.div key={s.label}
+            <motion.div
+              key={s.label}
               initial={{ opacity: 0, x: -12 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.4, delay: s.delay }}
@@ -526,7 +612,11 @@ function WalletCard() {
                   style={{ width: `${p.pct}%` }}
                   initial={{ width: 0 }}
                   animate={inView ? { width: `${p.pct}%` } : { width: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 + i * 0.15, ease: "easeOut" }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.3 + i * 0.15,
+                    ease: "easeOut",
+                  }}
                 />
               </div>
             </div>
@@ -545,15 +635,15 @@ function BroadcastCard() {
   const inView = useInView(ref, { once: true, amount: 0.3 });
 
   const recipients = [
-    { cx: 155, cy: 30  },
-    { cx: 170, cy: 75  },
+    { cx: 155, cy: 30 },
+    { cx: 170, cy: 75 },
     { cx: 155, cy: 120 },
     { cx: 130, cy: 155 },
-    { cx: 90,  cy: 168 },
-    { cx: 50,  cy: 155 },
-    { cx: 25,  cy: 120 },
-    { cx: 10,  cy: 75  },
-    { cx: 25,  cy: 30  },
+    { cx: 90, cy: 168 },
+    { cx: 50, cy: 155 },
+    { cx: 25, cy: 120 },
+    { cx: 10, cy: 75 },
+    { cx: 25, cy: 30 },
   ];
 
   return (
@@ -563,18 +653,26 @@ function BroadcastCard() {
         <span className={styles.cardTag}>Broadcast</span>
         <h3>Template Broadcasting</h3>
         <p>
-          Bulk WhatsApp template dispatch to contact lists — supports
-          variable substitution, scheduling, and delivery tracking.
+          Bulk WhatsApp template dispatch to contact lists — supports variable
+          substitution, scheduling, and delivery tracking.
         </p>
 
         <div className={styles.broadcastWrap}>
-          <svg viewBox="0 0 180 180" className={styles.broadcastSvg} aria-hidden="true">
+          <svg
+            viewBox="0 0 180 180"
+            className={styles.broadcastSvg}
+            aria-hidden="true"
+          >
             {/* Lines from center to recipients */}
             {recipients.map((r, i) => (
               <motion.line
                 key={i}
-                x1={90} y1={90} x2={r.cx} y2={r.cy}
-                stroke="#06b6d440" strokeWidth={1.5}
+                x1={90}
+                y1={90}
+                x2={r.cx}
+                y2={r.cy}
+                stroke="#06b6d440"
+                strokeWidth={1.5}
                 initial={{ pathLength: 0, opacity: 0 }}
                 animate={inView ? { pathLength: 1, opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.15 + i * 0.06 }}
@@ -582,25 +680,63 @@ function BroadcastCard() {
             ))}
 
             {/* Center source */}
-            <motion.circle cx={90} cy={90} r={18}
-              fill="#06b6d420" stroke="#06b6d4" strokeWidth={1.5}
-              initial={{ scale: 0 }} animate={inView ? { scale: 1 } : {}}
+            <motion.circle
+              cx={90}
+              cy={90}
+              r={18}
+              fill="#06b6d420"
+              stroke="#06b6d4"
+              strokeWidth={1.5}
+              initial={{ scale: 0 }}
+              animate={inView ? { scale: 1 } : {}}
               style={{ transformOrigin: "90px 90px" }}
-              transition={{ duration: 0.4, delay: 0.05, type: "spring", stiffness: 200 }}
+              transition={{
+                duration: 0.4,
+                delay: 0.05,
+                type: "spring",
+                stiffness: 200,
+              }}
             />
-            <text x={90} y={87} textAnchor="middle" fill="#06b6d4" fontSize="6.5" fontWeight="700">Template</text>
-            <text x={90} y={96} textAnchor="middle" fill="#06b6d4" fontSize="6.5" fontWeight="700">Broadcast</text>
+            <text
+              x={90}
+              y={87}
+              textAnchor="middle"
+              fill="#06b6d4"
+              fontSize="6.5"
+              fontWeight="700"
+            >
+              Template
+            </text>
+            <text
+              x={90}
+              y={96}
+              textAnchor="middle"
+              fill="#06b6d4"
+              fontSize="6.5"
+              fontWeight="700"
+            >
+              Broadcast
+            </text>
 
             {/* Recipient dots */}
             {recipients.map((r, i) => (
               <motion.circle
                 key={i}
-                cx={r.cx} cy={r.cy} r={8}
-                fill="#06b6d415" stroke="#06b6d450" strokeWidth={1}
+                cx={r.cx}
+                cy={r.cy}
+                r={8}
+                fill="#06b6d415"
+                stroke="#06b6d450"
+                strokeWidth={1}
                 initial={{ scale: 0, opacity: 0 }}
                 animate={inView ? { scale: 1, opacity: 1 } : {}}
                 style={{ transformOrigin: `${r.cx}px ${r.cy}px` }}
-                transition={{ duration: 0.3, delay: 0.3 + i * 0.06, type: "spring", stiffness: 250 }}
+                transition={{
+                  duration: 0.3,
+                  delay: 0.3 + i * 0.06,
+                  type: "spring",
+                  stiffness: 250,
+                }}
               />
             ))}
           </svg>
@@ -620,7 +756,7 @@ function BroadcastCard() {
    ───────────────────────────────────────────── */
 export function PinnacleGrid() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id="what-i-built">
       <SectionHeader />
       <div className={styles.bentoGrid}>
         <GarageCard />

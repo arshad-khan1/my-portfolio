@@ -8,14 +8,14 @@ import { SmartLink } from "@once-ui-system/core";
 
 const projects = [
   {
-    title: "HelpNest Platform",
-    subtitle: "Multi-tenant customer support system",
+    title: "CPaaS Platform",
+    subtitle: "Multi-channel Communication Platform",
     description:
-      "Owned and led backend development for a scalable customer support platform. Architected WhatsApp messaging pipeline with inbound/outbound automation, RBAC, MinIO storage, and AI-powered conversation analytics.",
-    tags: ["NestJS", "AWS", "WhatsApp API", "AI/ML", "PostgreSQL"],
+      "Owned and led backend development for a scalable communication platform. Architected and delivered key implementations including the WhatsApp messaging pipeline, self-hosted Garage S3 storage server, centralized Winston logging, conversational routing engine, etc.",
+    tags: ["NodeJs", "S3", "WhatsApp API", "PostgreSQL", "Minio", "Deployment"],
     image: "/images/home/whatsapp_pipeline.png",
-    link: "/work/freelance",
-    metric: "60% faster integration",
+    link: "/about#what-i-built",
+    metric: "Communication Platform",
     color: "#8b5cf6",
     num: "01",
   },
@@ -25,22 +25,30 @@ const projects = [
     description:
       "Led end-to-end development of a complete ecommerce platform handling 10K+ daily transactions. Built React Native mobile app with secure payment flows and a comprehensive admin dashboard for real-time analytics.",
     tags: ["React Native", "Node.js", "PostgreSQL", "Redis", "Razorpay"],
-    image: "/images/home/ecommerce.png",
+    image:
+      "https://res.cloudinary.com/dvjqrh2gh/image/upload/v1779194174/MyPortfolio/Freelance%20Projects/Soho_irroy6.png",
     link: "/work/freelance",
-    metric: "99.9% uptime",
+    metric: "Mobile Application",
     color: "#049EE2",
     num: "02",
   },
   {
-    title: "Reviews Next AI",
-    subtitle: "AI-powered review management SaaS",
+    title: "Vydhra",
+    subtitle: "Online course platform with agent payout system",
     description:
-      "Built and launched a complete review management platform that helps businesses 3x their Google reviews through automated feedback collection, sentiment analysis, and smart follow-up workflows.",
-    tags: ["Next.js", "AI/NLP", "TypeScript", "Stripe", "Tailwind"],
-    image: "/images/home/google_review.png",
-    link: "/work/freelance",
-    metric: "3x review growth",
-    color: "#10b981",
+      "Built a full-stack edtech platform where students browse and enroll in courses via Razorpay. The standout feature is the Agent system — registered agents earn commissions on courses they sell, with a dedicated admin dashboard tracking agent sales, student enrollments, payments, and payout records.",
+    tags: [
+      "Next.js",
+      "Razorpay",
+      "TypeScript",
+      "Tailwind CSS",
+      "Admin Dashboard",
+    ],
+    image:
+      "https://res.cloudinary.com/dvjqrh2gh/image/upload/v1779187820/MyPortfolio/Freelance%20Projects/3ba16c6c-4240-4f05-944b-3173991f2ee2.png",
+    link: "/work/vydhra",
+    metric: "Education Platform",
+    color: "#f59e0b",
     num: "03",
   },
 ];
@@ -85,12 +93,19 @@ function ProjectCard({
         {/* Floating metric chip on image */}
         <motion.div
           className="fp-metric-chip"
-          style={{ background: project.color + "22", border: `1px solid ${project.color}55`, color: project.color }}
+          style={{
+            background: project.color + "22",
+            border: `1px solid ${project.color}55`,
+            color: project.color,
+          }}
           initial={{ opacity: 0, scale: 0.85 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.4, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="fp-metric-dot" style={{ background: project.color }} />
+          <span
+            className="fp-metric-dot"
+            style={{ background: project.color }}
+          />
           {project.metric}
         </motion.div>
       </div>
@@ -201,7 +216,11 @@ export function FeaturedProjects() {
             className="fp-heading"
             initial={{ opacity: 0, y: 22 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.65,
+              delay: 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
             Projects That Define Me
           </motion.h2>
@@ -306,13 +325,16 @@ export function FeaturedProjects() {
           border-radius: 22px;
           overflow: hidden;
           border: 1px solid var(--neutral-alpha-weak);
-          background: var(--surface-background, rgba(255,255,255,0.02));
+          background: var(--surface-background, rgba(255, 255, 255, 0.02));
           position: relative;
-          transition: border-color 0.35s ease, box-shadow 0.35s ease;
+          transition:
+            border-color 0.35s ease,
+            box-shadow 0.35s ease;
         }
         .fp-card:hover {
           border-color: color-mix(in srgb, var(--accent) 35%, transparent);
-          box-shadow: 0 24px 64px -20px color-mix(in srgb, var(--accent) 22%, transparent);
+          box-shadow: 0 24px 64px -20px
+            color-mix(in srgb, var(--accent) 22%, transparent);
         }
         .fp-card--reverse {
           flex-direction: row-reverse;

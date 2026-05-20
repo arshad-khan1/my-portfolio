@@ -3,13 +3,33 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
-  SiNestjs, SiNodedotjs, SiTypescript, SiPython, SiGraphql,
-  SiApachekafka, SiSpringboot, SiReact, SiNextdotjs, SiJavascript,
-  SiPostgresql, SiMysql, SiMongodb, SiRedis, SiPrisma, SiSupabase,
-  SiDocker, SiGit, SiFigma, SiOpenai, SiRazorpay, SiStripe, SiWhatsapp,
+  SiNestjs,
+  SiNodedotjs,
+  SiTypescript,
+  SiPython,
+  SiApachekafka,
+  SiReact,
+  SiNextdotjs,
+  SiPostgresql,
+  SiMysql,
+  SiMongodb,
+  SiRedis,
+  SiPrisma,
+  SiDocker,
+  SiGit,
+  SiJenkins,
+  SiOpenai,
+  SiRazorpay,
+  SiStripe,
+  SiWhatsapp,
 } from "react-icons/si";
 import {
-  FiCloud, FiCpu, FiZap, FiServer, FiMonitor, FiDatabase,
+  FiCloud,
+  FiCpu,
+  FiZap,
+  FiServer,
+  FiMonitor,
+  FiDatabase,
   FiPackage,
 } from "react-icons/fi";
 import styles from "./TechLogos.module.scss";
@@ -22,13 +42,10 @@ const categories = [
     color: "#049EE2",
     CatIcon: FiServer,
     skills: [
-      { name: "NestJS",       Icon: SiNestjs      },
-      { name: "Node.js",      Icon: SiNodedotjs   },
-      { name: "TypeScript",   Icon: SiTypescript  },
-      { name: "Python",       Icon: SiPython      },
-      { name: "GraphQL",      Icon: SiGraphql     },
-      { name: "Kafka",        Icon: SiApachekafka },
-      { name: "Spring Boot",  Icon: SiSpringboot  },
+      { name: "NestJS", Icon: SiNestjs },
+      { name: "Node.js", Icon: SiNodedotjs },
+      { name: "TypeScript", Icon: SiTypescript },
+      { name: "Python", Icon: SiPython },
     ],
   },
   {
@@ -37,11 +54,9 @@ const categories = [
     color: "#8b5cf6",
     CatIcon: FiMonitor,
     skills: [
-      { name: "React.js",      Icon: SiReact      },
-      { name: "Next.js",       Icon: SiNextdotjs  },
-      { name: "React Native",  Icon: SiReact      },
-      { name: "JavaScript",    Icon: SiJavascript },
-      { name: "TypeScript",    Icon: SiTypescript },
+      { name: "React.js", Icon: SiReact },
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "React Native", Icon: SiReact },
     ],
   },
   {
@@ -50,12 +65,12 @@ const categories = [
     color: "#10b981",
     CatIcon: FiDatabase,
     skills: [
-      { name: "PostgreSQL",  Icon: SiPostgresql },
-      { name: "MySQL",       Icon: SiMysql      },
-      { name: "MongoDB",     Icon: SiMongodb    },
-      { name: "Redis",       Icon: SiRedis      },
-      { name: "Prisma",      Icon: SiPrisma     },
-      { name: "Supabase",    Icon: SiSupabase   },
+      { name: "PostgreSQL", Icon: SiPostgresql },
+      { name: "MySQL", Icon: SiMysql },
+      { name: "MongoDB", Icon: SiMongodb },
+      { name: "Redis", Icon: SiRedis },
+      { name: "Kafka", Icon: SiApachekafka },
+      { name: "Prisma", Icon: SiPrisma },
     ],
   },
   {
@@ -64,10 +79,10 @@ const categories = [
     color: "#f59e0b",
     CatIcon: FiCloud,
     skills: [
-      { name: "AWS",     Icon: FiCloud  },
-      { name: "Docker",  Icon: SiDocker },
-      { name: "Git",     Icon: SiGit    },
-      { name: "Figma",   Icon: SiFigma  },
+      { name: "AWS", Icon: FiCloud },
+      { name: "Docker", Icon: SiDocker },
+      { name: "Git", Icon: SiGit },
+      { name: "Jenkins", Icon: SiJenkins },
     ],
   },
   {
@@ -76,9 +91,9 @@ const categories = [
     color: "#ec4899",
     CatIcon: FiCpu,
     skills: [
-      { name: "OpenAI API",  Icon: SiOpenai },
-      { name: "LangChain",   Icon: FiZap    },
-      { name: "AI / NLP",    Icon: FiCpu    },
+      { name: "OpenAI API", Icon: SiOpenai },
+      { name: "LangChain", Icon: FiZap },
+      { name: "AI / NLP", Icon: FiCpu },
     ],
   },
   {
@@ -87,8 +102,8 @@ const categories = [
     color: "#6875F5",
     CatIcon: FiPackage,
     skills: [
-      { name: "Razorpay",     Icon: SiRazorpay },
-      { name: "Stripe",       Icon: SiStripe   },
+      { name: "Razorpay", Icon: SiRazorpay },
+      { name: "Stripe", Icon: SiStripe },
       { name: "WhatsApp API", Icon: SiWhatsapp },
     ],
   },
@@ -170,11 +185,11 @@ function CategoryRow({ cat, index }: { cat: Category; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.25 });
 
-  const cFaint  = cat.color + "14";
-  const cBorder = cat.color + "35";
-  const cHover  = cat.color + "22";
-  const cGlow   = cat.color + "28";
-  const cBar    = cat.color + "60";
+  const cFaint = `${cat.color}14`;
+  const cBorder = `${cat.color}35`;
+  const cHover = `${cat.color}22`;
+  const cGlow = `${cat.color}28`;
+  const cBar = `${cat.color}60`;
 
   return (
     <motion.div
@@ -183,7 +198,11 @@ function CategoryRow({ cat, index }: { cat: Category; index: number }) {
       style={{ "--c": cat.color, "--cBar": cBar } as React.CSSProperties}
       initial={{ opacity: 0, x: -24 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.09,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
       {/* Category label */}
       <div className={styles.catLabel}>
@@ -197,12 +216,14 @@ function CategoryRow({ cat, index }: { cat: Category; index: number }) {
           <motion.div
             key={skill.name}
             className={styles.chip}
-            style={{
-              "--cFaint":  cFaint,
-              "--cBorder": cBorder,
-              "--cHover":  cHover,
-              "--cGlow":   cGlow,
-            } as React.CSSProperties}
+            style={
+              {
+                "--cFaint": cFaint,
+                "--cBorder": cBorder,
+                "--cHover": cHover,
+                "--cGlow": cGlow,
+              } as React.CSSProperties
+            }
             initial={{ opacity: 0, scale: 0.88 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{
@@ -210,7 +231,10 @@ function CategoryRow({ cat, index }: { cat: Category; index: number }) {
               delay: index * 0.09 + si * 0.045,
               ease: [0.22, 1, 0.36, 1],
             }}
-            whileHover={{ y: -3, transition: { duration: 0.15, ease: "easeOut" } }}
+            whileHover={{
+              y: -3,
+              transition: { duration: 0.15, ease: "easeOut" },
+            }}
           >
             <skill.Icon className={styles.chipIcon} />
             <span className={styles.chipName}>{skill.name}</span>

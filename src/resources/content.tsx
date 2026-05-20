@@ -1,4 +1,5 @@
-import {
+import React from "react";
+import type {
   About,
   Blog,
   Gallery,
@@ -13,7 +14,7 @@ import { Line, Row, Text } from "@once-ui-system/core";
 const person: Person = {
   firstName: "Arshad",
   lastName: "Khan",
-  name: `Arshad Khan`,
+  name: "Arshad Khan",
   role: "Software Engineer & AI Solution Architect",
   avatar: "/images/gallery/image.png",
   email: "003arshad@gmail.com",
@@ -73,10 +74,9 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name} — Software Engineer & AI Solution Architect`,
-  description: `Software Engineer & AI Architect specializing in high-performance systems, AI-driven SaaS solutions, and intelligent workflow automation.`,
-  headline: (
-    <>I Build Systems That Scale Businesses</>
-  ),
+  description:
+    "Solving real-world business problems using AI, creating operational AI workflows, and delivering fast-tracked, real-world implementations for immediate business value.",
+  headline: <>I Build Systems That Scale Businesses</>,
   featured: {
     display: true,
     title: (
@@ -92,10 +92,10 @@ const home: Home = {
   },
   subline: (
     <>
-      I architect backend infrastructure that handles 10K+ daily transactions,
-      reduce query resolution by 50% with AI-powered routing, and cut database
-      costs by 80% through strategic caching. I think in business outcomes —
-      scalability, performance, and measurable ROI.
+      Solving real-world business problems using AI by creating high-impact
+      operational AI workflows and robust, production-ready implementations.
+      Focused on fast delivery and engineering excellence that turns complex AI
+      automation into real, measurable business impact.
     </>
   ),
 };
@@ -138,29 +138,30 @@ const about: About = {
         timeframe: "December 2024 - Present",
         role: "Software Engineer",
         achievements: [
-          <>
+          <React.Fragment key="ach-pinnacle-1">
             <strong>Owned and led</strong> the backend development for{" "}
-            <strong>HelpNest</strong> platform, making architectural decisions
-            that enabled scalable APIs and multi-tenant customer support systems.
-          </>,
-          <>
+            <strong>HelpNest/UGP</strong> platform, making architectural
+            decisions that enabled scalable APIs and multi-tenant customer
+            support systems.
+          </React.Fragment>,
+          <React.Fragment key="ach-pinnacle-2">
             <strong>Architected and deployed</strong> the complete{" "}
             <strong>WhatsApp Messaging Pipeline</strong> with inbound/outbound
             messaging, reducing integration time by 60% through automated AWS
             deployments.
-          </>,
-          <>
+          </React.Fragment>,
+          <React.Fragment key="ach-pinnacle-3">
             <strong>Designed and implemented</strong> core infrastructure
             including Role-Based Access Control, Authentication, and{" "}
             <strong>MinIO-based file storage</strong>, ensuring secure
             multi-tenant operations from day one.
-          </>,
-          <>
+          </React.Fragment>,
+          <React.Fragment key="ach-pinnacle-4">
             <strong>Leading the UGP platform</strong> with full ownership of API
             design in NestJS. Currently integrating{" "}
             <strong>AI-powered conversation analytics</strong> and intelligent
             routing to reduce query resolution time by 50%.
-          </>,
+          </React.Fragment>,
         ],
         images: [],
       },
