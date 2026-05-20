@@ -408,6 +408,7 @@ export function HeroSection({
           min-height: 100vh;
           height: 100vh;
           overflow: hidden;
+          padding-top: 112px !important;
         }
 
         /* ── Badge ─────────────────────────── */
