@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { about, person, social } from "@/resources";
 import { FiCalendar, FiMapPin, FiZap } from "react-icons/fi";
 import React from "react";
@@ -136,7 +137,15 @@ export function AboutHero() {
               transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
             />
             <div className="ah-img-wrap">
-              {mounted && <img src={person.avatar} alt={person.name} className="ah-img" />}
+              {mounted && (
+                <Image
+                  src={person.avatar}
+                  alt={person.name}
+                  className="ah-img"
+                  fill
+                  sizes="200px"
+                />
+              )}
               <div className="ah-img-overlay" />
             </div>
           </div>

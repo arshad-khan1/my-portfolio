@@ -2,33 +2,27 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      easing: (t: number) => Math.min(1, 1.001 - 2 ** (-10 * t)),
       smoothWheel: true,
       wheelMultiplier: 0.9,
       touchMultiplier: 1.5,
     });
 
-    lenis.on("scroll", ScrollTrigger.update);
-
+    let rafId: number;
     const tick = (time: number) => {
-      lenis.raf(time * 1000);
+      lenis.raf(time);
+      rafId = requestAnimationFrame(tick);
     };
-
-    gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
+    rafId = requestAnimationFrame(tick);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
-      gsap.ticker.remove(tick);
     };
   }, []);
 

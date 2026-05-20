@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%";
@@ -379,7 +380,14 @@ export function HeroSection({
 
               {/* Avatar */}
               <div className="portrait-img-wrap">
-                <img src="/images/gallery/image.png" alt="Arshad Khan" className="portrait-img" />
+                <Image
+                  src="https://res.cloudinary.com/dvjqrh2gh/image/upload/v1779266992/MyPortfolio/Me/MyProfileImage_nhwefs.png"
+                  alt="Arshad Khan"
+                  className="portrait-img"
+                  fill
+                  sizes="300px"
+                  priority
+                />
                 <div className="portrait-overlay" />
               </div>
             </div>

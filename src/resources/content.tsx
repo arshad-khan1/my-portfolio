@@ -7,7 +7,7 @@ const person: Person = {
   lastName: "Khan",
   name: "Arshad Khan",
   role: "Software Engineer & AI Solution Architect",
-  avatar: "/images/gallery/image.png",
+  avatar: "https://res.cloudinary.com/dvjqrh2gh/image/upload/v1779266992/MyPortfolio/Me/MyProfileImage_nhwefs.png",
   email: "003arshad@gmail.com",
   location: "Asia/Kolkata",
   languages: ["English", "Hindi"],
