@@ -1,12 +1,4 @@
-import {
-  Column,
-  Heading,
-  Meta,
-  Schema,
-  Button,
-  RevealFx,
-  Text,
-} from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Button, RevealFx, Text } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Projects } from "@/components/work/Projects";
 
@@ -37,12 +29,7 @@ export default function PersonalWork() {
         }}
       />
       <RevealFx speed="medium" translateY="0">
-        <Button
-          href="/work"
-          variant="tertiary"
-          size="s"
-          prefixIcon="chevronLeft"
-        >
+        <Button href="/work" variant="tertiary" size="s" prefixIcon="chevronLeft">
           <Text variant="label-default-s">Back to Projects</Text>
         </Button>
       </RevealFx>

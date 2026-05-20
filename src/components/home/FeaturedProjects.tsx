@@ -13,9 +13,10 @@ const projects = [
     description:
       "Owned and led backend development for a scalable communication platform. Architected and delivered key implementations including the WhatsApp messaging pipeline, self-hosted Garage S3 storage server, centralized Winston logging, conversational routing engine, etc.",
     tags: ["NodeJs", "S3", "WhatsApp API", "PostgreSQL", "Minio", "Deployment"],
-    image: "/images/home/whatsapp_pipeline.png",
+    image:
+      "https://res.cloudinary.com/dvjqrh2gh/image/upload/v1779254346/MyPortfolio/Mockups/cpaas-mockup_rygdnt.png",
     link: "/about#what-i-built",
-    metric: "Communication Platform",
+    metric: "Professional Experience",
     color: "#8b5cf6",
     num: "01",
   },
@@ -26,8 +27,8 @@ const projects = [
       "Led end-to-end development of a complete ecommerce platform handling 10K+ daily transactions. Built React Native mobile app with secure payment flows and a comprehensive admin dashboard for real-time analytics.",
     tags: ["React Native", "Node.js", "PostgreSQL", "Redis", "Razorpay"],
     image:
-      "https://res.cloudinary.com/dvjqrh2gh/image/upload/v1779194174/MyPortfolio/Freelance%20Projects/Soho_irroy6.png",
-    link: "/work/freelance",
+      "https://res.cloudinary.com/dvjqrh2gh/image/upload/v1779254313/MyPortfolio/Mockups/soho_-mockup_qja9cg.png",
+    link: "/work/soho",
     metric: "Mobile Application",
     color: "#049EE2",
     num: "02",
@@ -45,7 +46,7 @@ const projects = [
       "Admin Dashboard",
     ],
     image:
-      "https://res.cloudinary.com/dvjqrh2gh/image/upload/v1779187820/MyPortfolio/Freelance%20Projects/3ba16c6c-4240-4f05-944b-3173991f2ee2.png",
+      "https://res.cloudinary.com/dvjqrh2gh/image/upload/v1779254313/MyPortfolio/Mockups/vydhra-mockup_ipcolm.png",
     link: "/work/vydhra",
     metric: "Education Platform",
     color: "#f59e0b",
@@ -94,7 +95,7 @@ function ProjectCard({
         <motion.div
           className="fp-metric-chip"
           style={{
-            background: project.color + "22",
+            background: `${project.color}22`,
             border: `1px solid ${project.color}55`,
             color: project.color,
           }}

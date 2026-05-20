@@ -13,10 +13,73 @@
   gap: 3rem;
 }
 
-/* ── Top row: education left + facts right ── */
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  padding-bottom: 28px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.headerLeft { flex: 1; min-width: 0; }
+
+.sectionHeading {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 12px;
+  color: var(--neutral-on-background-strong, #f0f0f0);
+}
+
+.sectionSubheading {
+  font-size: 0.875rem;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.55));
+  max-width: 460px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.eduPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--neutral-alpha-medium, rgba(255, 255, 255, 0.12));
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--neutral-on-background-weak, rgba(240, 240, 240, 0.55));
+  flex-shrink: 0;
+  background: var(--neutral-alpha-weak, rgba(255, 255, 255, 0.04));
+
+  strong {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #049EE2;
+    letter-spacing: -0.02em;
+  }
+}
+
+.headerRule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #049EE2 0%, rgba(4, 158, 226, 0.3) 50%, transparent 100%);
+  transform-origin: left center;
+}
+
+/* ── Top row: education full width ── */
 .topRow {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1fr;
   gap: 2.5rem;
   align-items: start;
 }
@@ -291,6 +354,12 @@
   .section {
     padding: 1rem 16px 5rem;
     gap: 2rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
 
   .factsGrid {

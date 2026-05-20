@@ -46,8 +46,7 @@ export async function generateMetadata({
     title: post.metadata.title,
     description: post.metadata.summary,
     baseURL: baseURL,
-    image:
-      post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
+    image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
     path: `${work.path}/${post.slug}`,
   });
 }
@@ -62,9 +61,7 @@ export default async function Project({
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  const post = getPosts(["src", "app", "work", "projects"]).find(
-    (post) => post.slug === slugPath,
-  );
+  const post = getPosts(["src", "app", "work", "projects"]).find((post) => post.slug === slugPath);
 
   if (!post) {
     notFound();
@@ -86,8 +83,7 @@ export default async function Project({
         datePublished={post.metadata.publishedAt}
         dateModified={post.metadata.publishedAt}
         image={
-          post.metadata.image ||
-          `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
+          post.metadata.image || `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
         }
         author={{
           name: person.name,
@@ -126,10 +122,7 @@ export default async function Project({
           )}
         </Row>
 
-        <Heading
-          variant="display-strong-l"
-          style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}
-        >
+        <Heading variant="display-strong-l" style={{ letterSpacing: "-0.03em", lineHeight: 1.05 }}>
           {post.metadata.title}
         </Heading>
 
@@ -176,7 +169,9 @@ export default async function Project({
             {post.metadata.team.map((member, idx) => (
               <Text key={idx} variant="label-default-s" onBackground="brand-weak">
                 {idx > 0 && (
-                  <Text as="span" onBackground="neutral-weak">, </Text>
+                  <Text as="span" onBackground="neutral-weak">
+                    ,{" "}
+                  </Text>
                 )}
                 <SmartLink href={member.linkedIn}>{member.name}</SmartLink>
               </Text>
@@ -255,9 +250,7 @@ export default async function Project({
               {post.metadata.publishedAt && (
                 <div>
                   <p className="work-sidebar-meta-label">Published</p>
-                  <p className="work-sidebar-meta-value">
-                    {formatDate(post.metadata.publishedAt)}
-                  </p>
+                  <p className="work-sidebar-meta-value">{formatDate(post.metadata.publishedAt)}</p>
                 </div>
               )}
               {post.metadata.badge && (

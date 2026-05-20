@@ -94,9 +94,8 @@ export function FounderSection() {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Built and launched a complete review management SaaS — from
-            architecture to production. Helps businesses automate review
-            collection and dominate local search.
+            Built and launched a complete review management SaaS — from architecture to production.
+            Helps businesses automate review collection and dominate local search.
           </motion.p>
 
           {/* CTAs */}

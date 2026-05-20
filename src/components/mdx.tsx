@@ -109,13 +109,7 @@ function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
     }
 
     return (
-      <HeadingLink
-        marginTop="20"
-        marginBottom="8"
-        as={as}
-        id={slug}
-        {...props}
-      >
+      <HeadingLink marginTop="20" marginBottom="8" as={as} id={slug} {...props}>
         {children}
       </HeadingLink>
     );
@@ -146,11 +140,7 @@ function createInlineCode({ children }: { children: ReactNode }) {
 
 function createCodeBlock(props: any) {
   // For pre tags that contain code blocks
-  if (
-    props.children &&
-    props.children.props &&
-    props.children.props.className
-  ) {
+  if (props.children && props.children.props && props.children.props.className) {
     const { className, children } = props.children.props;
 
     // Extract language from className (format: language-xxx)
@@ -236,10 +226,5 @@ type CustomMDXProps = MDXRemoteProps & {
 };
 
 export function CustomMDX(props: CustomMDXProps) {
-  return (
-    <MDXRemote
-      {...props}
-      components={{ ...components, ...(props.components || {}) }}
-    />
-  );
+  return <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />;
 }

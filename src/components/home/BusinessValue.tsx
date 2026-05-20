@@ -63,7 +63,12 @@ export function BusinessValue() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <Heading as="h2" variant="display-strong-s" wrap="balance" style={{ marginBottom: "16px" }}>
+          <Heading
+            as="h2"
+            variant="display-strong-s"
+            wrap="balance"
+            style={{ marginBottom: "16px" }}
+          >
             I Think Like a Founder, Code Like an Engineer
           </Heading>
         </motion.div>
@@ -135,7 +140,7 @@ export function BusinessValue() {
                 {value.icon}
               </motion.div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -145,13 +150,17 @@ export function BusinessValue() {
                 {value.title}
               </Heading>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.5, delay: idx * 0.15 + 0.4 }}
             >
-              <Text variant="body-default-m" onBackground="neutral-weak" style={{ lineHeight: 1.7 }}>
+              <Text
+                variant="body-default-m"
+                onBackground="neutral-weak"
+                style={{ lineHeight: 1.7 }}
+              >
                 {value.description}
               </Text>
             </motion.div>

@@ -116,10 +116,7 @@ function SectionHeader({
   const num = String(count).padStart(2, "0");
 
   return (
-    <div
-      ref={ref}
-      style={{ position: "relative", paddingBottom: 28, marginBottom: 36 }}
-    >
+    <div ref={ref} style={{ position: "relative", paddingBottom: 28, marginBottom: 36 }}>
       <div
         style={{
           display: "flex",
@@ -165,8 +162,7 @@ function SectionHeader({
             <motion.p
               style={{
                 fontSize: "0.875rem",
-                color:
-                  "var(--neutral-on-background-weak, rgba(240,240,240,0.55))",
+                color: "var(--neutral-on-background-weak, rgba(240,240,240,0.55))",
                 maxWidth: 460,
                 lineHeight: 1.55,
                 margin: 0,
@@ -185,8 +181,7 @@ function SectionHeader({
             display: "inline-flex",
             alignItems: "center",
             gap: 6,
-            border:
-              "1px solid var(--neutral-alpha-medium, rgba(255,255,255,0.12))",
+            border: "1px solid var(--neutral-alpha-medium, rgba(255,255,255,0.12))",
             borderRadius: 100,
             padding: "8px 18px",
             fontSize: "0.72rem",
@@ -405,27 +400,9 @@ function WorkHero({
     >
       {/* Background orbs */}
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        <FloatingOrb
-          x="5%"
-          y="10%"
-          size={380}
-          color="rgba(4,158,226,0.09)"
-          delay={0}
-        />
-        <FloatingOrb
-          x="70%"
-          y="60%"
-          size={450}
-          color="rgba(23,192,253,0.06)"
-          delay={2}
-        />
-        <FloatingOrb
-          x="80%"
-          y="5%"
-          size={280}
-          color="rgba(4,158,226,0.07)"
-          delay={4}
-        />
+        <FloatingOrb x="5%" y="10%" size={380} color="rgba(4,158,226,0.09)" delay={0} />
+        <FloatingOrb x="70%" y="60%" size={450} color="rgba(23,192,253,0.06)" delay={2} />
+        <FloatingOrb x="80%" y="5%" size={280} color="rgba(4,158,226,0.07)" delay={4} />
       </div>
 
       {/* Grid lines */}
@@ -456,11 +433,7 @@ function WorkHero({
         }}
       >
         {/* Badge */}
-        <motion.div
-          variants={fadeUp}
-          custom={0}
-          style={{ marginBottom: "1.4rem" }}
-        >
+        <motion.div variants={fadeUp} custom={0} style={{ marginBottom: "1.4rem" }}>
           <span
             style={{
               display: "inline-flex",
@@ -522,8 +495,7 @@ function WorkHero({
             maxWidth: 560,
           }}
         >
-          From SaaS products to client delivery &mdash; everything I&apos;ve
-          shipped.
+          From SaaS products to client delivery &mdash; everything I&apos;ve shipped.
         </motion.p>
 
         {/* Stat chips */}
@@ -669,8 +641,7 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
           left: 0,
           right: 0,
           height: 2,
-          background:
-            "linear-gradient(90deg, #049EE2 0%, #17C0FD 60%, transparent 100%)",
+          background: "linear-gradient(90deg, #049EE2 0%, #17C0FD 60%, transparent 100%)",
           borderRadius: "24px 24px 0 0",
         }}
       />
@@ -830,14 +801,9 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
       </div>
 
       {/* Right: screenshot in browser chrome */}
-      <div
-        style={{ width: 300, flexShrink: 0, alignSelf: "center" }}
-        className="saas-screenshot"
-      >
+      <div style={{ width: 300, flexShrink: 0, alignSelf: "center" }} className="saas-screenshot">
         <BrowserChrome url={project.metadata.live}>
-          <div
-            style={{ height: 160, overflow: "hidden", position: "relative" }}
-          >
+          <div style={{ height: 160, overflow: "hidden", position: "relative" }}>
             <ProjectImage
               src={img}
               alt={project.metadata.title}
@@ -848,8 +814,7 @@ function SaaSCard({ project, index }: { project: ProjectData; index: number }) {
               style={{
                 position: "absolute",
                 inset: 0,
-                background:
-                  "linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%)",
+                background: "linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%)",
                 pointerEvents: "none",
               }}
             />
@@ -1043,9 +1008,7 @@ function EngagementCard({
         </p>
 
         {/* Links */}
-        <div
-          style={{ marginTop: "auto", display: "flex", gap: 10, paddingTop: 8 }}
-        >
+        <div style={{ marginTop: "auto", display: "flex", gap: 10, paddingTop: 8 }}>
           {project.metadata.live && (
             <motion.a
               href={project.metadata.live}
@@ -1246,8 +1209,7 @@ function PersonalCard({
           style={{
             position: "absolute",
             inset: 0,
-            background:
-              "linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 100%)",
+            background: "linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.5) 100%)",
             pointerEvents: "none",
           }}
         />
@@ -1448,11 +1410,7 @@ export function WorkContent({ saas, clients, personal }: WorkContentProps) {
 
   return (
     <div style={{ width: "100%", minHeight: "100vh" }}>
-      <WorkHero
-        totalCount={total}
-        clientCount={clients.length}
-        saasCount={saas.length}
-      />
+      <WorkHero totalCount={total} clientCount={clients.length} saasCount={saas.length} />
       {saas.length > 0 && <SaaSSection projects={saas} />}
       {clients.length > 0 && <EngagementsSection projects={clients} />}
       {personal.length > 0 && <PersonalSection projects={personal} />}

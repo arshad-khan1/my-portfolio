@@ -102,7 +102,6 @@ export function AboutHero() {
 
       {/* Content — centered column */}
       <motion.div className="ah-inner" variants={stagger} initial="hidden" animate="visible">
-
         {/* Calendar badge */}
         {about.calendar.display && (
           <motion.div variants={fadeUp} style={{ display: "flex", justifyContent: "center" }}>
@@ -137,9 +136,7 @@ export function AboutHero() {
               transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
             />
             <div className="ah-img-wrap">
-              {mounted && (
-                <img src={person.avatar} alt={person.name} className="ah-img" />
-              )}
+              {mounted && <img src={person.avatar} alt={person.name} className="ah-img" />}
               <div className="ah-img-overlay" />
             </div>
           </div>
@@ -193,16 +190,24 @@ export function AboutHero() {
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -4, boxShadow: `0 12px 32px -8px ${card.color}30`, borderColor: `${card.color}50` }}
+              whileHover={{
+                y: -4,
+                boxShadow: `0 12px 32px -8px ${card.color}30`,
+                borderColor: `${card.color}50`,
+              }}
             >
               <span className="ah-id-emoji">{card.emoji}</span>
               <div>
-                <p className="ah-id-title" style={{ color: card.color }}>{card.title}</p>
+                <p className="ah-id-title" style={{ color: card.color }}>
+                  {card.title}
+                </p>
                 <p className="ah-id-sub">{card.sub}</p>
               </div>
               <motion.div
                 className="ah-id-bar"
-                style={{ background: `linear-gradient(90deg, transparent, ${card.color}, transparent)` }}
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${card.color}, transparent)`,
+                }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.7, delay: 0.8 + i * 0.08 }}

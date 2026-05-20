@@ -92,8 +92,7 @@ function SectionHeader() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          A look at the technical decisions and architectures that powered
-          real-world systems.
+          A look at the technical decisions and architectures that powered real-world systems.
         </motion.p>
       </div>
 
@@ -137,8 +136,8 @@ function RedisCard() {
         <span className={styles.cardTag}>Redis Cache</span>
         <h3>Strategic Redis Integration</h3>
         <p>
-          Led the decision to implement distributed caching, slashing DB calls
-          by 80% and delivering sub-millisecond response times.
+          Led the decision to implement distributed caching, slashing DB calls by 80% and delivering
+          sub-millisecond response times.
         </p>
 
         <div className={styles.cacheBars}>
@@ -195,16 +194,12 @@ function AIRoutingCard() {
         <span className={styles.cardTag}>AI / ML</span>
         <h3>AI-Powered Agent Routing</h3>
         <p>
-          Architected an intelligent routing engine that cut customer query
-          resolve time by 50% via contextual NLP classification.
+          Architected an intelligent routing engine that cut customer query resolve time by 50% via
+          contextual NLP classification.
         </p>
 
         <div className={styles.networkWrap}>
-          <svg
-            viewBox="0 0 180 175"
-            className={styles.networkSvg}
-            aria-hidden="true"
-          >
+          <svg viewBox="0 0 180 175" className={styles.networkSvg} aria-hidden="true">
             {/* Edges — fade in first */}
             {edges.map((e, i) => (
               <motion.line
@@ -228,11 +223,7 @@ function AIRoutingCard() {
               <motion.g
                 key={n.id}
                 initial={{ opacity: 0, scale: 0.5 }}
-                animate={
-                  inView
-                    ? { opacity: 1, scale: 1 }
-                    : { opacity: 0, scale: 0.5 }
-                }
+                animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
                 style={{ transformOrigin: `${n.cx}px ${n.cy}px` }}
                 transition={{ duration: 0.35, delay: 0.4 + i * 0.09 }}
               >
@@ -281,9 +272,8 @@ function ReviewsCard() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <h3>Reviews Next AI SaaS</h3>
             <p>
-              Built and launched a complete review management platform, helping
-              businesses boost Google reviews by 3× through automated,
-              AI-personalised feedback collection workflows.
+              Built and launched a complete review management platform, helping businesses boost
+              Google reviews by 3× through automated, AI-personalised feedback collection workflows.
             </p>
             <div className={styles.techChips}>
               {["Next.js", "AI / NLP", "TypeScript", "Stripe"].map((t) => (
@@ -316,9 +306,8 @@ function EcommerceCard() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <h3>Full Ecommerce Platform</h3>
             <p>
-              Led end-to-end development of a full-stack ecommerce platform with
-              a comprehensive admin dashboard, supporting 10K+ daily transactions
-              at scale.
+              Led end-to-end development of a full-stack ecommerce platform with a comprehensive
+              admin dashboard, supporting 10K+ daily transactions at scale.
             </p>
             <div className={styles.techChips}>
               {["React Native", "Node.js", "PostgreSQL", "Redis"].map((t) => (
@@ -349,9 +338,8 @@ function MinioCard() {
         <span className={styles.cardTag}>Cloud Storage</span>
         <h3>Minio Storage Solution</h3>
         <p>
-          Architected a scalable self-hosted object storage system mimicking
-          Google Drive, supporting multi-tenant file operations with 99.9%
-          uptime.
+          Architected a scalable self-hosted object storage system mimicking Google Drive,
+          supporting multi-tenant file operations with 99.9% uptime.
         </p>
 
         {/* Drive Wireframe UI */}
@@ -433,8 +421,8 @@ function WhatsAppCard() {
         <span className={styles.cardTag}>Messaging</span>
         <h3>WhatsApp AI Pipeline</h3>
         <p>
-          Built a complete WhatsApp messaging pipeline with automated AI routing
-          and rapid response dispatch for customer support at scale.
+          Built a complete WhatsApp messaging pipeline with automated AI routing and rapid response
+          dispatch for customer support at scale.
         </p>
 
         <div className={styles.chatWrap}>
@@ -469,8 +457,8 @@ function RazorpayCard() {
         <span className={styles.cardTag}>Payments</span>
         <h3>Razorpay Gateway</h3>
         <p>
-          Integrated Razorpay payment gateway with webhook handling and
-          reconciliation, achieving a 99.9% transaction success rate.
+          Integrated Razorpay payment gateway with webhook handling and reconciliation, achieving a
+          99.9% transaction success rate.
         </p>
 
         <div className={styles.paymentWrap}>

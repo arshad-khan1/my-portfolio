@@ -18,15 +18,6 @@ import {
 } from "react-icons/fi";
 import React from "react";
 
-const quickFacts = [
-  { icon: <FiMapPin size={15} />, label: "Based in", value: "Nagpur, India" },
-  { icon: <FiClock size={15} />, label: "Experience", value: "5+ Years" },
-  { icon: <FiCode size={15} />, label: "Primary stack", value: "Node · NestJS · Next" },
-  { icon: <FiCpu size={15} />, label: "Specialty", value: "AI-native Systems" },
-  { icon: <FiGlobe size={15} />, label: "Languages", value: "English · Hindi" },
-  { icon: <FiBook size={15} />, label: "Degree", value: "B.Tech · IT" },
-];
-
 export function ClosingSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.2 });
@@ -41,9 +32,58 @@ export function ClosingSection() {
 
   return (
     <section className={styles.section}>
-      {/* ── Top: Education + Quick facts ── */}
-      <div ref={ref} className={styles.topRow}>
+      {/* ── Section Header (Career/Work style) ── */}
+      <div ref={ref} className={styles.header}>
+        <div className={styles.headerLeft}>
+          <motion.span
+            className={styles.eyebrow}
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+          >
+            Education
+          </motion.span>
+          <motion.h2
+            className={styles.sectionHeading}
+            initial={{ opacity: 0, y: 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.1 }}
+          >
+            {about.studies.title}
+          </motion.h2>
+          <motion.p
+            className={styles.sectionSubheading}
+            initial={{ opacity: 0, y: 10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            My academic background and qualifications.
+          </motion.p>
+        </div>
 
+        <motion.div
+          className={styles.eduPill}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.45, delay: 0.25 }}
+        >
+          <FiBook size={14} />
+          <span>
+            <strong>{about.studies.institutions.length}</strong> Degree
+            {about.studies.institutions.length > 1 ? "s" : ""}
+          </span>
+        </motion.div>
+
+        <motion.div
+          className={styles.headerRule}
+          initial={{ scaleX: 0 }}
+          animate={inView ? { scaleX: 1 } : {}}
+          transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        />
+      </div>
+
+      {/* ── Top: Education full width ── */}
+      <div className={styles.topRow}>
         {/* Education block */}
         <div ref={eduRef} className={styles.eduBlock}>
           <motion.span
@@ -87,29 +127,9 @@ export function ClosingSection() {
             <div className={styles.eduTimelineDot} />
           </motion.div>
           <div className={styles.eduTimelineLabels}>
-            <span>2019</span>
-            <span>2023</span>
+            <span>2020</span>
+            <span>2024</span>
           </div>
-        </div>
-
-        {/* Quick facts grid */}
-        <div className={styles.factsGrid}>
-          {quickFacts.map((fact, i) => (
-            <motion.div
-              key={fact.label}
-              className={styles.factCard}
-              initial={{ opacity: 0, y: 20, scale: 0.96 }}
-              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -3 }}
-            >
-              <span className={styles.factIcon}>{fact.icon}</span>
-              <div>
-                <p className={styles.factLabel}>{fact.label}</p>
-                <p className={styles.factValue}>{fact.value}</p>
-              </div>
-            </motion.div>
-          ))}
         </div>
       </div>
 
@@ -124,8 +144,8 @@ export function ClosingSection() {
         <div className={styles.quoteBlock}>
           <span className={styles.quoteGlyph}>"</span>
           <p className={styles.quoteText}>
-            I don't just ship features — I take ownership, think in systems,
-            and build things that scale.
+            I don't just ship features — I take ownership, think in systems, and build things that
+            scale.
           </p>
         </div>
 
@@ -150,13 +170,17 @@ export function ClosingSection() {
                   target={item.name !== "Email" ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   className={styles.socialBtn}
-                  whileHover={{ scale: 1.1, backgroundColor: "rgba(4,158,226,0.12)", borderColor: "rgba(4,158,226,0.4)" }}
+                  whileHover={{
+                    scale: 1.1,
+                    backgroundColor: "rgba(4,158,226,0.12)",
+                    borderColor: "rgba(4,158,226,0.4)",
+                  }}
                   whileTap={{ scale: 0.95 }}
                   title={item.name}
                 >
-                  {item.name === "GitHub"   && <FiGithub size={16} />}
+                  {item.name === "GitHub" && <FiGithub size={16} />}
                   {item.name === "LinkedIn" && <FiLinkedin size={16} />}
-                  {item.name === "Email"    && <FiMail size={16} />}
+                  {item.name === "Email" && <FiMail size={16} />}
                   {!["GitHub", "LinkedIn", "Email"].includes(item.name) && (
                     <span style={{ fontSize: "0.72rem" }}>{item.name}</span>
                   )}

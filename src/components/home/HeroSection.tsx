@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  useScroll,
-} from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { FiArrowRight, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 
@@ -33,9 +27,7 @@ function ScrambleText({ text, delay = 0 }: { text: string; delay?: number }) {
           .map((char, i) => {
             if (char === " ") return " ";
             if (frame / total > i / text.length) return char;
-            return SCRAMBLE_CHARS[
-              Math.floor(Math.random() * SCRAMBLE_CHARS.length)
-            ];
+            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
           })
           .join(""),
       );
@@ -168,20 +160,8 @@ export function HeroSection({
           pointerEvents: "none",
         }}
       >
-        <FloatingOrb
-          x="5%"
-          y="10%"
-          size={400}
-          color="rgba(4,158,226,0.10)"
-          delay={0}
-        />
-        <FloatingOrb
-          x="20%"
-          y="70%"
-          size={350}
-          color="rgba(4,158,226,0.06)"
-          delay={1}
-        />
+        <FloatingOrb x="5%" y="10%" size={400} color="rgba(4,158,226,0.10)" delay={0} />
+        <FloatingOrb x="20%" y="70%" size={350} color="rgba(4,158,226,0.06)" delay={1} />
       </motion.div>
 
       {/* Background orbs — fast parallax layer */}
@@ -193,20 +173,8 @@ export function HeroSection({
           pointerEvents: "none",
         }}
       >
-        <FloatingOrb
-          x="60%"
-          y="60%"
-          size={500}
-          color="rgba(23,192,253,0.07)"
-          delay={2}
-        />
-        <FloatingOrb
-          x="80%"
-          y="5%"
-          size={300}
-          color="rgba(4,158,226,0.07)"
-          delay={4}
-        />
+        <FloatingOrb x="60%" y="60%" size={500} color="rgba(23,192,253,0.07)" delay={2} />
+        <FloatingOrb x="80%" y="5%" size={300} color="rgba(4,158,226,0.07)" delay={4} />
       </motion.div>
 
       {/* Grid lines */}
@@ -270,11 +238,7 @@ export function HeroSection({
             <motion.div variants={up} style={{ marginBottom: "0.5rem" }}>
               <p className="hero-name-label">Hi, I&apos;m</p>
               <h1 className="hero-name">
-                {mounted ? (
-                  <ScrambleText text="ARSHAD KHAN" delay={400} />
-                ) : (
-                  "ARSHAD KHAN"
-                )}
+                {mounted ? <ScrambleText text="ARSHAD KHAN" delay={400} /> : "ARSHAD KHAN"}
               </h1>
             </motion.div>
 
@@ -283,17 +247,12 @@ export function HeroSection({
               <div className="hero-role-line">
                 <span className="hero-role-gradient">Software Engineer</span>
                 <span className="hero-role-sep">&nbsp;×&nbsp;</span>
-                <span className="hero-role-gradient2">
-                  AI Solution Architect
-                </span>
+                <span className="hero-role-gradient2">AI Solution Architect</span>
               </div>
             </motion.div>
 
             {/* Subline */}
-            <motion.div
-              variants={up}
-              style={{ marginBottom: "1.4rem", maxWidth: "580px" }}
-            >
+            <motion.div variants={up} style={{ marginBottom: "1.4rem", maxWidth: "580px" }}>
               <p className="hero-subline">{subline}</p>
             </motion.div>
 
@@ -304,8 +263,7 @@ export function HeroSection({
                 className="btn-primary"
                 whileHover={{
                   scale: 1.04,
-                  boxShadow:
-                    "0 0 40px rgba(4,158,226,0.55), 0 0 80px rgba(4,158,226,0.25)",
+                  boxShadow: "0 0 40px rgba(4,158,226,0.55), 0 0 80px rgba(4,158,226,0.25)",
                 }}
                 whileTap={{ scale: 0.97 }}
               >
@@ -426,11 +384,7 @@ export function HeroSection({
 
               {/* Avatar */}
               <div className="portrait-img-wrap">
-                <img
-                  src="/images/gallery/image.png"
-                  alt="Arshad Khan"
-                  className="portrait-img"
-                />
+                <img src="/images/gallery/image.png" alt="Arshad Khan" className="portrait-img" />
                 <div className="portrait-overlay" />
               </div>
             </div>
@@ -444,9 +398,7 @@ export function HeroSection({
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
         className="scroll-hint"
-        onClick={() =>
-          window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
-        }
+        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
       >
         <motion.div
           className="scroll-line"

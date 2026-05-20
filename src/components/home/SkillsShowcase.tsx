@@ -141,7 +141,12 @@ export function SkillsShowcase() {
           animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <Heading as="h2" variant="display-strong-s" wrap="balance" style={{ marginBottom: "16px" }}>
+          <Heading
+            as="h2"
+            variant="display-strong-s"
+            wrap="balance"
+            style={{ marginBottom: "16px" }}
+          >
             Tools That Power Real Solutions
           </Heading>
         </motion.div>
@@ -151,8 +156,8 @@ export function SkillsShowcase() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance">
-            I don&apos;t just learn tech — I master the right tools to solve business problems efficiently.
-            From AI-powered pipelines to payment gateways, I build end-to-end.
+            I don&apos;t just learn tech — I master the right tools to solve business problems
+            efficiently. From AI-powered pipelines to payment gateways, I build end-to-end.
           </Text>
         </motion.div>
       </div>

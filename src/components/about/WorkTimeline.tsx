@@ -4,12 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "./WorkTimeline.module.scss";
 import { about } from "@/resources";
-import {
-  FiBriefcase,
-  FiCalendar,
-  FiZap,
-  FiArrowRight,
-} from "react-icons/fi";
+import { FiBriefcase, FiCalendar, FiZap, FiArrowRight } from "react-icons/fi";
 import React from "react";
 
 type Experience = (typeof about.work.experiences)[number];
@@ -18,7 +13,12 @@ const ACCENT_COLORS = ["#3b82f6", "#8b5cf6", "#10b981", "#f59e0b"];
 
 const TECH_MAP: Record<string, string[]> = {
   "Pinnacle Teleservices Pvt. Ltd.": [
-    "NestJS", "Next.js", "PostgreSQL", "Redis", "AWS", "WhatsApp API",
+    "NestJS",
+    "Next.js",
+    "PostgreSQL",
+    "Redis",
+    "AWS",
+    "WhatsApp API",
   ],
 };
 
@@ -52,8 +52,7 @@ function Header() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Companies where I owned products end-to-end — from architecture to
-          production.
+          Companies where I owned products end-to-end — from architecture to production.
         </motion.p>
       </div>
 
@@ -64,7 +63,10 @@ function Header() {
         transition={{ duration: 0.45, delay: 0.25 }}
       >
         <FiBriefcase size={14} />
-        <span><strong>{about.work.experiences.length}</strong> Position{about.work.experiences.length > 1 ? "s" : ""}</span>
+        <span>
+          <strong>{about.work.experiences.length}</strong> Position
+          {about.work.experiences.length > 1 ? "s" : ""}
+        </span>
       </motion.div>
 
       <motion.div
@@ -101,9 +103,15 @@ function ExperienceEntry({
       {/* Left panel */}
       <div className={styles.leftPanel}>
         {/* Dot + line */}
-        <div className={styles.timelineDot} style={{ background: color, boxShadow: `0 0 12px ${color}60` }} />
+        <div
+          className={styles.timelineDot}
+          style={{ background: color, boxShadow: `0 0 12px ${color}60` }}
+        />
         {index < about.work.experiences.length - 1 && (
-          <div className={styles.timelineLine} style={{ background: `linear-gradient(to bottom, ${color}40, transparent)` }} />
+          <div
+            className={styles.timelineLine}
+            style={{ background: `linear-gradient(to bottom, ${color}40, transparent)` }}
+          />
         )}
 
         <div className={styles.companyBlock}>
@@ -145,7 +153,9 @@ function ExperienceEntry({
               transition={{ duration: 0.5, delay: index * 0.1 + 0.35 }}
             >
               {techs.map((t) => (
-                <span key={t} className={styles.techChip}>{t}</span>
+                <span key={t} className={styles.techChip}>
+                  {t}
+                </span>
               ))}
             </motion.div>
           )}
@@ -155,7 +165,10 @@ function ExperienceEntry({
       {/* Divider */}
       <motion.div
         className={styles.divider}
-        style={{ background: `linear-gradient(to bottom, ${color}30, transparent)`, transformOrigin: "top" }}
+        style={{
+          background: `linear-gradient(to bottom, ${color}30, transparent)`,
+          transformOrigin: "top",
+        }}
         initial={{ scaleY: 0 }}
         animate={inView ? { scaleY: 1 } : {}}
         transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}

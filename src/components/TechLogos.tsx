@@ -23,15 +23,7 @@ import {
   SiStripe,
   SiWhatsapp,
 } from "react-icons/si";
-import {
-  FiCloud,
-  FiCpu,
-  FiZap,
-  FiServer,
-  FiMonitor,
-  FiDatabase,
-  FiPackage,
-} from "react-icons/fi";
+import { FiCloud, FiCpu, FiZap, FiServer, FiMonitor, FiDatabase, FiPackage } from "react-icons/fi";
 import styles from "./TechLogos.module.scss";
 
 /* ── Skill categories ───────────────────────────────── */
@@ -141,8 +133,8 @@ function SectionHeader() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          A full-stack arsenal spanning backend systems, databases, cloud
-          infrastructure, and AI—everything needed to ship production software.
+          A full-stack arsenal spanning backend systems, databases, cloud infrastructure, and
+          AI—everything needed to ship production software.
         </motion.p>
       </div>
 

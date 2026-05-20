@@ -1,9 +1,22 @@
 "use client";
 
 const ITEMS = [
-  "NestJS", "AWS", "PostgreSQL", "Redis", "AI / ML", "React Native",
-  "Python", "Docker", "TypeScript", "GraphQL", "Kafka",
-  "LangChain", "OpenAI API", "WebSockets", "Prisma", "MongoDB",
+  "NestJS",
+  "AWS",
+  "PostgreSQL",
+  "Redis",
+  "AI / ML",
+  "React Native",
+  "Python",
+  "Docker",
+  "TypeScript",
+  "GraphQL",
+  "Kafka",
+  "LangChain",
+  "OpenAI API",
+  "WebSockets",
+  "Prisma",
+  "MongoDB",
 ];
 
 export function MarqueeBanner({ reverse = false }: { reverse?: boolean }) {

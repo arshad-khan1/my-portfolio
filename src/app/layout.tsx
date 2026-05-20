@@ -18,13 +18,7 @@ import { Header } from "@/components/Header";
 import { RouteGuard } from "@/components/RouteGuard";
 import { Providers } from "@/components/Providers";
 import { LenisProvider } from "@/components/LenisProvider";
-import {
-  baseURL,
-  effects,
-  fonts,
-  style,
-  dataStyle,
-} from "@/resources/once-ui.config";
+import { baseURL, effects, fonts, style, dataStyle } from "@/resources/once-ui.config";
 import { home } from "@/resources/content";
 import { Analytics } from "@vercel/analytics/react";
 

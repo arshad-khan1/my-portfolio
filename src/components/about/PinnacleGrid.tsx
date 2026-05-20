@@ -93,8 +93,8 @@ function SectionHeader() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          A breakdown of the systems, pipelines, and infrastructure I designed
-          and shipped at Pinnacle.
+          A breakdown of the systems, pipelines, and infrastructure I designed and shipped at
+          Pinnacle.
         </motion.p>
       </div>
 
@@ -137,9 +137,8 @@ function GarageCard() {
         <span className={styles.cardTag}>Cloud Storage</span>
         <h3>Garage — S3 Storage Server</h3>
         <p>
-          Set up a self-hosted S3-compatible object storage using Garage,
-          replacing cloud buckets with a server-owned solution for secure
-          multi-tenant file management.
+          Set up a self-hosted S3-compatible object storage using Garage, replacing cloud buckets
+          with a server-owned solution for secure multi-tenant file management.
         </p>
 
         <div className={styles.storageWireframe}>
@@ -165,10 +164,7 @@ function GarageCard() {
           </div>
         </div>
 
-        <div
-          className={styles.techChips}
-          style={{ marginTop: "auto", paddingTop: "10px" }}
-        >
+        <div className={styles.techChips} style={{ marginTop: "auto", paddingTop: "10px" }}>
           {["Garage", "S3 API", "MinIO-compat", "Multi-tenant"].map((t) => (
             <span key={t} className={styles.chip}>
               {t}
@@ -227,8 +223,8 @@ function WhatsAppPipelineCard() {
         <span className={styles.cardTag}>Messaging</span>
         <h3>WhatsApp Messaging Pipeline</h3>
         <p>
-          End-to-end pipeline for outbound messages, inbound webhook handling,
-          and template broadcasting — both direct and bulk.
+          End-to-end pipeline for outbound messages, inbound webhook handling, and template
+          broadcasting — both direct and bulk.
         </p>
 
         <div className={styles.chatWrap}>
@@ -241,9 +237,7 @@ function WhatsAppPipelineCard() {
               transition={{ duration: 0.4, delay: f.delay }}
             >
               <strong>{f.label}</strong>&ensp;
-              <span style={{ opacity: 0.6, fontSize: "0.62rem" }}>
-                {f.desc}
-              </span>
+              <span style={{ opacity: 0.6, fontSize: "0.62rem" }}>{f.desc}</span>
             </motion.div>
           ))}
         </div>
@@ -278,8 +272,8 @@ function LoggingCard() {
         <span className={styles.cardTag}>Observability</span>
         <h3>Centralized Logging — Winston</h3>
         <p>
-          Unified logging pipeline using Winston with structured JSON output,
-          log levels, and transport routing for production observability.
+          Unified logging pipeline using Winston with structured JSON output, log levels, and
+          transport routing for production observability.
         </p>
 
         <div className={styles.terminal}>
@@ -335,9 +329,9 @@ function DeploymentCard() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <h3>Backend + Frontend Deployment</h3>
             <p>
-              Configured and deployed separate backend (NestJS) and frontend
-              (Next.js) services on the server, with environment management,
-              process supervision, and zero-downtime deploys.
+              Configured and deployed separate backend (NestJS) and frontend (Next.js) services on
+              the server, with environment management, process supervision, and zero-downtime
+              deploys.
             </p>
             <div className={styles.techChips}>
               {["NestJS", "Next.js", "PM2", "Nginx", "Docker"].map((t) => (
@@ -351,10 +345,7 @@ function DeploymentCard() {
 
         <div className={styles.pipeline}>
           {steps.map((step, i) => (
-            <div
-              key={step.label}
-              style={{ display: "flex", alignItems: "center" }}
-            >
+            <div key={step.label} style={{ display: "flex", alignItems: "center" }}>
               <motion.div
                 className={styles.pipelineStep}
                 initial={{ opacity: 0, scale: 0.7 }}
@@ -426,8 +417,8 @@ function ConversationCard() {
         <span className={styles.cardTag}>Logic</span>
         <h3>Conversation Handling</h3>
         <p>
-          Routing engine based on agent availability, working hours, and contact
-          rules — auto-assigns or queues conversations intelligently.
+          Routing engine based on agent availability, working hours, and contact rules —
+          auto-assigns or queues conversations intelligently.
         </p>
 
         <div
@@ -446,7 +437,7 @@ function ConversationCard() {
           >
             {edges.map((e, i) => (
               <motion.g
-                key={i}
+                key={`edge-${e.x1}-${e.y1}-${e.x2}-${e.y2}`}
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.35, delay: 0.1 + i * 0.08 }}
@@ -531,8 +522,8 @@ function AuthCard() {
         <span className={styles.cardTag}>Auth</span>
         <h3>Login + Protected Routes</h3>
         <p>
-          Next.js authentication with JWT, middleware-based route protection,
-          and role-gated access for multi-tenant dashboards.
+          Next.js authentication with JWT, middleware-based route protection, and role-gated access
+          for multi-tenant dashboards.
         </p>
 
         <div className={styles.authFlow}>
@@ -584,8 +575,8 @@ function WalletCard() {
         <span className={styles.cardTag}>Finance</span>
         <h3>Wallet + Spend Policy</h3>
         <p>
-          Built wallet top-up, deduction on message send, and configurable
-          per-account spend policies with daily caps and per-unit limits.
+          Built wallet top-up, deduction on message send, and configurable per-account spend
+          policies with daily caps and per-unit limits.
         </p>
 
         <div className={styles.walletCard}>
@@ -653,20 +644,16 @@ function BroadcastCard() {
         <span className={styles.cardTag}>Broadcast</span>
         <h3>Template Broadcasting</h3>
         <p>
-          Bulk WhatsApp template dispatch to contact lists — supports variable
-          substitution, scheduling, and delivery tracking.
+          Bulk WhatsApp template dispatch to contact lists — supports variable substitution,
+          scheduling, and delivery tracking.
         </p>
 
         <div className={styles.broadcastWrap}>
-          <svg
-            viewBox="0 0 180 180"
-            className={styles.broadcastSvg}
-            aria-hidden="true"
-          >
+          <svg viewBox="0 0 180 180" className={styles.broadcastSvg} aria-hidden="true">
             {/* Lines from center to recipients */}
             {recipients.map((r, i) => (
               <motion.line
-                key={i}
+                key={`line-${r.cx}-${r.cy}`}
                 x1={90}
                 y1={90}
                 x2={r.cx}
@@ -697,31 +684,17 @@ function BroadcastCard() {
                 stiffness: 200,
               }}
             />
-            <text
-              x={90}
-              y={87}
-              textAnchor="middle"
-              fill="#06b6d4"
-              fontSize="6.5"
-              fontWeight="700"
-            >
+            <text x={90} y={87} textAnchor="middle" fill="#06b6d4" fontSize="6.5" fontWeight="700">
               Template
             </text>
-            <text
-              x={90}
-              y={96}
-              textAnchor="middle"
-              fill="#06b6d4"
-              fontSize="6.5"
-              fontWeight="700"
-            >
+            <text x={90} y={96} textAnchor="middle" fill="#06b6d4" fontSize="6.5" fontWeight="700">
               Broadcast
             </text>
 
             {/* Recipient dots */}
             {recipients.map((r, i) => (
               <motion.circle
-                key={i}
+                key={`circle-${r.cx}-${r.cy}`}
                 cx={r.cx}
                 cy={r.cy}
                 r={8}

@@ -1,14 +1,5 @@
 import React from "react";
-import type {
-  About,
-  Blog,
-  Gallery,
-  Home,
-  Newsletter,
-  Person,
-  Social,
-  Work,
-} from "@/types";
+import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -92,10 +83,9 @@ const home: Home = {
   },
   subline: (
     <>
-      Solving real-world business problems using AI by creating high-impact
-      operational AI workflows and robust, production-ready implementations.
-      Focused on fast delivery and engineering excellence that turns complex AI
-      automation into real, measurable business impact.
+      Solving real-world business problems using AI by creating high-impact operational AI workflows
+      and robust, production-ready implementations. Focused on fast delivery and engineering
+      excellence that turns complex AI automation into real, measurable business impact.
     </>
   ),
 };
@@ -121,11 +111,10 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        I am a software engineer who takes full ownership of projects from
-        conception to deployment. I leverage AI to accelerate development
-        cycles, make data-driven decisions, and build products that scale. My
-        approach combines technical leadership with strategic thinking to ship
-        faster without compromising quality.
+        I am a software engineer who takes full ownership of projects from conception to deployment.
+        I leverage AI to accelerate development cycles, make data-driven decisions, and build
+        products that scale. My approach combines technical leadership with strategic thinking to
+        ship faster without compromising quality.
       </>
     ),
   },
@@ -139,27 +128,23 @@ const about: About = {
         role: "Software Engineer",
         achievements: [
           <React.Fragment key="ach-pinnacle-1">
-            <strong>Owned and led</strong> the backend development for{" "}
-            <strong>HelpNest/UGP</strong> platform, making architectural
-            decisions that enabled scalable APIs and multi-tenant customer
-            support systems.
+            <strong>Owned and led</strong> the backend development for <strong>HelpNest/UGP</strong>{" "}
+            platform, making architectural decisions that enabled scalable APIs and multi-tenant
+            customer support systems.
           </React.Fragment>,
           <React.Fragment key="ach-pinnacle-2">
             <strong>Architected and deployed</strong> the complete{" "}
-            <strong>WhatsApp Messaging Pipeline</strong> with inbound/outbound
-            messaging, reducing integration time by 60% through automated AWS
-            deployments.
+            <strong>WhatsApp Messaging Pipeline</strong> with inbound/outbound messaging, reducing
+            integration time by 60% through automated AWS deployments.
           </React.Fragment>,
           <React.Fragment key="ach-pinnacle-3">
-            <strong>Designed and implemented</strong> core infrastructure
-            including Role-Based Access Control, Authentication, and{" "}
-            <strong>MinIO-based file storage</strong>, ensuring secure
-            multi-tenant operations from day one.
+            <strong>Designed and implemented</strong> core infrastructure including Role-Based
+            Access Control, Authentication, and <strong>MinIO-based file storage</strong>, ensuring
+            secure multi-tenant operations from day one.
           </React.Fragment>,
           <React.Fragment key="ach-pinnacle-4">
-            <strong>Leading the UGP platform</strong> with full ownership of API
-            design in NestJS. Currently integrating{" "}
-            <strong>AI-powered conversation analytics</strong> and intelligent
+            <strong>Leading the UGP platform</strong> with full ownership of API design in NestJS.
+            Currently integrating <strong>AI-powered conversation analytics</strong> and intelligent
             routing to reduce query resolution time by 50%.
           </React.Fragment>,
         ],
@@ -173,9 +158,7 @@ const about: About = {
     institutions: [
       {
         name: "B.Tech in Information Technology",
-        description: (
-          <>Shri Ramdeobaba College of Engineering and Management, Nagpur</>
-        ),
+        description: <>Shri Ramdeobaba College of Engineering and Management, Nagpur</>,
       },
       // {
       //   name: "Maratrao Mude Junior College, Nagpur",
@@ -193,12 +176,7 @@ const about: About = {
     skills: [
       {
         title: "Backend Development",
-        description: (
-          <>
-            Building robust APIs and services with Node.js, Nest.js, and
-            FastAPI.
-          </>
-        ),
+        description: <>Building robust APIs and services with Node.js, Nest.js, and FastAPI.</>,
         tags: [
           {
             name: "Node.js",
@@ -221,9 +199,7 @@ const about: About = {
       },
       {
         title: "Frontend Development",
-        description: (
-          <>Creating dynamic user interfaces with React.js and Next.js.</>
-        ),
+        description: <>Creating dynamic user interfaces with React.js and Next.js.</>,
         tags: [
           {
             name: "React.js",
@@ -243,10 +219,7 @@ const about: About = {
       {
         title: "Databases & Cloud",
         description: (
-          <>
-            Managing data with MySQL, PostgreSQL, MongoDB, and deploying on AWS
-            with Docker.
-          </>
+          <>Managing data with MySQL, PostgreSQL, MongoDB, and deploying on AWS with Docker.</>
         ),
         tags: [
           {
@@ -282,9 +255,7 @@ const about: About = {
       },
       {
         title: "AI & Automation",
-        description: (
-          <>Implementing AI workflows, agents, and generative AI solutions.</>
-        ),
+        description: <>Implementing AI workflows, agents, and generative AI solutions.</>,
         tags: [
           {
             name: "Python",

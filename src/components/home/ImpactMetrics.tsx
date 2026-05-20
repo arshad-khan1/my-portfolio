@@ -18,11 +18,11 @@ interface MetricCardProps {
 function AnimatedNumber({ value }: { value: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
-  
+
   const numericValue = parseInt(value.replace(/[^0-9]/g, ""));
   const prefix = value.match(/^[^-0-9]*/)?.[0] || "";
   const suffix = value.match(/[^0-9]+$/)?.[0] || "";
-  
+
   const motionValue = useMotionValue(0);
   const displayValue = useTransform(motionValue, (v) => {
     const rounded = Math.round(v);
@@ -31,7 +31,7 @@ function AnimatedNumber({ value }: { value: string }) {
     }
     return prefix + rounded + suffix;
   });
-  
+
   useEffect(() => {
     if (isInView) {
       animate(motionValue, numericValue, {
@@ -40,7 +40,7 @@ function AnimatedNumber({ value }: { value: string }) {
       });
     }
   }, [isInView, motionValue, numericValue]);
-  
+
   return (
     <motion.div ref={ref} style={{ display: "inline-block" }}>
       <motion.span>{displayValue}</motion.span>
@@ -48,7 +48,15 @@ function AnimatedNumber({ value }: { value: string }) {
   );
 }
 
-function MetricCard({ icon, value, label, description, delay, color, className = "" }: MetricCardProps) {
+function MetricCard({
+  icon,
+  value,
+  label,
+  description,
+  delay,
+  color,
+  className = "",
+}: MetricCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -80,12 +88,12 @@ function MetricCard({ icon, value, label, description, delay, color, className =
       <motion.div
         initial={{ scale: 0, rotate: -180 }}
         animate={isInView ? { scale: 1, rotate: 0 } : {}}
-        transition={{ 
-          duration: 0.6, 
-          delay: delay + 0.2, 
-          type: "spring", 
+        transition={{
+          duration: 0.6,
+          delay: delay + 0.2,
+          type: "spring",
           stiffness: 200,
-          damping: 15 
+          damping: 15,
         }}
         style={{
           background: `${color}15`,
@@ -96,15 +104,15 @@ function MetricCard({ icon, value, label, description, delay, color, className =
         }}
       >
         <motion.div
-          animate={{ 
+          animate={{
             rotate: [0, 5, -5, 0],
             scale: [1, 1.1, 1],
           }}
-          transition={{ 
-            duration: 2, 
+          transition={{
+            duration: 2,
             repeat: Infinity,
             repeatDelay: 3,
-            ease: "easeInOut" 
+            ease: "easeInOut",
           }}
         >
           {icon}
@@ -117,10 +125,10 @@ function MetricCard({ icon, value, label, description, delay, color, className =
           transition={{ duration: 0.6, delay: delay + 0.3 }}
           style={{ display: "flex", alignItems: "baseline", gap: "0.25rem" }}
         >
-          <Heading 
-            variant="display-strong-xs" 
-            style={{ 
-              fontSize: "2.5rem", 
+          <Heading
+            variant="display-strong-xs"
+            style={{
+              fontSize: "2.5rem",
               lineHeight: 1.1,
               color: color,
             }}
@@ -139,7 +147,7 @@ function MetricCard({ icon, value, label, description, delay, color, className =
           {description}
         </Text>
       </div>
-      
+
       <motion.div
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : {}}
@@ -202,7 +210,12 @@ export function ImpactMetrics() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6 }}
       >
-        <Column horizontal="center" gap="12" maxWidth="s" style={{ margin: "0 auto", textAlign: "center" }}>
+        <Column
+          horizontal="center"
+          gap="12"
+          maxWidth="s"
+          style={{ margin: "0 auto", textAlign: "center" }}
+        >
           <Text
             variant="label-strong-s"
             onBackground="brand-medium"

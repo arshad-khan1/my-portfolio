@@ -59,11 +59,7 @@ import {
   SiRedis,
   SiTypescript,
 } from "react-icons/si";
-import {
-  BiLogoPostgresql,
-  BiLogoSpringBoot,
-  BiLogoTypescript,
-} from "react-icons/bi";
+import { BiLogoPostgresql, BiLogoSpringBoot, BiLogoTypescript } from "react-icons/bi";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,

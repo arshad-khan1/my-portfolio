@@ -15,7 +15,14 @@ export async function generateMetadata() {
 }
 
 const SAAS_BADGES = ["SaaS"];
-const CLIENT_SLUGS = ["ramesys", "beanbagaffairs", "vydhra", "soho", "amico-engineering", "masominds"];
+const CLIENT_SLUGS = [
+  "ramesys",
+  "beanbagaffairs",
+  "vydhra",
+  "soho",
+  "amico-engineering",
+  "masominds",
+];
 
 export default function Work() {
   const raw = getPosts(["src", "app", "work", "projects"]);
@@ -23,8 +30,7 @@ export default function Work() {
   const allProjects: ProjectData[] = raw
     .sort(
       (a, b) =>
-        new Date(b.metadata.publishedAt).getTime() -
-        new Date(a.metadata.publishedAt).getTime()
+        new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime(),
     )
     .map((p) => ({
       slug: p.slug,
@@ -39,18 +45,12 @@ export default function Work() {
       },
     }));
 
-  const saas = allProjects.filter((p) =>
-    SAAS_BADGES.includes(p.metadata.badge ?? "")
-  );
+  const saas = allProjects.filter((p) => SAAS_BADGES.includes(p.metadata.badge ?? ""));
 
-  const clients = allProjects.filter((p) =>
-    CLIENT_SLUGS.includes(p.slug)
-  );
+  const clients = allProjects.filter((p) => CLIENT_SLUGS.includes(p.slug));
 
   const personal = allProjects.filter(
-    (p) =>
-      !SAAS_BADGES.includes(p.metadata.badge ?? "") &&
-      !CLIENT_SLUGS.includes(p.slug)
+    (p) => !SAAS_BADGES.includes(p.metadata.badge ?? "") && !CLIENT_SLUGS.includes(p.slug),
   );
 
   return (

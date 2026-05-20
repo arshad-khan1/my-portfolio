@@ -9,24 +9,22 @@ interface ProjectsProps {
   columns?: "1" | "2" | "3";
 }
 
-export function Projects({
-  range,
-  exclude,
-  type,
-  columns = "1",
-}: ProjectsProps) {
+export function Projects({ range, exclude, type, columns = "1" }: ProjectsProps) {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
 
-  const freelanceSlugs = ["ramesys", "beanbagaffairs", "vydhra", "soho", "amico-engineering", "masominds"];
+  const freelanceSlugs = [
+    "ramesys",
+    "beanbagaffairs",
+    "vydhra",
+    "soho",
+    "amico-engineering",
+    "masominds",
+  ];
 
   if (type === "freelance") {
-    allProjects = allProjects.filter((post) =>
-      freelanceSlugs.includes(post.slug),
-    );
+    allProjects = allProjects.filter((post) => freelanceSlugs.includes(post.slug));
   } else if (type === "personal") {
-    allProjects = allProjects.filter(
-      (post) => !freelanceSlugs.includes(post.slug),
-    );
+    allProjects = allProjects.filter((post) => !freelanceSlugs.includes(post.slug));
   }
 
   // Exclude by slug (exact match)
@@ -35,10 +33,7 @@ export function Projects({
   }
 
   const sortedProjects = allProjects.sort((a, b) => {
-    return (
-      new Date(b.metadata.publishedAt).getTime() -
-      new Date(a.metadata.publishedAt).getTime()
-    );
+    return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
   });
 
   const displayedProjects = range
@@ -56,9 +51,7 @@ export function Projects({
           title={post.metadata.title}
           description={post.metadata.summary}
           content={post.content}
-          avatars={
-            post.metadata.team?.map((member) => ({ src: member.avatar })) || []
-          }
+          avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
           link={post.metadata.link || ""}
           github={post.metadata.github}
           live={post.metadata.live}
