@@ -6,7 +6,7 @@ import {
   HiArrowUpRight,
   HiOutlineLink,
   HiArrowTopRightOnSquare,
-  HiEnvelope,
+  HiOutlineEnvelope,
   HiCalendarDays,
   HiArrowRight,
   HiOutlineEye,
@@ -64,7 +64,7 @@ import { BiLogoPostgresql, BiLogoSpringBoot, BiLogoTypescript } from "react-icon
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
   arrowRight: HiArrowRight,
-  email: HiEnvelope,
+  email: HiOutlineEnvelope,
   globe: HiOutlineGlobeAsiaAustralia,
   person: PiUserCircleDuotone,
   grid: PiGridFourDuotone,

@@ -104,8 +104,6 @@ export function HeroSection({
   const { scrollY } = useScroll();
   const bgSlowY = useTransform(scrollY, [0, 800], [0, -140]);
   const bgFastY = useTransform(scrollY, [0, 800], [0, -240]);
-  const contentY = useTransform(scrollY, [0, 600], [0, -70]);
-  const contentOpacity = useTransform(scrollY, [0, 450], [1, 0]);
 
   useEffect(() => {
     setMounted(true);
@@ -141,15 +139,14 @@ export function HeroSection({
   return (
     <section
       style={{
-        height: "100vh",
         width: "100%",
         position: "relative",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        overflow: "hidden",
         isolation: "isolate",
       }}
+      className="hero-section-parent"
     >
       {/* Background orbs — slow parallax layer */}
       <motion.div
@@ -191,11 +188,9 @@ export function HeroSection({
         }}
       />
 
-      {/* Hero content with scroll-out effect */}
+      {/* Hero content */}
       <motion.div
         style={{
-          y: contentY,
-          opacity: contentOpacity,
           position: "relative",
           zIndex: 10,
           width: "100%",
@@ -408,6 +403,13 @@ export function HeroSection({
       </motion.div>
 
       <style jsx global>{`
+        /* ── Section Wrapper ───────────────── */
+        .hero-section-parent {
+          min-height: 100vh;
+          height: 100vh;
+          overflow: hidden;
+        }
+
         /* ── Badge ─────────────────────────── */
         .hero-badge {
           display: inline-flex;
@@ -726,6 +728,13 @@ export function HeroSection({
           grid-template-columns: 1fr auto !important;
         }
         @media (max-width: 900px) {
+          .hero-section-parent {
+            height: auto !important;
+            min-height: 100vh !important;
+            overflow: visible !important;
+            padding-top: 60px !important;
+            padding-bottom: 60px !important;
+          }
           .hero-grid {
             grid-template-columns: 1fr !important;
             text-align: center;
@@ -743,8 +752,21 @@ export function HeroSection({
           .hero-subline {
             max-width: 100%;
           }
+          .hero-grid > div:first-child {
+            order: 2 !important;
+          }
           .portrait-wrap {
-            display: none;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 0 30px 0 !important;
+            order: 1 !important;
+          }
+          @media (max-width: 480px) {
+            .portrait-card {
+              width: 260px !important;
+              height: 330px !important;
+            }
           }
           .hero-name {
             font-size: clamp(2.4rem, 10vw, 5rem);

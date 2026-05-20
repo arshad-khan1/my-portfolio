@@ -160,3 +160,54 @@ body {
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
+
+/* ── Mobile Navigation FOUC Prevention ── */
+.ct-mobile-menu-overlay {
+  display: none !important;
+}
+.ct-mobile-menu-overlay.active {
+  display: flex !important;
+}
+.ct-mobile-hamburger {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .ct-mobile-hamburger {
+    display: flex !important;
+  }
+}
+
+/* ── Desktop Header Overrides ── */
+.ct-desktop-header {
+  width: 100% !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.ct-desktop-header-row {
+  width: 100% !important;
+  max-width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  box-sizing: border-box !important;
+  padding: 8px 32px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+@media (max-width: 768px) {
+  .ct-desktop-header {
+    display: none !important;
+  }
+}
