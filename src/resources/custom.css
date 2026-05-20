@@ -168,9 +168,53 @@ body {
 .ct-mobile-menu-overlay.active {
   display: flex !important;
 }
+
 .ct-mobile-hamburger {
   display: none !important;
+  position: fixed !important;
+  top: 20px !important;
+  left: 20px !important;
+  z-index: 1000 !important;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  background: rgba(15, 15, 15, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--neutral-on-background-strong, #fff) !important;
+  cursor: pointer !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s,
+    border-color 0.2s !important;
+  outline: none !important;
 }
+
+.ct-mobile-hamburger svg {
+  width: 22px !important;
+  height: 22px !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.ct-mobile-hamburger:hover {
+  background: rgba(25, 25, 25, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.ct-mobile-hamburger:active {
+  transform: scale(0.92) !important;
+}
+
+.ct-menu-active .ct-mobile-hamburger svg {
+  transform: rotate(90deg) !important;
+}
+
 @media (max-width: 768px) {
   .ct-mobile-hamburger {
     display: flex !important;

@@ -302,56 +302,7 @@ export const Header = () => {
       </div>
 
       <style jsx global>{`
-        /* ── Floating Mobile Hamburger Trigger ── */
-        .ct-mobile-hamburger {
-          display: none;
-          position: fixed;
-          top: 20px;
-          left: 20px;
-          z-index: 1000;
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          background: rgba(15, 15, 15, 0.75);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          align-items: center;
-          justify-content: center;
-          color: var(--neutral-on-background-strong, #fff);
-          cursor: pointer;
-          box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.5),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
-          transition:
-            transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-            background-color 0.2s,
-            border-color 0.2s;
-          outline: none;
-        }
 
-        .ct-mobile-hamburger svg {
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .ct-mobile-hamburger:hover {
-          background: rgba(25, 25, 25, 0.9);
-          border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .ct-mobile-hamburger:active {
-          transform: scale(0.92);
-        }
-
-        .ct-menu-active .ct-mobile-hamburger svg {
-          transform: rotate(90deg);
-        }
-
-        @media (max-width: 768px) {
-          .ct-mobile-hamburger {
-            display: flex;
-          }
-        }
 
         /* ── Mobile Premium Menu Overlay ── */
         .ct-mobile-menu-overlay {
